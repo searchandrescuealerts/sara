@@ -1,8 +1,157 @@
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	font: 12pt "Lucida Grande", Helvetica, Arial, sans-serif;
+	color: #A39770;
+	margin:0;
+	background-color:#4C493C;
 }
 
-a {
-  color: #00B7FF;
+.h1 {
+	color:#A39770;
+}
+
+/*==============================*/
+/*		MASTER CONTENT 			*/
+/*==============================*/
+#content {
+	background-color:#EFE4BD;
+	color:#2B2922;
+	width:780px;
+	height:100%;
+	margin:0;
+	padding:0;
+	/*box-shadow: 5px 5px 20px #FFFFFF;*/
+}
+
+.section {
+	margin:0;
+	padding:1em 2em;
+	float:left;
+	width:100%;
+	text-align:left;
+	/*box-shadow: .25em .25em .5em #3B382E inset;*/
+}
+
+.arrow-down {
+	width: 0; 
+	height: 0; 
+	border-left: 2em solid transparent;
+	border-right: 2em solid transparent;
+	/*border-top: 2em solid #FFFFFF;*/
+	z-index:10;
+}
+
+.circle {
+	border-radius: 50%;
+	width: 1.5em;
+	height: 1.5em;
+	float:left;
+	font-size:18pt;
+	border:.1em solid #000000;
+	text-align:center;
+	vertical-align:middle;
+	background-color:#FFFFFF;
+	margin-right:1em;
+}
+
+/*==============================*/
+/*		HEADER CONTENT 			*/
+/*==============================*/
+#header {
+	background-color:#2B2922;
+	color:#FFFFFF;
+}
+
+#header a {
+	color:#FFFFFF;
+}
+
+/*==============================*/
+/*		NAVIGATION CONTENT 		*/
+/*==============================*/
+#navigation {
+	background-color:#FF8500;
+}
+
+#navigation ul {
+	list-style-type:none;
+}
+
+#navigation ul li {
+	display:inline;
+	padding-right:1em;
+}
+
+/*==============================*/
+/*		ABOUT CONTENT 			*/
+/*==============================*/
+#about {
+	background-color:#FFFFFF;
+}
+
+#about div.arrow-down {
+	border-top: 2em solid #FFFFFF;
+	position:relative;
+	bottom: -2.5em;
+}
+
+
+/*==============================*/
+/*		HOW CONTENT 			*/
+/*==============================*/
+#how {
+	background-color:#14CC9B;
+}
+
+#how div.arrow-down {
+	border-top: 2em solid #14CC9B;
+	position:relative;
+	bottom: -2.5em;
+	left: 25%;
+}
+
+/*==============================*/
+/*		SMARTPHONE CONTENT 		*/
+/*==============================*/
+#smartphone {
+	width:100%;
+	margin:0;
+	background-color:#2B2922;
+	color:#FFFFFF;
+	vertical-align:top;
+	text-align: left;
+	float:left;
+}
+
+#smartphone div.arrow-down {
+	border-top: 2em solid #2B2922;
+	position:relative;
+	bottom: -2.5em;
+	left:50%;
+}
+
+/*==============================*/
+/*		SIGNUP CONTENT 			*/
+/*==============================*/
+#signup {
+	background-color:#FF8500;
+}
+
+#signup div.arrow-down {
+	border-top: 2em solid #FF8500;
+	position:relative;
+	bottom: -2.5em;
+	left:75%;
+}
+
+/*==============================*/
+/*	FIRST RESPONDER CONTENT 	*/
+/*==============================*/
+#firstresponder {
+	width:100%;
+	margin:0;
+	background-color:#FFFFFF;
+	vertical-align:top;
+	text-align: left;
+	float:left;
 }
