@@ -5,37 +5,42 @@ body {
 	font-size:12pt;
 	color: #A39770;
 	margin:0;
-	/*background-color:#4C493C;*/
-	background-color:#FFFFFF;
+	background-color:#FCFCFC;
 }
 
-.h1 {
-	color:#A39770;
-	font-family:'Exo 2', serif;
-	font-weight:200;
+h1, h2, h3, h4 {
+	font-family:'Nunito', sans-serif;
+	font-weight:300;
+}
+
+a {
+	color:inherit;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+a:hover {
+	text-decoration:underline;
 }
 
 /*==============================*/
 /*		MASTER CONTENT 			*/
 /*==============================*/
 #main {
-	/*background-color:#EFE4BD;*/
-	color:#2B2922;
+	color:#2E2E2D;
 	width:780px;
 	height:100%;
 	margin:0;
 	padding:0;
-	/*box-shadow: 5px 5px 20px #FFFFFF;*/
 }
 
 .section {
 	margin:0;
-	/*padding:1em 2em;*/
 	float:left;
 	width:100%;
 	text-align:left;
-	/*box-shadow: .25em .25em .5em #3B382E inset;*/
-	/*box-shadow: .25em .25em .5em #3B382E;*/
+/*	-moz-border-radius: 1em 4em 1em 4em;
+	border-radius: 1em 4em 1em 4em;*/
 }
 
 .section .content {
@@ -47,7 +52,6 @@ body {
 	height: 0; 
 	border-left: 2em solid transparent;
 	border-right: 2em solid transparent;
-	/*border-top: 2em solid #FFFFFF;*/
 	z-index:10;
 	position:relative;
 	bottom: -1.5em;
@@ -59,21 +63,34 @@ body {
 	height: 1.5em;
 	float:left;
 	font-size:18pt;
-	border:.1em solid #000000;
+	border-size:.1em;
+	border-style:solid;
 	text-align:center;
 	vertical-align:middle;
-	background-color:#FFFFFF;
 	margin-right:1em;
-	box-shadow: .25em .25em .5em #3B382E;
+	box-shadow: .25em .25em .5em #000000;
+	opacity:1;
+	background-color:#333333;
+	color:#FFFFFF;
 }
 
+.color1{ /*orange*/
+	border-color:#FF8500;
+}
 
+.color2{ /*teal*/
+	border-color:#14CC9B;
+}
+
+.color3{ /*purple*/
+	border-color:#D963FF;
+}
 
 /*==============================*/
 /*		HEADER CONTENT 			*/
 /*==============================*/
 #header {
-	background-color:#2B2922;
+	background-color:#2E2E2D;
 	color:#FFFFFF;
 }
 
@@ -123,7 +140,12 @@ body {
 	/*background-color:#FFFFFF;*/
 	min-height:390px;
 	float:clear;
+	font-size:8pt;
 	position:relative; /*this is the magic that makes the inclusive divs layer appropriately*/
+}
+
+#signup h1 {
+	font-size:18pt;
 }
 
 #signup .content {
@@ -132,7 +154,32 @@ body {
 	left:0;
 	z-index:20;
 	color:#FFFFFF;
-	text-shadow:2px 2px 4px #000000;
+	text-shadow:2px 2px 2px #000000;
+}
+
+.signupForm input {
+	
+}
+
+.signupForm input[type=text] {
+	border:1px solid #333333;
+	background-color:rgba(255,255,255,.60);
+	border-radius:.25em;
+	margin-bottom:1em;
+	width:50%;
+	box-shadow:2px 2px 2px #666666;
+}
+
+.signupForm input[type=submit] {
+	background-color:#FF8500;
+	font-size:18pt;
+	border:2px solid #333333;
+	border-radius:.5em;
+	padding:0em .25em;
+	font-family:'Nunito', sans-serif;
+	font-weight:300;
+	box-shadow:2px 2px 2px #333333;
+
 }
 
 /*==============================*/
@@ -152,12 +199,12 @@ body {
 /*		HOW CONTENT 			*/
 /*==============================*/
 #how {
-	background-color:#2B2922;
+	background-color:#2E2E2D;
 	color:#FFFFFF;
 }
 
 #how div.arrow-down {
-	border-top: 2em solid #2B2922;
+	border-top: 2em solid #2E2E2D;
 	left: 50%;
 }
 
@@ -165,11 +212,11 @@ body {
 /*		SMARTPHONE CONTENT 		*/
 /*==============================*/
 #smartphone {
-	background-color:#FF8500;
+	background-color:#D963FF;
 }
 
 #smartphone div.arrow-down {
-	border-top: 2em solid #FF8500;
+	border-top: 2em solid #D963FF;
 	left:75%;
 }
 
@@ -179,9 +226,22 @@ body {
 #firstresponder {
 	width:100%;
 	margin:0;
-	background-color:#2B2922;
+	background-color:#2E2E2D;
 	color:#FFFFFF;
 	vertical-align:top;
 	text-align: left;
+	float:left;
+}
+
+/*==============================*/
+/*	FIRST RESPONDER CONTENT 	*/
+/*==============================*/
+#footer {
+	width:100%;
+	margin:0;
+	background-color:#FFFFFF;
+	color:#2E2E2D;
+	vertical-align:top;
+	text-align: center;
 	float:left;
 }
