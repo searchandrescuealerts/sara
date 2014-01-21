@@ -266,10 +266,11 @@ a:hover {
 	z-index:20;
 	color:#FFFFFF;
 	text-shadow:2px 2px 2px #000000;
+	font-size:12pt;
 }
 
 .signupForm {
-	width:40%;
+	width:35%;
 }
 
 .signupForm input[type=text], .signupForm input[type=password] {
@@ -277,8 +278,12 @@ a:hover {
 	background-color:rgba(255,255,255,.75);
 	border-radius:.25em;
 	margin-bottom:1em;
-	width:50%;
+	width:100%;
 	box-shadow:2px 2px 2px rgba(0,0,0,.50);
+	color:#000000;
+	font-size:12pt;
+	padding:.1em;
+	font-weight:700;
 }
 
 .signupForm input[type=submit] {
