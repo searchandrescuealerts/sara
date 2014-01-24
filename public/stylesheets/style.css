@@ -1,7 +1,7 @@
 
 body {
 	font-family:'Roboto Slab';
-	font-weight:300;
+	font-weight:400;
 	font-size:12pt;
 	color: #A39770;
 	margin:0;
@@ -23,9 +23,9 @@ a:hover {
 	text-decoration:underline;
 }
 
-/*==============================*/
-/*		MASTER CONTENT 			*/
-/*==============================*/
+/*==========================================================================*/
+/*								SECTION CONTENT 							*/
+/*==========================================================================*/
 #main {
 	color:#2E2E2D;
 	width:780px;
@@ -39,8 +39,6 @@ a:hover {
 	float:left;
 	width:100%;
 	text-align:left;
-/*	-moz-border-radius: 1em 4em 1em 4em;
-	border-radius: 1em 4em 1em 4em;*/
 }
 
 .section .content {
@@ -52,10 +50,133 @@ a:hover {
 	height: 0; 
 	border-left: 2em solid transparent;
 	border-right: 2em solid transparent;
+	border-top-width: 2em;
+	border-top-style: solid;
+	/*border-top-color is set for each section to properly grab the color*/
 	z-index:10;
 	position:relative;
 	bottom: -1.5em;
 }
+
+/*==========================================================================*/
+/*								GRAY SECTION 								*/
+/*==========================================================================*/
+
+.gray {
+	background-color:#2E2E2D;
+	color:#FFFFFF;
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #2E2E2D),
+		color-stop(1, #141413)
+	);
+	background-image: -o-linear-gradient(top, #2E2E2D 0%, #141413 100%);
+	background-image: -moz-linear-gradient(top, #2E2E2D 0%, #141413 100%);
+	background-image: -webkit-linear-gradient(top, #2E2E2D 0%, #141413 100%);
+	background-image: -ms-linear-gradient(top, #2E2E2D 0%, #141413 100%);
+	background-image: linear-gradient(to top, #2E2E2D 0%, #141413 100%);
+}
+
+.gray h1 {
+	text-shadow:2px 2px 2px #000000;
+}
+
+.gray .arrow-down {
+	border-top-color:#2E2E2D;
+}
+
+/*==========================================================================*/
+/*								ORANGE SECTION 								*/
+/*==========================================================================*/
+
+.orange {
+	background-color:#FF8500;
+	
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.74, #FF971B),
+		color-stop(1, #E07400)
+	);
+	background-image: -o-linear-gradient(top, #FF971B 74%, #E07400 100%);
+	background-image: -moz-linear-gradient(top, #FF971B 74%, #E07400 100%);
+	background-image: -webkit-linear-gradient(top, #FF971B 74%, #E07400 100%);
+	background-image: -ms-linear-gradient(top, #FF971B 74%, #E07400 100%);
+	background-image: linear-gradient(to top, #FF971B 74%, #E07400 100%);
+}
+
+.orange h1 {
+	text-shadow:2px 2px 2px rgba(255,255,255,.5);
+}
+
+.orange .arrow-down {
+	border-top-color:#FF8500;
+}
+
+/*==========================================================================*/
+/*								TEAL SECTION 								*/
+/*==========================================================================*/
+
+.teal {
+	background-color:#14CC9B;
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #14CC9B),
+		color-stop(1, #18C795)
+	);
+	background-image: -o-linear-gradient(top, #14CC9B 0%, #18C795 100%);
+	background-image: -moz-linear-gradient(top, #14CC9B 0%, #18C795 100%);
+	background-image: -webkit-linear-gradient(top, #14CC9B 0%, #18C795 100%);
+	background-image: -ms-linear-gradient(top, #14CC9B 0%, #18C795 100%);
+	background-image: linear-gradient(to top, #14CC9B 0%, #18C795 100%);
+	
+}
+
+.teal .arrow-down {
+	border-top-color:#14CC9B;
+}
+
+.teal h1 {
+	text-shadow:2px 2px 1px rgba(255,255,255,.5);
+}
+
+/*==========================================================================*/
+/*								PURPLE SECTION 								*/
+/*==========================================================================*/
+
+.purple {
+	background-color:#D963FF;
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #D863FF),
+		color-stop(1, #CE3BFF)
+	);
+	background-image: -o-linear-gradient(top, #D863FF 0%, #CE3BFF 100%);
+	background-image: -moz-linear-gradient(top, #D863FF 0%, #CE3BFF 100%);
+	background-image: -webkit-linear-gradient(top, #D863FF 0%, #CE3BFF 100%);
+	background-image: -ms-linear-gradient(top, #D863FF 0%, #CE3BFF 100%);
+	background-image: linear-gradient(to top, #D863FF 0%, #CE3BFF 100%);
+}
+
+.purple .arrow-down {
+	border-top-color:#D963FF;
+}
+
+.purple h1 {
+	text-shadow:2px 2px 1px rgba(255,255,255,.5);
+}
+
+/*==========================================================================*/
+/*								CIRCLE STYLE 								*/
+/*==========================================================================*/
 
 .circle {
 	border-radius: 50%;
@@ -68,43 +189,35 @@ a:hover {
 	text-align:center;
 	vertical-align:middle;
 	margin-right:1em;
+	margin-bottom:1em;
 	box-shadow: .25em .25em .5em #000000;
 	opacity:1;
 	background-color:#333333;
 	color:#FFFFFF;
 }
 
-.color1{ /*orange*/
+.circleOrange{ /*orange*/
 	border-color:#FF8500;
 }
 
-.color2{ /*teal*/
+.circleTeal{ /*teal*/
 	border-color:#14CC9B;
 }
 
-.color3{ /*purple*/
+.circlePurple{ /*purple*/
 	border-color:#D963FF;
 }
 
-/*==============================*/
-/*		HEADER CONTENT 			*/
-/*==============================*/
-#header {
-	background-color:#2E2E2D;
-	color:#FFFFFF;
-}
-
+/*==========================================================================*/
+/*								HEADER CONTENT 								*/
+/*==========================================================================*/
 #header a {
 	color:#FFFFFF;
 }
 
-/*==============================*/
-/*		NAVIGATION CONTENT 		*/
-/*==============================*/
-#navigation {
-	background-color:#FF8500;
-}
-
+/*==========================================================================*/
+/*								NAVIGATION CONTENT 							*/
+/*==========================================================================*/
 #navigation ul {
 	list-style-type:none;
 }
@@ -114,9 +227,9 @@ a:hover {
 	padding-right:1em;
 }
 
-/*==============================*/
-/*		ROTATING BANNER			*/
-/*==============================*/
+/*==========================================================================*/
+/*								ROTATING BANNER								*/
+/*==========================================================================*/
 
 #signup #rotatingBanner {
 	position:absolute;
@@ -133,13 +246,11 @@ a:hover {
       	z-index:-1;
 }
 
-/*==============================*/
-/*		SIGNUP CONTENT 			*/
-/*==============================*/
+/*==========================================================================*/
+/*								SIGNUP CONTENT 								*/
+/*==========================================================================*/
 #signup {
-	/*background-color:#FFFFFF;*/
 	min-height:390px;
-	float:clear;
 	font-size:8pt;
 	position:relative; /*this is the magic that makes the inclusive divs layer appropriately*/
 }
@@ -155,87 +266,73 @@ a:hover {
 	z-index:20;
 	color:#FFFFFF;
 	text-shadow:2px 2px 2px #000000;
+	font-size:12pt;
 }
 
-.signupForm input {
-	
+.signupForm {
+	width:35%;
 }
 
-.signupForm input[type=text] {
+.signupForm input[type=text], .signupForm input[type=password] {
 	border:1px solid #333333;
-	background-color:rgba(255,255,255,.60);
+	background-color:rgba(255,255,255,.75);
 	border-radius:.25em;
 	margin-bottom:1em;
-	width:50%;
-	box-shadow:2px 2px 2px #666666;
+	width:100%;
+	box-shadow:2px 2px 2px rgba(0,0,0,.50);
+	color:#000000;
+	font-size:12pt;
+	padding:.1em;
+	font-weight:700;
 }
 
 .signupForm input[type=submit] {
-	background-color:#FF8500;
+	/*background-color:#FF8500;*/
+	background-color:#FFFFFF;
 	font-size:18pt;
-	border:2px solid #333333;
+	border:1px solid #333333;
+	/*border:0;*/
 	border-radius:.5em;
 	padding:0em .25em;
 	font-family:'Nunito', sans-serif;
 	font-weight:300;
-	box-shadow:2px 2px 2px #333333;
-
+	/*box-shadow:2px 2px 2px #333333;*/
 }
 
-/*==============================*/
-/*		ABOUT CONTENT 			*/
-/*==============================*/
-#about {
-	background-color:#14CC9B;
-}
+/*==========================================================================*/
+/*								ABOUT CONTENT 								*/
+/*==========================================================================*/
 
 #about div.arrow-down {
-	border-top: 2em solid #14CC9B;
 	left:25%;
 }
 
 
-/*==============================*/
-/*		HOW CONTENT 			*/
-/*==============================*/
-#how {
-	background-color:#2E2E2D;
-	color:#FFFFFF;
-}
+/*==========================================================================*/
+/*								HOW CONTENT 								*/
+/*==========================================================================*/
 
 #how div.arrow-down {
-	border-top: 2em solid #2E2E2D;
 	left: 50%;
 }
 
-/*==============================*/
-/*		SMARTPHONE CONTENT 		*/
-/*==============================*/
-#smartphone {
-	background-color:#D963FF;
-}
+/*==========================================================================*/
+/*							SMARTPHONE CONTENT 								*/
+/*==========================================================================*/
 
 #smartphone div.arrow-down {
-	border-top: 2em solid #D963FF;
 	left:75%;
 }
 
-/*==============================*/
-/*	FIRST RESPONDER CONTENT 	*/
-/*==============================*/
-#firstresponder {
-	width:100%;
-	margin:0;
-	background-color:#2E2E2D;
-	color:#FFFFFF;
-	vertical-align:top;
-	text-align: left;
-	float:left;
-}
+/*==========================================================================*/
+/*							FIRST RESPONDER CONTENT 						*/
+/*==========================================================================*/
 
-/*==============================*/
-/*	FIRST RESPONDER CONTENT 	*/
-/*==============================*/
+
+
+/*==========================================================================*/
+/*								FOOTER CONTENT 								*/
+/*==========================================================================*/
 #footer {
 	width:100%;
 	margin:0;
@@ -244,4 +341,18 @@ a:hover {
 	vertical-align:top;
 	text-align: center;
 	float:left;
+}
+
+/*==========================================================================*/
+/*							MY ACCOUNT PAGE 								*/
+/*==========================================================================*/
+
+#basicInfo {
+	float:left;
+	width:50%;
+}
+
+#location {
+	float:right;
+	width:50%;
 }
