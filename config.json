@@ -1,0 +1,17 @@
+{
+	"development":{
+		"db":{
+			"username": "root",
+			"password": "",
+			"database": "searchandrescue"
+		}
+	},
+	"production": {
+		"db":{
+			"username": "searchandrescue",
+			"password": "ISRock5!",
+			"database": "searchandrescue",
+			"host": "pathtogodaddy"
+		}
+	}
+}
