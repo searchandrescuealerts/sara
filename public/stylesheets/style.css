@@ -5,7 +5,8 @@ body {
 	font-size:12pt;
 	color: #A39770;
 	margin:0;
-	background-color:#FCFCFC;
+	/*background-color:#013ca6;*/
+	background-color:#FFFFFF;
 }
 
 h1, h2, h3, h4 {
@@ -28,21 +29,36 @@ a:hover {
 /*==========================================================================*/
 #main {
 	color:#2E2E2D;
-	width:780px;
+	width:100%;
 	height:100%;
 	margin:0;
 	padding:0;
+	position:relative;
+	top:0;
+	left:0;
 }
 
 .section {
 	margin:0;
-	float:left;
-	width:100%;
 	text-align:left;
+	z-index:5;
+	/*background-color:#FFFFFF;*/
+}
+
+.narrow {
+	width:780px;
+	/*background-color:rgba(239,245,255,1);*/
+	/*background-color:#eff5ff;*/ /*this blue is too dark*/
+	/*background-color:#fbfdff;*/ /*this blue looks funny*/
+	background-color:#FFFFFF;
+}
+
+.wide {
+	width:100%;
 }
 
 .section .content {
-	padding:.5em 1em;
+	padding:1em 4em;
 }
 
 .arrow-down {
@@ -59,29 +75,33 @@ a:hover {
 }
 
 /*==========================================================================*/
+/*								WHITE SECTION 								*/
+/*==========================================================================*/
+
+/*.white {
+	background-color:#FFFFFF;
+}*/
+
+.white h1 {
+	/*text-shadow:2px 2px 2px #CCCCCC;*/
+	color:#000000;
+}
+
+.white .arrow-down {
+	border-top-color:#FFFFFF;
+}
+
+/*==========================================================================*/
 /*								GRAY SECTION 								*/
 /*==========================================================================*/
 
-.gray {
-	background-color:#2E2E2D;
-	color:#FFFFFF;
-
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0, #2E2E2D),
-		color-stop(1, #141413)
-	);
-	background-image: -o-linear-gradient(top, #2E2E2D 0%, #141413 100%);
-	background-image: -moz-linear-gradient(top, #2E2E2D 0%, #141413 100%);
-	background-image: -webkit-linear-gradient(top, #2E2E2D 0%, #141413 100%);
-	background-image: -ms-linear-gradient(top, #2E2E2D 0%, #141413 100%);
-	background-image: linear-gradient(to top, #2E2E2D 0%, #141413 100%);
-}
+/*.gray {
+	background-color:#FFFFFF;
+}*/
 
 .gray h1 {
-	text-shadow:2px 2px 2px #000000;
+	/*text-shadow:2px 2px 2px #000000;*/
+	color:#2E2E2D;
 }
 
 .gray .arrow-down {
@@ -92,87 +112,54 @@ a:hover {
 /*								ORANGE SECTION 								*/
 /*==========================================================================*/
 
-.orange {
-	background-color:#FF8500;
-	
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0.74, #FF971B),
-		color-stop(1, #E07400)
-	);
-	background-image: -o-linear-gradient(top, #FF971B 74%, #E07400 100%);
-	background-image: -moz-linear-gradient(top, #FF971B 74%, #E07400 100%);
-	background-image: -webkit-linear-gradient(top, #FF971B 74%, #E07400 100%);
-	background-image: -ms-linear-gradient(top, #FF971B 74%, #E07400 100%);
-	background-image: linear-gradient(to top, #FF971B 74%, #E07400 100%);
-}
+/*.orange {
+	background-color:#FFFFFF;
+}*/
 
 .orange h1 {
-	text-shadow:2px 2px 2px rgba(255,255,255,.5);
+	/*text-shadow:2px 2px 2px #333333;*/
+	color:#e63c2e;
 }
 
 .orange .arrow-down {
-	border-top-color:#FF8500;
+	border-top-color:#e63c2e;
 }
 
 /*==========================================================================*/
-/*								TEAL SECTION 								*/
+/*							LT ORANGE SECTION 								*/
 /*==========================================================================*/
 
-.teal {
-	background-color:#14CC9B;
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0, #14CC9B),
-		color-stop(1, #18C795)
-	);
-	background-image: -o-linear-gradient(top, #14CC9B 0%, #18C795 100%);
-	background-image: -moz-linear-gradient(top, #14CC9B 0%, #18C795 100%);
-	background-image: -webkit-linear-gradient(top, #14CC9B 0%, #18C795 100%);
-	background-image: -ms-linear-gradient(top, #14CC9B 0%, #18C795 100%);
-	background-image: linear-gradient(to top, #14CC9B 0%, #18C795 100%);
-	
+/*.lightorange {
+	background-color:#FFFFFF;
+}*/
+
+.lightorange h1 {
+	/*text-shadow:2px 2px 2px #333333;*/
+	color:#f88973;
 }
 
-.teal .arrow-down {
-	border-top-color:#14CC9B;
+.lightorange .arrow-down {
+	border-top-color:#f88973;
 }
 
-.teal h1 {
-	text-shadow:2px 2px 1px rgba(255,255,255,.5);
-}
 
 /*==========================================================================*/
-/*								PURPLE SECTION 								*/
+/*								BLUE SECTION 								*/
 /*==========================================================================*/
 
-.purple {
-	background-color:#D963FF;
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0, #D863FF),
-		color-stop(1, #CE3BFF)
-	);
-	background-image: -o-linear-gradient(top, #D863FF 0%, #CE3BFF 100%);
-	background-image: -moz-linear-gradient(top, #D863FF 0%, #CE3BFF 100%);
-	background-image: -webkit-linear-gradient(top, #D863FF 0%, #CE3BFF 100%);
-	background-image: -ms-linear-gradient(top, #D863FF 0%, #CE3BFF 100%);
-	background-image: linear-gradient(to top, #D863FF 0%, #CE3BFF 100%);
+/*.blue {
+	background-color:#FFFFFF;
+}*/
+
+.blue h1 {
+	/*text-shadow:2px 2px 2px #333333;*/
+	color:#013ca6;
 }
 
-.purple .arrow-down {
-	border-top-color:#D963FF;
+.blue .arrow-down {
+	border-top-color:#013ca6;
 }
 
-.purple h1 {
-	text-shadow:2px 2px 1px rgba(255,255,255,.5);
-}
 
 /*==========================================================================*/
 /*								CIRCLE STYLE 								*/
@@ -192,81 +179,116 @@ a:hover {
 	margin-bottom:1em;
 	box-shadow: .25em .25em .5em #000000;
 	opacity:1;
-	background-color:#333333;
-	color:#FFFFFF;
+	background-color:#FFFFFF;
+	color:#000000;
 }
 
-.circleOrange{ /*orange*/
-	border-color:#FF8500;
+.circleOrange{ 
+	border-color:#e63c2e;
 }
 
-.circleTeal{ /*teal*/
-	border-color:#14CC9B;
+.circleBlue{ 
+	border-color:#013ca6;
 }
 
-.circlePurple{ /*purple*/
-	border-color:#D963FF;
+p.block {
+	clear:both;
 }
 
 /*==========================================================================*/
 /*								HEADER CONTENT 								*/
 /*==========================================================================*/
-#header a {
-	color:#FFFFFF;
+.logo {
+	/*width:200px;*/
+	height:100%;
+	padding-left:4em;
+	
+}
+
+#header {
+	background-color:#FFFFFF;
+	height:40px;
+	padding-top:1em;
+	padding-bottom:1em;
+}
+
+#header #account {
+	padding-right:4em;
+	float:right;
 }
 
 /*==========================================================================*/
-/*								NAVIGATION CONTENT 							*/
+/*								TAGLINE CONTENT 							*/
 /*==========================================================================*/
-#navigation ul {
-	list-style-type:none;
-}
-
-#navigation ul li {
-	display:inline;
-	padding-right:1em;
+#tagline h2 {
+	font-size:18pt;
 }
 
 /*==========================================================================*/
 /*								ROTATING BANNER								*/
 /*==========================================================================*/
 
-#signup #rotatingBanner {
+#rotatingBanner {
 	position:absolute;
 	top:0;
 	left:0;
+	width:100%;
+	z-index:-9999;
 }
 
 #rotatingBanner img.rotateImg {
-		width:780px;
-        height: auto;
-        position:absolute;
-      	top:0;
-      	left:0;
-      	z-index:-1;
+	min-height: 100%;
+    min-width: 1024px;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index:-9999;
+
+    /* SARAH TODO: fade these images into the background...*/
+
 }
 
 /*==========================================================================*/
 /*								SIGNUP CONTENT 								*/
 /*==========================================================================*/
 #signup {
-	min-height:390px;
+	min-height:450px;
+	height:75%;
 	font-size:8pt;
 	position:relative; /*this is the magic that makes the inclusive divs layer appropriately*/
 }
 
 #signup h1 {
-	font-size:18pt;
+	font-size:2em;
+	margin-bottom:.1em;
+}
+
+#signup h2 {
+	font-size:1.75em;
+	margin-top:.1em;
 }
 
 #signup .content {
 	position:absolute;
-	top:0;
 	left:0;
 	z-index:20;
 	color:#FFFFFF;
 	text-shadow:2px 2px 2px #000000;
 	font-size:12pt;
+}
+
+#signup .top {
+	top:0;
+	width:50%;
+}
+
+#signup .bottom {
+	bottom:0;
+	width:300px;
+	padding-left:50%;
+	left:-380px;
 }
 
 .signupForm {
@@ -278,7 +300,7 @@ a:hover {
 	background-color:rgba(255,255,255,.75);
 	border-radius:.25em;
 	margin-bottom:1em;
-	width:100%;
+	width:250px;
 	box-shadow:2px 2px 2px rgba(0,0,0,.50);
 	color:#000000;
 	font-size:12pt;
@@ -288,9 +310,11 @@ a:hover {
 
 .signupForm input[type=submit] {
 	/*background-color:#FF8500;*/
-	background-color:#FFFFFF;
+	background-color:#e63c2e;
+	color:#FFFFFF;
 	font-size:18pt;
-	border:1px solid #333333;
+	/*border:1px solid #333333;*/
+	border:1px solid #FFFFFF;
 	/*border:0;*/
 	border-radius:.5em;
 	padding:0em .25em;
