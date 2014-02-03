@@ -1,5 +1,6 @@
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>Search and Rescue Alerts</title>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -16,8 +17,13 @@
 	<img src="/images/bigBanner/1.jpg" class="rotateImg"/>
 	<img src="/images/bigBanner/3.jpg" class="rotateImg"/>
 	<img src="/images/bigBanner/4.jpg" class="rotateImg"/>
-	<!-- <img src="/images/glyphicons/glyphicons_173_play.png" class="controls" id="play"> -->
-	<!-- <img src="/images/glyphicons/glyphicons_174_pause.png" class="controls" id="pause"> -->
+</div>
+
+<div id="languageDiv">
+	<a href="index_es.html"><span class="language">Español</span></a>
+	<a href="index.html"><span class="language">English</span></a>
+	<a href="index_po.html"><span class="language">Português</span></a>
+	<a href="index_zh.html"><span class="language">Simplified Chinese</span></a>
 </div>
 
 <center>
@@ -49,11 +55,9 @@
 			
 			<br />
 			<a href="#" class="button"><span id="signupButton">Sign Up!</span></a> or <a href="#">Log In</a>
-			<!-- <input type="submit" value="Sign Up!"/> or <a href="#">Log In</a> -->
 		</div>
 	
 		<div class="bottom content signupForm">
-
 		</div>
 
 	</div>
@@ -107,7 +111,6 @@
 			<h1>Have a smartphone?</h1>
 			Check out our app.
 		</div>
-		<!-- <div class="arrow-down"></div> -->
 	</div>
 
 	<div id="firstresponder" class="orange narrow section">
@@ -138,6 +141,15 @@ $(document).ready(function() {
 				fx: 'fade',
 				pause: 1,
 				speed: 1800,
+				timeout: 10000 
+			});			
+		});
+
+$(document).ready(function() {
+				$('#languageDiv').cycle({
+				fx: 'fade',
+				pause: 1,
+				speed: 900,
 				timeout: 10000 
 			});			
 		});
