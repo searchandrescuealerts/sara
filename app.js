@@ -92,7 +92,7 @@ var missing_person = db.define('missing_person', {
 var message = db.define('message', {
 	message_content: Sequelize.STRING, // ANDY TODO: I think 'message' is a little too vague for a field, plus it's the name of the table
 	sent_date: Sequelize.DATE,
-	isSMS: Sequelize.BOOLEAN, // ANDY TODO: I think isSMS is better than sms, it connotates that the field is a boolean a little more clearly
+	isSMS: Sequelize.BOOLEAN, // ANDY TODO: I think isSMS is better than sms, it connotates that the field is a boolean a little more clearly!
 	isSmart_phone: Sequelize.BOOLEAN,
 	recipient_count: Sequelize.INTEGER
 });
