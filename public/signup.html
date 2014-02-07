@@ -1,0 +1,157 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Search and Rescue Alerts</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Exo+2:400,300,200,500' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA3mC_xSILKVBUECReJLJbyoX9L3PQ_ApY&sensor=false">
+	</script>
+
+	<script>
+	var map;
+	var myLatlng = new google.maps.LatLng(40.2410500, -111.6556550); //Sarah's home
+	var MILES_TO_METERS_CONVERSION_RATIO = 1609.34;
+	var marker;
+	var circle;
+
+	function initialize() {
+		var mapProp = {
+			center: new google.maps.LatLng(39.8282, -98.5795), //centers on the USA
+			zoom: 4,
+			mapTypeId:google.maps.MapTypeId.ROADMAP
+		};
+		
+		map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+		// placeMarker();
+
+	}
+
+	function placeMarker(location) {
+		//SARAH TODO: if there is already a marker, ignore this?
+		if (!location) {
+			location = map.getCenter();
+		}
+
+		marker = new google.maps.Marker({
+			position: location,
+			draggable: true,
+			title: "Drag me!",
+			map: map
+		});
+
+		drawCircle(marker);
+
+		marker.setMap(map);
+
+		//SARAH TODO: lastly, disable or remove the drop a pin button
+	}
+
+	function drawCircle(markerInput) {
+		//if the marker doesn't exist, set it to the global marker variable
+		if (!markerInput) {
+			markerInput = marker;
+		}
+		var radius = $("#radius").val();
+		//SARAH TODO: sanitize the radius input
+
+		//translate that into meters, because that's what the API takes
+		var radiusMeters = radius * MILES_TO_METERS_CONVERSION_RATIO;
+
+		if (circle) {
+			// map.removeOverlay(circle);
+			circle.setMap(null); //remove any previous circle
+		}
+		circle = new google.maps.Circle({
+			map: map,
+			radius: radiusMeters,
+			fillColor: '#AA0000'
+		});
+		// Add circle overlay and bind to marker
+		circle.bindTo('center', markerInput, 'position'); //add the new circle to the map
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+
+	</script>
+</head>
+<body>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.cycle.all.2.74.js"></script>
+
+<div id="rotatingBanner">	
+	<img src="/images/bigBanner/2.jpg" class="rotateImg"/>
+	<img src="/images/bigBanner/1.jpg" class="rotateImg"/>
+	<img src="/images/bigBanner/3.jpg" class="rotateImg"/>
+	<img src="/images/bigBanner/4.jpg" class="rotateImg"/>
+</div>
+
+<center>
+<div id="main">
+	<div id="header" class="white wide section">
+		<!-- <div class="content"> -->
+			<div id="account">
+				<a href="#" class="button orangeBG blackBorder"><span id="signupButton">Sign Up!</span></a> or <a href="#">Log In</a>
+			</div>
+			<img src="/images/logo/logo-horizontal.png" class="logo"/>
+		<!-- </div> -->
+	</div>
+	<center>
+
+	<div id="subpage_spacing" class="wide section"></div>
+
+	<div class="blue narrow section">
+		<div class="content">
+
+			<h1>Alert Radius</h1>
+			<p>
+				Please drop a pin at the central point where you normally are, then provide what radius you are willing to receive alerts for.
+			</p>
+
+			<br />
+
+			<p>
+				<span id="dropPin" class="button orangeBG blackBorder" onclick="placeMarker()">Drop a pin</span>
+				<span style="float:right;">
+					Search Radius: <input type="text" size="3" value="10" id="radius" />miles &nbsp; 
+					<span id="updateRadius" class="button orangeBG blackBorder" onclick="drawCircle()">Update</span>
+				</span>
+			</p>
+
+			<center>
+			<div id="googleMap" style="width:100%;height:500px;z-index:1000"></div>
+			</center>
+
+			<p style="float:right;">
+				<span class="button blackBorder grayBG">Save and add another location</span>
+				<span class="button blackBorder blueBG">Save and Finish</span>
+			</p>
+
+		</div>
+	</div>
+
+	<div id="footer" class="wide gray section">
+	<p>&copy; Search and Rescue Alert, LLC 2014</p>
+	</div>
+
+</div>
+
+</center>
+
+<script>
+$(document).ready(function() {
+				$('#rotatingBanner').cycle({
+				fx: 'fade',
+				pause: 1,
+				speed: 1800,
+				timeout: 10000 
+			});			
+		});
+
+</script>
+
+</body>
+</html>

@@ -126,6 +126,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // }
 
 app.get('/', routes.index);
+app.get('/signup/', routes.signup);
 app.get('/users', user.list);
 app.get('/users/:id', user.getUser);
 app.post('/users/:id', user.postUser);

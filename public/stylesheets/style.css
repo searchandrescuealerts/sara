@@ -342,11 +342,11 @@ p.block {
 	/*box-shadow:2px 2px 2px #333333;*/
 }
 
-#signupButton {
-	background-color:#e63c2e;
+.button {
 	color:#FFFFFF;
 	font-size:18pt;
-	border:1px solid #FFFFFF;
+	border-width:1px;
+	border-style:solid;
 	border-radius:.5em;
 	padding:0em .25em;
 	font-family:'Nunito', sans-serif;
@@ -354,8 +354,33 @@ p.block {
 	text-shadow:0px 0px 0px #000000;
 }
 
+.orangeBG {
+	background-color:#e63c2e;
+}
+
+.blueBG {
+	background-color:#013ca6;
+}
+
+.grayBG {
+	background-color:#333333;
+}
+
+.blackBorder {
+	border-color:#000000;
+}
+
+.whiteBorder {
+	border-color:#FFFFFF;
+}
+
+.blackText {
+	color:#000000;
+}
+
 .button:hover{
 	text-decoration: none;
+	cursor:hand;
 }
 
 
@@ -415,4 +440,8 @@ p.block {
 #location {
 	float:right;
 	width:50%;
+}
+
+#subpage_spacing {
+	height:300px;
 }
