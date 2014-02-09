@@ -11,6 +11,7 @@
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
 <script type="text/javascript" src="javascripts/jquery.cycle.all.2.74.js"></script>
+<script type="text/javascript" src="javascripts/cookies.js"></script>
 
 <div id="rotatingBanner">	
 	<img src="/images/bigBanner/2.jpg" class="rotateImg"/>
@@ -31,7 +32,7 @@
 	<div id="header" class="white wide section">
 		<!-- <div class="content"> -->
 			<div id="account">
-				<a href="#" class="button orangeBG blackBorder"><span id="signupButton">Sign Up!</span></a> or <a href="#">Log In</a>
+				<a href="javascript:void(0)" class="button orangeBG blackBorder"><span id="signupButton">Sign Up!</span></a> or <a href="javascript:void(0)">Log In</a>
 			</div>
 			<img src="/images/logo/logo-horizontal.png" class="logo"/>
 		<!-- </div> -->
@@ -43,18 +44,18 @@
 		<div class="top content signupForm">
 			<h1><b>Sign Up</b></h1>
 			<h2>to help bring friends and families back together</h2>
-
+			
 			Email Address<br />
-			<input type="text" name="firstName" /><br />
+			<input type="text" name="email" id="email"/><br />
 			
 			Password<br />
-			<input type="password" name="lastName" /><br />
+			<input type="password" name="password" id="password"/><br />
 			
 			Phone Number<br />
-			<input type="text" name="phoneNumber" /><br />
+			<input type="text" name="phoneNumber" id="phoneNumber"/><br />
 			
 			<br />
-			<a href="#" class="button orangeBG whiteBorder"><span id="signupButton">Sign Up!</span></a> or <a href="#">Log In</a>
+			<a href="javascript:void(0)" class="button orangeBG whiteBorder" onclick="signUp();"><span id="signupButton">Sign Up!</span></a> or <a href="javascript:void(0)">Log In</a>
 		</div>
 	
 		<div class="bottom content signupForm">
@@ -153,6 +154,31 @@ $(document).ready(function() {
 				timeout: 10000 
 			});			
 		});
+</script>
+
+<script>
+
+function signUp() {
+	var user = {
+		"email": "",
+		"password": "",
+		"phoneNumber": "",
+		"locations": {}
+	}
+
+	//SARAH TODO: hash the password
+	user.email = $("#email").val();
+	user.password = $("#password").val();
+	user.phoneNumber = $("#phoneNumber").val();
+
+	// console.log(JSON.stringify(user));
+
+	createCookie("SARAuser",JSON.stringify(user),7);
+
+	//direct user to /signup/
+	window.location = "/signup/";
+}
+
 </script>
 
 </body>

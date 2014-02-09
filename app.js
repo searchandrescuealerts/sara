@@ -3,12 +3,13 @@
  * Module dependencies.
  */
 
-var express = require('express');
-var routes 	= require('./routes');
-var user 	= require('./routes/user');
-var http 	= require('http');
-var path 	= require('path');
-var L10n	= require('L10n');
+var express 		= require('express');
+var routes 			= require('./routes');
+var user 			= require('./routes/user');
+var http 			= require('http');
+var path 			= require('path');
+// var L10n			= require('L10n');
+var passwordHash 	= require('password-hash');
 // // environment setup
 // var env 	= process.env.NODE_ENV || 'development';
 // // env = 'production'; // don't uncomment this line until I've spoken to Jeff Potter

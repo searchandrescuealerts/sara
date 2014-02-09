@@ -6,20 +6,24 @@
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Exo+2:400,300,200,500' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
-	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA3mC_xSILKVBUECReJLJbyoX9L3PQ_ApY&sensor=false">
-	</script>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA3mC_xSILKVBUECReJLJbyoX9L3PQ_ApY&sensor=false"></script>
 
 	<script>
-	var map;
-	var myLatlng = new google.maps.LatLng(40.2410500, -111.6556550); //Sarah's home
+	
 	var MILES_TO_METERS_CONVERSION_RATIO = 1609.34;
+	var map;
 	var marker;
 	var circle;
+	var browserLat = 39.8282; //default at center of US
+	var browserLong = -98.5795; //default at center of US
+	var zoomLevel = 4; //default zoom to fill screen with US
 
 	function initialize() {
+		getGeolocation();
+
 		var mapProp = {
-			center: new google.maps.LatLng(39.8282, -98.5795), //centers on the USA
-			zoom: 4,
+			center: new google.maps.LatLng(browserLat, browserLong), //centers the map here
+			zoom: zoomLevel,
 			mapTypeId:google.maps.MapTypeId.ROADMAP
 		};
 		
@@ -27,6 +31,13 @@
 
 		// placeMarker();
 
+	}
+
+	function refreshMap() {
+		var refreshLocation = new google.maps.LatLng(browserLat, browserLong);
+		map.setCenter(refreshLocation);
+		map.placeMarker(refreshLocation)
+		map.setZoom(7);
 	}
 
 	function placeMarker(location) {
@@ -46,7 +57,8 @@
 
 		marker.setMap(map);
 
-		//SARAH TODO: lastly, disable or remove the drop a pin button
+		//remove the Drop a pin button. We only want one pin at a time
+		$("#dropPin").hide();
 	}
 
 	function drawCircle(markerInput) {
@@ -67,7 +79,10 @@
 		circle = new google.maps.Circle({
 			map: map,
 			radius: radiusMeters,
-			fillColor: '#AA0000'
+			fillColor: '#013ca6',
+			fillOpacity: .2,
+			strokeColor: '#013ca6',
+			strokeWeight: 2
 		});
 		// Add circle overlay and bind to marker
 		circle.bindTo('center', markerInput, 'position'); //add the new circle to the map
@@ -75,12 +90,53 @@
 
 	google.maps.event.addDomListener(window, 'load', initialize);
 
+	//http://www.w3schools.com/html/tryit.asp?filename=tryhtml5_geolocation
+
+	function getGeolocation() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(saveNewCenter);
+		} else{
+			console.log("Browser does not support geolocation or user opted out");
+			//do nothing and keep the defaults
+		}
+	}
+	
+	function saveNewCenter(position) {
+		//update the lat and long points of the map to show your location.
+		browserLat = position.coords.latitude;
+		browserLong = position.coords.longitude;
+		zoomLevel = 7; //Also update the zoom level to something more appropriate...
+	}
 	</script>
 </head>
 <body>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.cycle.all.2.74.js"></script>
+<script type="text/javascript" src="/javascripts/cookies.js"></script>
+
+<script>
+
+//retrieve the cookie
+function getCookie(cname)
+{
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i].trim();
+		if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+	}
+	return "";
+}
+
+//SARAH TODO: check here if a cookie exists. If a cookie doesn't exist direct them back to the index.html page
+
+var userJSONString = getCookie("SARAuser");
+// console.log(userJSONString);
+var userJSON = $.parseJSON(userJSONString);
+// console.log(userJSON);
+
+</script>
 
 <div id="rotatingBanner">	
 	<img src="/images/bigBanner/2.jpg" class="rotateImg"/>
@@ -94,7 +150,7 @@
 	<div id="header" class="white wide section">
 		<!-- <div class="content"> -->
 			<div id="account">
-				<a href="#" class="button orangeBG blackBorder"><span id="signupButton">Sign Up!</span></a> or <a href="#">Log In</a>
+				<a href="javascript:void(0)" class="button orangeBG blackBorder"><span id="signupButton">Sign Up!</span></a> or <a href="javascript:void(0)">Log In</a>
 			</div>
 			<img src="/images/logo/logo-horizontal.png" class="logo"/>
 		<!-- </div> -->
@@ -106,7 +162,7 @@
 	<div class="blue narrow section">
 		<div class="content">
 
-			<h1>Alert Radius</h1>
+			<h1>Alert Locations</h1>
 			<p>
 				Please drop a pin at the central point where you normally are, then provide what radius you are willing to receive alerts for.
 			</p>
@@ -115,6 +171,7 @@
 
 			<p>
 				<span id="dropPin" class="button orangeBG blackBorder" onclick="placeMarker()">Drop a pin</span>
+				<!-- <span id="refresh" class="button orangeBG blackborder" onclick="refreshMap()">Detect my location</span> -->
 				<span style="float:right;">
 					Search Radius: <input type="text" size="3" value="10" id="radius" />miles &nbsp; 
 					<span id="updateRadius" class="button orangeBG blackBorder" onclick="drawCircle()">Update</span>
@@ -126,8 +183,8 @@
 			</center>
 
 			<p style="float:right;">
-				<span class="button blackBorder grayBG">Save and add another location</span>
-				<span class="button blackBorder blueBG">Save and Finish</span>
+				<!-- <span class="button blackBorder grayBG">Save and add another location</span> -->
+				<span class="button blackBorder blueBG" onclick="signUp()">Save and Finish</span>
 			</p>
 
 		</div>
@@ -151,6 +208,43 @@ $(document).ready(function() {
 			});			
 		});
 
+</script>
+
+<script>
+
+function signUp() {
+	var location = {
+		"id":1,
+		"latitude":0,
+		"longitude":0,
+		"radius":0
+	};
+
+	location.latitude = marker.getPosition().lat();
+	location.longitude = marker.getPosition().lng();
+	location.radius = circle.getRadius();
+
+	//add the location to the userJSON object
+	userJSON.locations = location;
+
+	//delete the old cookie
+	// console.log("Deleting Cookie");
+	createCookie("SARAuser","",-1);
+
+	//save the new cookie
+	// console.log("Creating New Cookie");
+	createCookie("SARAuser",JSON.stringify(userJSON),7);
+
+	//post the JSON object to /user/
+	$.post("../user/", function(data) {
+		userJSON;
+	})
+
+	//SARAH TODO: if successful...
+	//redirect user to a thank you page
+	// window.location = "/thank-you/";
+
+}
 </script>
 
 </body>
