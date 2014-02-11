@@ -166,6 +166,12 @@ function signUp() {
 		"locations": {}
 	}
 
+	var passwordHash = require('./node_modules/password-hash');
+
+    var hashedPassword = passwordHash.generate('password123');
+
+    console.log(hashedPassword); // sha1$3I7HRwy7$cbfdac6008f9cab4083784cbd1874f76618d2a97
+
 	//SARAH TODO: hash the password
 	user.email = $("#email").val();
 	user.password = $("#password").val();
