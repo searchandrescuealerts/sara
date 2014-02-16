@@ -33,12 +33,14 @@ app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-// development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
+// // development only
+// if ('development' == app.get('env')) {
+//   app.use(express.errorHandler());
+// }
 
 app.get('/', routes.index);
+app.get('/signup/', routes.signup);
+app.get('/myaccount/', routes.myaccount);
 app.get('/users', user.list);
 app.get('/users/:id', user.getUser);
 app.post('/users/:id', user.postUser);
