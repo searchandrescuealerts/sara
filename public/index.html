@@ -20,19 +20,19 @@
 	<img src="/images/bigBanner/4.jpg" class="rotateImg"/>
 </div>
 
-<div id="languageDiv">
+<!-- <div id="languageDiv">
 	<a href="index_es.html"><span class="language">Español</span></a>
 	<a href="index.html"><span class="language">English</span></a>
 	<a href="index_po.html"><span class="language">Português</span></a>
 	<a href="index_zh.html"><span class="language">Simplified Chinese</span></a>
-</div>
+</div> -->
 
 <center>
 <div id="main">
 	<div id="header" class="white wide section">
 		<!-- <div class="content"> -->
 			<div id="account">
-				<a href="javascript:void(0)" class="button orangeBG blackBorder"><span id="signupButton">Sign Up!</span></a> or <a href="javascript:void(0)">Log In</a>
+				<a href="#" class="button orangeBG blackBorder"><span id="signupButton">Sign Up!</span></a> or <a href="javascript:void(0)">Log In</a>
 			</div>
 			<img src="/images/logo/logo-horizontal.png" class="logo"/>
 		<!-- </div> -->
@@ -55,7 +55,7 @@
 			<input type="text" name="phoneNumber" id="phoneNumber"/><br />
 			
 			<br />
-			<a href="javascript:void(0)" class="button orangeBG whiteBorder" onclick="signUp();"><span id="signupButton">Sign Up!</span></a> or <a href="javascript:void(0)">Log In</a>
+			<a href="#" class="button orangeBG whiteBorder" onclick="signUp();"><span id="signupButton">Sign Up!</span></a> or <a href="javascript:void(0)">Log In</a>
 		</div>
 	
 		<div class="bottom content signupForm">
@@ -166,11 +166,11 @@ function signUp() {
 		"locations": {}
 	}
 
-	var passwordHash = require('./node_modules/password-hash');
+	// var passwordHash = require('./node_modules/password-hash');
 
-    var hashedPassword = passwordHash.generate('password123');
+    // var hashedPassword = passwordHash.generate('password123');
 
-    console.log(hashedPassword); // sha1$3I7HRwy7$cbfdac6008f9cab4083784cbd1874f76618d2a97
+    // console.log(hashedPassword); // sha1$3I7HRwy7$cbfdac6008f9cab4083784cbd1874f76618d2a97
 
 	//SARAH TODO: hash the password
 	user.email = $("#email").val();
