@@ -118,11 +118,11 @@ a:hover {
 
 .orange h1 {
 	/*text-shadow:2px 2px 2px #333333;*/
-	color:#e63c2e;
+	color:#f6662c;
 }
 
 .orange .arrow-down {
-	border-top-color:#e63c2e;
+	border-top-color:#f6662c;
 }
 
 /*==========================================================================*/
@@ -184,7 +184,7 @@ a:hover {
 }
 
 .circleOrange{ 
-	border-color:#e63c2e;
+	border-color:#f6662c;
 }
 
 .circleBlue{ 
@@ -329,7 +329,7 @@ p.block {
 
 .signupForm input[type=submit] {
 	/*background-color:#FF8500;*/
-	background-color:#e63c2e;
+	background-color:#f6662c;
 	color:#FFFFFF;
 	font-size:18pt;
 	/*border:1px solid #333333;*/
@@ -355,7 +355,7 @@ p.block {
 }
 
 .orangeBG {
-	background-color:#e63c2e;
+	background-color:#f6662c;
 }
 
 .blueBG {
