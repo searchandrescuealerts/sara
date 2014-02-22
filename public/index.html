@@ -6,6 +6,22 @@
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Exo+2:400,300,200,500' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<style>
+		#nav { 
+			width: 700px; 
+			margin: 15px;
+			position:absolute;
+			top:75px;
+			right:25px;
+			z-index:9999;
+		}
+		/*#nav { width: 150px; margin: 100px; z-index:100;}*/
+		#nav li { width: 50px; float: left; margin: 8px; list-style: none }
+		#nav a { width: 50px; padding: 3px; display: block; border: 1px solid #ccc; }
+		#nav li.activeSlide a { background: #013ca6 }
+		#nav a:focus { outline: none; }
+		#nav img { border: none; display: block }
+	</style>
 </head>
 <body>
 
@@ -13,13 +29,25 @@
 <script type="text/javascript" src="javascripts/jquery.cycle.all.2.74.js"></script>
 <script type="text/javascript" src="javascripts/cookies.js"></script>
 
-<div id="rotatingBanner">	
+<!-- the order of the thumbnails in div NAV and ROTATINGBANNER must be in the same order-->
+<ul id="nav">
+	<li><a href="#"><img src="/images/bigBanner/6.jpg" width="50" height="50"/></a></li>
+	<!-- <li><a href="#"><img src="/images/bigBanner/7.jpg" width="50" height="50"/></a></li> -->
+	<!-- <li><a href="#"><img src="/images/bigBanner/8.jpg" width="50" height="50"/></a></li> -->
+	<li><a href="#"><img src="/images/bigBanner/1.jpg" width="50" height="50"/></a></li>
+	<li><a href="#"><img src="/images/bigBanner/2.jpg" width="50" height="50"/></a></li>
+	<!-- <li><a href="#"><img src="/images/bigBanner/4.jpg" width="50" height="50"/></a></li> -->
+	<li><a href="#"><img src="/images/bigBanner/5.jpg" width="50" height="50"/></a></li>
+</ul>
+
+<div id="rotatingBanner">
+	<img src="/images/bigBanner/6.jpg" class="rotateImg"/>
+	<!-- <img src="/images/bigBanner/7.jpg" class="rotateImg"/> -->
+	<!-- <img src="/images/bigBanner/8.jpg" class="rotateImg"/> -->
 	<img src="/images/bigBanner/1.jpg" class="rotateImg"/>
 	<img src="/images/bigBanner/2.jpg" class="rotateImg"/>
-	<img src="/images/bigBanner/4.jpg" class="rotateImg"/>
+	<!-- <img src="/images/bigBanner/4.jpg" class="rotateImg"/> -->
 	<img src="/images/bigBanner/5.jpg" class="rotateImg"/>
-	<img src="/images/bigBanner/6.jpg" class="rotateImg"/>
-	<img src="/images/bigBanner/7.jpg" class="rotateImg"/>
 </div>
 
 <center>
@@ -27,7 +55,7 @@
 	<div id="header" class="white wide section">
 		<!-- <div class="content"> -->
 			<div id="account">
-				<a href="#" class="button orangeBG blackBorder"><span id="signupButton">Sign Up!</span></a> or <a href="javascript:void(0)">Log In</a>
+				<a href="/signup/" class="button orangeBG blackBorder"><span id="signupButton">Sign Up!</span></a> or <a href="/login/">Log In</a>
 			</div>
 			<img src="/images/logo/1-logo-long-horizontal.png" class="logo"/>
 		<!-- </div> -->
@@ -40,17 +68,17 @@
 			<h1><b>Sign Up</b></h1>
 			<h2>to help bring friends and families back together</h2>
 			
-			Email Address<br />
-			<input type="text" name="email" id="email"/><br />
-			
-			Password<br />
-			<input type="password" name="password" id="password"/><br />
+			<!-- Email Address<br />
+			<input type="text" name="email" id="email"/><br /> -->
 			
 			Phone Number<br />
 			<input type="text" name="phoneNumber" id="phoneNumber"/><br />
+
+			Password<br />
+			<input type="password" name="password" id="password"/><br />
 			
 			<br />
-			<a href="#" class="button orangeBG whiteBorder" onclick="signUp();"><span id="signupButton">Sign Up!</span></a> or <a href="javascript:void(0)">Log In</a>
+			<a href="#" class="button orangeBG whiteBorder" onclick="signUp();"><span id="signupButton">Select Location</span></a> or <a href="javascript:void(0)">Log In</a>
 		</div>
 	
 		<div class="bottom content signupForm">
@@ -129,26 +157,41 @@
 
 </div>
 
+
+
 </center>
 
 <script>
 $(document).ready(function() {
-				$('#rotatingBanner').cycle({
-				fx: 'fade',
-				pause: 1,
-				speed: 1800,
-				timeout: 10000 
-			});			
-		});
 
-$(document).ready(function() {
-				$('#languageDiv').cycle({
-				fx: 'fade',
-				pause: 1,
-				speed: 900,
-				timeout: 10000 
-			});			
-		});
+	$('#rotatingBanner').cycle({ 
+	    fx:     'fade', 
+	    speed:  'fast', 
+	    timeout: 3000, 
+	    speed: 2500,
+	    pager:  '#nav', 
+	    pagerAnchorBuilder: function(idx, slide) { 
+	        // return selector string for existing anchor 
+	        return '#nav li:eq(' + idx + ') a'; 
+	    }     
+	}); 
+
+	// $('#rotatingBanner').before('<div id="nav">').cycle({
+	//     fx:     'turnDown', 
+	//     speed:  'fast', 
+	//     timeout: 3000, 
+	//     pager:  '#nav'
+	// });	
+
+	// $('#pauseBanner').click(function() { 
+ 	//	$('#rotatingBanner').cycle('pause'); 
+	// });
+
+	// $('#playBanner').click(function() {
+	// 	$('#rotatingBanner').cycle('resume', true);
+	// });
+});
+
 </script>
 
 <script>
@@ -177,7 +220,7 @@ function signUp() {
 	createCookie("SARAuser",JSON.stringify(user),7);
 
 	//direct user to /signup/
-	window.location = "/signup/";
+	window.location = "/signup/location/";
 }
 
 </script>

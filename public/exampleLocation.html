@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Example Location Code</title>
+    <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAALDWeTDQHOJCbCf0JnUqL8BT2yXp_ZAY8_ufC3CFXhHIE1NvwkxQA7AE8xB9MyWgHECPY2qimOp7BUQ"></script>
+    <script src="javascripts/clientLocation.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function $g(id) {
+            return document.getElementById(id);
+        }
+
+        function displayLocation(latitudeEl, longitudeEl, cityEl, regionEl, countryEl, country_codeEl) {
+            var cloc = new ClientLocation.Location(google.loader.ClientLocation);
+            if (latitudeEl) latitudeEl.innerHTML = cloc.latitude;
+            if (longitudeEl) longitudeEl.innerHTML = cloc.longitude;
+            if (cityEl) cityEl.innerHTML = cloc.address.city;
+            if (regionEl) regionEl.innerHTML = cloc.address.region;
+            if (country) country.innerHTML = cloc.address.country;
+            if (country_codeEl) country_codeEl.innerHTML = cloc.address.country_code;
+        }
+
+        function init() {
+            displayLocation($g("latitude"), $g("longitude"), $g("city"), $g("region"), $g("country"), $g("country_code"));
+        }
+    </script>
+
+</head>
+<body onload="init()">
+    <form id="form1" runat="server">
+    <div>
+        latitude : <span id="latitude"></span>
+        <br />
+        longitude : <span id="longitude"></span>
+        <br />
+        city : <span id="city"></span>
+        <br />
+        region : <span id="region"></span>
+        <br />
+        country : <span id="country"></span>
+        <br />
+        country_code : <span id="country_code"></span>
+        <br />
+    </div>
+    </form>
+</body>
+</html>

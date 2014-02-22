@@ -5,7 +5,7 @@ body {
 	font-size:12pt;
 	color: #A39770;
 	margin:0;
-	/*background-color:#013ca6;*/
+	/*background-color:#1d82d1;*/
 	background-color:#FFFFFF;
 }
 
@@ -153,11 +153,11 @@ a:hover {
 
 .blue h1 {
 	/*text-shadow:2px 2px 2px #333333;*/
-	color:#013ca6;
+	color:#1d82d1;
 }
 
 .blue .arrow-down {
-	border-top-color:#013ca6;
+	border-top-color:#1d82d1;
 }
 
 
@@ -188,7 +188,7 @@ a:hover {
 }
 
 .circleBlue{ 
-	border-color:#013ca6;
+	border-color:#1d82d1;
 }
 
 p.block {
@@ -218,7 +218,7 @@ p.block {
 }
 
 .language {
-	background-color:#013ca6;
+	background-color:#1d82d1;
 	color:#FFFFFF;
 	font-size:12pt;
 	border:1px solid #FFFFFF;
@@ -359,7 +359,7 @@ p.block {
 }
 
 .blueBG {
-	background-color:#013ca6;
+	background-color:#1d82d1;
 }
 
 .grayBG {
