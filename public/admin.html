@@ -7,10 +7,10 @@
 
 /*
 * blue: 		1d82d1;
+* lt blue: 		f4faff;
 * orange: 		f6662c;
 * lt orange: 	f88973;
 */
-
 
 /************************************************************/
 /*				GENERAL										*/
@@ -164,12 +164,13 @@ a:hover {
 
 .currentCampaign {
 	float:left;
-	border-style:dashed;
+	border-style:solid;
 	border-color:#1d82d1;
 	border-width:1px;
 	margin-right:1em;
 	margin-bottom:1em;
 	padding:.5em;
+	background-color:#f8fcff;
 }
 
 .campaignPic {
@@ -203,7 +204,7 @@ a:hover {
 <body>
 
 <div id="header">
-	<img src="images/logo/1-logo-long-horizontal.png" class="logo"/>
+	<img src="/images/logo/1-logo-long-horizontal.png" class="logo"/>
 	<span id="logout"><a href="#">Log out</a></span>
 </div>
 
@@ -217,26 +218,40 @@ a:hover {
 </div>
 
 <div id="leftNav">
-	<!-- <div class="content"> -->
-		<h1>Search Filters</h1>
-		More Navigation stuff will go here. I imagine it will be based on what page your on. This content will change for each page.
-	<!-- </div> -->
+	<h1>Search Filters</h1>
+	More Navigation stuff will go here. I imagine it will be based on what page you're on. This content will change for each page.
 </div>
 
 <div id="main">
 	<div class="content">
 		<h1>Dashboard</h1>
 
-		<h2>Current Campaigns</h2>
+		<h2>Open Campaigns</h2>
 
 		<a href="#">
 		<div class="currentCampaign">
-			<img src="images/admin/examplePic.png" class="campaignPic"/><br />
+			<img src="/images/admin/examplePic.png" class="campaignPic"/><br />
 			<div class="overlay">
-				<a href="chat.html" title="send message"><img src="images/admin/chat.png" class="icon" /></a>
-				<a href="remove.html" title="close this campaign"><img src="images/admin/remove_2.png" class="icon" /></a>
-				<a href="edit.html" title="edit this campaign"><img src="images/admin/edit.png" class="icon" /></a>
-				<a href="more.html" title="more"><img src="images/admin/more.png" class="icon" /></a>
+				<a href="chat.html" title="send message"><img src="/images/admin/chat.png" class="icon" /></a>
+				<a href="remove.html" title="close this campaign"><img src="/images/admin/remove_2.png" class="icon" /></a>
+				<a href="edit.html" title="edit this campaign"><img src="/images/admin/edit.png" class="icon" /></a>
+				<a href="more.html" title="more"><img src="/images/admin/more.png" class="icon" /></a>
+			</div>
+			<center>
+				<b>Sally Jones</b><br />
+				<small>Missing Since: 7 Jan 2014<br></small>
+			</center>
+		</div>
+		</a>
+
+		<a href="#">
+		<div class="currentCampaign">
+			<img src="/images/admin/examplePic.png" class="campaignPic"/><br />
+			<div class="overlay">
+				<a href="chat.html" title="send message"><img src="/images/admin/chat.png" class="icon" /></a>
+				<a href="remove.html" title="close this campaign"><img src="/images/admin/remove_2.png" class="icon" /></a>
+				<a href="edit.html" title="edit this campaign"><img src="/images/admin/edit.png" class="icon" /></a>
+				<a href="more.html" title="more"><img src="/images/admin/more.png" class="icon" /></a>
 			</div>
 			<center>
 				<b>Sally Jones</b><br />
@@ -246,7 +261,7 @@ a:hover {
 		</a>
 
 		<div class="currentCampaign">
-			<img src="images/admin/default_profile.jpg" class="campaignPic"><br />
+			<img src="/images/admin/default_profile.jpg" class="campaignPic"><br />
 			<center>
 				<b>Create New Campaign</b><br />
 			</center>
@@ -256,7 +271,7 @@ a:hover {
 
 	<h2>Users Awaiting Background Check</h2>
 
-
+	//put a dynamic list here
 
 	</div>
 </div>

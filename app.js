@@ -38,16 +38,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 //   app.use(express.errorHandler());
 // }
 
+
+//======================================================//
+//							API							//
+//======================================================//
 app.get('/', routes.index);
 app.get('/signup/', routes.signup);
-app.get('/myaccount/', routes.myaccount);
+app.get('/myaccount', routes.myaccount);
 app.get('/users', user.list);
 app.get('/users/:id', user.getUser);
 app.post('/users/:id', user.postUser);
-
 app.get('/admin', routes.admin);
-
-
+app.get('/sendMessage', routes.sendMessage);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
