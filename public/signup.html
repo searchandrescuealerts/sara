@@ -236,7 +236,7 @@ function signUp() {
 	createCookie("SARAuser",JSON.stringify(userJSON),7);
 
 	//post the JSON object to /user/
-	$.post("../user/", function(data) {
+	$.post("../users", function(data) {
 		userJSON;
 	})
 
