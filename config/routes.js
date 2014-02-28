@@ -15,6 +15,7 @@ module.exports = function(app, passport, auth){
 	// Home Route
 	app.get('/', index.index);
 
-
+	app.get('/admin', routes.admin);
+	app.get('/sendMessage', routes.sendMessage);
 }
 console.log('EXIT ./config/routes.js');

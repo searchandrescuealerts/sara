@@ -115,6 +115,29 @@
 <script type="text/javascript" src="/javascripts/jquery.cycle.all.2.74.js"></script>
 <script type="text/javascript" src="/javascripts/cookies.js"></script>
 
+<script>
+
+//retrieve the cookie
+function getCookie(cname)
+{
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i].trim();
+		if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+	}
+	return "";
+}
+
+//SARAH TODO: check here if a cookie exists. If a cookie doesn't exist direct them back to the index.html page
+
+var userJSONString = getCookie("SARAuser");
+// console.log(userJSONString);
+var userJSON = $.parseJSON(userJSONString);
+// console.log(userJSON);
+
+</script>
+
 <div id="rotatingBanner">	
 	<img src="/images/bigBanner/6.jpg" class="rotateImg"/>
 </div>
@@ -126,7 +149,7 @@
 			<div id="account">
 				<a href="javascript:void(0)" class="button orangeBG blackBorder"><span id="signupButton">Sign Up!</span></a> or <a href="javascript:void(0)">Log In</a>
 			</div>
-			<img src="/images/logo/1-logo-long-horizontal.png" class="logo"/>
+			<img src="/images/logo/logo-horizontal.png" class="logo"/>
 		<!-- </div> -->
 	</div>
 	<center>
@@ -136,13 +159,6 @@
 	<div class="blue narrow section">
 		<div class="content">
 
-			<h1>Basic Information</h1>
-
-			Phone Number<br />
-			<input type="text" name="phoneNumber" id="phoneNumber"/><br />
-
-			Password<br />
-			<input type="password" name="password" id="password"/><br />
 			<h1>Alert Locations</h1>
 			<p>
 				Please drop a pin at the central point where you normally are, then provide what radius you are willing to receive alerts for.
@@ -217,7 +233,7 @@ function signUp() {
 	createCookie("SARAuser",JSON.stringify(userJSON),7);
 
 	//post the JSON object to /user/
-	$.post("../users", function(data) {
+	$.post("../user/create", function(data) {
 		userJSON;
 	})
 

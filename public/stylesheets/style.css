@@ -5,7 +5,7 @@ body {
 	font-size:12pt;
 	color: #A39770;
 	margin:0;
-	/*background-color:#013ca6;*/
+	/*background-color:#1d82d1;*/
 	background-color:#FFFFFF;
 }
 
@@ -118,11 +118,11 @@ a:hover {
 
 .orange h1 {
 	/*text-shadow:2px 2px 2px #333333;*/
-	color:#e63c2e;
+	color:#f6662c;
 }
 
 .orange .arrow-down {
-	border-top-color:#e63c2e;
+	border-top-color:#f6662c;
 }
 
 /*==========================================================================*/
@@ -153,11 +153,11 @@ a:hover {
 
 .blue h1 {
 	/*text-shadow:2px 2px 2px #333333;*/
-	color:#013ca6;
+	color:#1d82d1;
 }
 
 .blue .arrow-down {
-	border-top-color:#013ca6;
+	border-top-color:#1d82d1;
 }
 
 
@@ -184,11 +184,11 @@ a:hover {
 }
 
 .circleOrange{ 
-	border-color:#e63c2e;
+	border-color:#f6662c;
 }
 
 .circleBlue{ 
-	border-color:#013ca6;
+	border-color:#1d82d1;
 }
 
 p.block {
@@ -218,7 +218,7 @@ p.block {
 }
 
 .language {
-	background-color:#013ca6;
+	background-color:#1d82d1;
 	color:#FFFFFF;
 	font-size:12pt;
 	border:1px solid #FFFFFF;
@@ -329,7 +329,7 @@ p.block {
 
 .signupForm input[type=submit] {
 	/*background-color:#FF8500;*/
-	background-color:#e63c2e;
+	background-color:#f6662c;
 	color:#FFFFFF;
 	font-size:18pt;
 	/*border:1px solid #333333;*/
@@ -355,11 +355,11 @@ p.block {
 }
 
 .orangeBG {
-	background-color:#e63c2e;
+	background-color:#f6662c;
 }
 
 .blueBG {
-	background-color:#013ca6;
+	background-color:#1d82d1;
 }
 
 .grayBG {
