@@ -27,7 +27,7 @@ fs.readdirSync(config.modelsDir)
  		console.log('Loading model file: ' + file);
  		var model = sequelize.import(path.join(config.modelsDir, file));
  		db[model.name] = model;
- 	})
+ 	});
  // invoke associations on each of the models
  Object.keys(db).forEach(function(modelName){
  	if (db[modelName].options.hasOwnProperty('associate')) {
@@ -42,8 +42,6 @@ sequelize.sync({force: true}).success(function(){
 }).error(function(err){
 	console.log(err);
 });
-
-console.log('Database dropped and syncronized');
 
 // assign the sequelize variables to the db object and returning the db
 module.exports = _.extend({
