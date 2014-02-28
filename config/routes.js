@@ -1,6 +1,8 @@
 console.log('ENTER ./config/routes.js');
-var user = require('../app/controllers/user');
-var index = require('../app/controllers/index');
+var user    = require('../app/controllers/user');
+var index   = require('../app/controllers/index');
+var officer = require('../app/controllers/officer');
+var admin   = require('../app/controllers/admin');
 
 module.exports = function(app, passport, auth){
 	console.log('Initializing Routes');
@@ -12,10 +14,12 @@ module.exports = function(app, passport, auth){
 	app.get('/myaccount', user.myaccount);
 	app.get('/user/:id', user.getUser);
 
+	// Officer routes
+	app.get('/sendMessage', officer.sendMessage);
+	
+	app.get('/admin', admin.admin);
+
 	// Home Route
 	app.get('/', index.index);
-
-	app.get('/admin', routes.admin);
-	app.get('/sendMessage', routes.sendMessage);
 }
 console.log('EXIT ./config/routes.js');
