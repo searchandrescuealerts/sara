@@ -9,6 +9,7 @@ module.exports = function(app, passport, auth){
 
 	// User routes
 	app.get('/signup', index.signup);
+	app.get('/signupLoc', index.signupLoc);
 	// this comes from the signup form
 	app.post('/user', user.create);
 	app.get('/myaccount', user.myaccount);
