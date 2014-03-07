@@ -5,307 +5,108 @@
 		<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 		<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA3mC_xSILKVBUECReJLJbyoX9L3PQ_ApY&sensor=false"></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
-<style>
+		<link rel="stylesheet" href="/stylesheets/admin.css" type="text/css">
 
-/*
-* blue: 		1d82d1;
-* lt blue: 		f4faff;
-* orange: 		f6662c;
-* lt orange: 	f88973;
-*/
+		<script>
 
+		var MILES_TO_METERS_CONVERSION_RATIO = 1609.34;
+		var map;
+		var marker;
+		var circle;
+		var browserLat = 39.8282; //default at center of US
+		var browserLong = -98.5795; //default at center of US
+		var zoomLevel = 4; //default zoom to fill screen with US
 
-/************************************************************/
-/*				GENERAL										*/
-/************************************************************/
-body {
-	background-color:#FFFFFF;
-	font-family:'Roboto Slab';
-	font-weight:400;
-}
+		function initialize() {
+			getGeolocation();
 
-a {
-	text-decoration:none;
-	color:#1d82d1;
-	font-weight:300;
-}
+			var mapProp = {
+				center: new google.maps.LatLng(browserLat, browserLong), //centers the map here
+				zoom: zoomLevel,
+				mapTypeId:google.maps.MapTypeId.ROADMAP
+			};
+			
+			map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
-a:visited {
-	text-decoration:none;
-	color:#1d82d1;
-}
+			// placeMarker();
 
-a:hover {
-	text-decoration:underline;
-}
-
-.button {
-	color:#FFFFFF;
-	border-width:1px;
-	border-style:solid;
-	border-color:#FFFFFF;
-	border-radius:.5em;
-	padding:.25em .5em;
-	font-family:'Nunito', sans-serif;
-	font-weight:300;
-	text-shadow:0px 0px 0px #000000;
-	background-color:#1d82d1;
-	margin:.25em;
-}
-
-/************************************************************/
-/*				HEADER 1									*/
-/************************************************************/
-
-#header {
-	position:absolute;
-	top:0;
-	left:0;
-	margin:0;
-	width:100%;
-	background-color:#FFFFFF;
-}
-
-#header .logo {
-	margin:.5em .5em .5em 4em;
-	height:50px;
-}
-
-#header #logout {
-	margin:1.5em 4em .5em .5em;
-	float:right;
-	vertical-align:middle;
-	height:100%;
-}
-
-/************************************************************/
-/*				TOP NAVIGATION								*/
-/************************************************************/
-
-#topNav {
-	background-color:#f6662c;
-	color:#FFFFFF;
-	position:absolute;
-	top:66px;
-	left:0px;
-	width:100%;
-	padding:0;
-	margin:0;
-	font-weight:700;
-	font-size:1em;
-}
-
-#topNav ul {
-	margin:0;
-	padding:.25em 0 .25em 2em;
-}
-
-#topNav ul li{
-	display:inline;
-	list-style-type:none;
-	padding-left:2em;
-}
-
-#topNav a {
-	color:#FFFFFF;
-	text-decoration:none;
-	font-weight:400;
-}
-
-
-
-/************************************************************/
-/*				LEFT NAVIGATION								*/
-/************************************************************/
-
-#leftNav {
-	position:absolute;
-	top:0;
-	left:0;
-	margin:95px 0 0 0;
-	float:left;
-	width:200px;
-	background-color:#1d82d1;
-	color:#FFFFFF;
-	padding:10px 20px 10px 65px;
-	z-index:10;
-}
-
-/************************************************************/
-/*				MAIN SECTION								*/
-/************************************************************/
-
-#main {
-	background-color:#FFFFFF;
-	color:#000000;
-	float:right;
-	
-	position:absolute;
-	top:0;
-	left:0;
-	margin-left:285px;
-	margin-top:95px;
-
-	height:100%;
-}
-
-#main h1 {
-	width:100%;
-}
-
-.content {
-	padding:1em 2em;
-	width:100%;
-}
-
-.more {
-	clear:both;
-	text-align:right;
-}
-
-/************************************************************/
-/*				CAMPAIGNS									*/
-/************************************************************/
-
-.currentCampaign {
-	float:left;
-	border-style:solid;
-	border-color:#1d82d1;
-	border-width:1px;
-	margin-right:1em;
-	margin-bottom:1em;
-	padding:.5em;
-	background-color:#f8fcff;
-}
-
-.campaignPic {
-	width:200px;
-	height:200px;
-}
-
-.currentCampaign:hover > div.overlay {
-    display: block;
-}
-
-.overlay {
-	display:none;
-	position:relative;
-	top:-33px;
-	background:#FFFFFF;
-	opacity:.5;
-	border-top:1px solid #000000;
-	border-bottom:1px solid #000000;
-	padding-left:1em;
-	vertical-align:middle;
-	margin-bottom:-30px;
-}
-
-.icon {
-	padding:.1em;
-}
-
-</style>
-
-	<script>
-	
-	var MILES_TO_METERS_CONVERSION_RATIO = 1609.34;
-	var map;
-	var marker;
-	var circle;
-	var browserLat = 39.8282; //default at center of US
-	var browserLong = -98.5795; //default at center of US
-	var zoomLevel = 4; //default zoom to fill screen with US
-
-	function initialize() {
-		getGeolocation();
-
-		var mapProp = {
-			center: new google.maps.LatLng(browserLat, browserLong), //centers the map here
-			zoom: zoomLevel,
-			mapTypeId:google.maps.MapTypeId.ROADMAP
-		};
-		
-		map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-
-		// placeMarker();
-
-	}
-
-	function refreshMap() {
-		var refreshLocation = new google.maps.LatLng(browserLat, browserLong);
-		map.setCenter(refreshLocation);
-		map.placeMarker(refreshLocation)
-		map.setZoom(7);
-	}
-
-	function placeMarker(location) {
-		//SARAH TODO: if there is already a marker, ignore this?
-		if (!location) {
-			location = map.getCenter();
 		}
 
-		marker = new google.maps.Marker({
-			position: location,
-			draggable: true,
-			title: "Drag me!",
-			map: map
-		});
-
-		drawCircle(marker);
-
-		marker.setMap(map);
-
-		//remove the Drop a pin button. We only want one pin at a time
-		$("#dropPin").hide();
-	}
-
-	function drawCircle(markerInput) {
-		//if the marker doesn't exist, set it to the global marker variable
-		if (!markerInput) {
-			markerInput = marker;
+		function refreshMap() {
+			var refreshLocation = new google.maps.LatLng(browserLat, browserLong);
+			map.setCenter(refreshLocation);
+			map.placeMarker(refreshLocation)
+			map.setZoom(7);
 		}
-		var radius = $("#radius").val();
-		//SARAH TODO: sanitize the radius input
 
-		//translate that into meters, because that's what the API takes
-		var radiusMeters = radius * MILES_TO_METERS_CONVERSION_RATIO;
+		function placeMarker(location) {
+			//SARAH TODO: if there is already a marker, ignore this?
+			if (!location) {
+				location = map.getCenter();
+			}
 
-		if (circle) {
-			// map.removeOverlay(circle);
-			circle.setMap(null); //remove any previous circle
+			marker = new google.maps.Marker({
+				position: location,
+				draggable: true,
+				title: "Drag me!",
+				map: map
+			});
+
+			drawCircle(marker);
+
+			marker.setMap(map);
+
+			//remove the Drop a pin button. We only want one pin at a time
+			$("#dropPin").hide();
 		}
-		circle = new google.maps.Circle({
-			map: map,
-			radius: radiusMeters,
-			fillColor: '#013ca6',
-			fillOpacity: .2,
-			strokeColor: '#013ca6',
-			strokeWeight: 2
-		});
-		// Add circle overlay and bind to marker
-		circle.bindTo('center', markerInput, 'position'); //add the new circle to the map
-	}
 
-	google.maps.event.addDomListener(window, 'load', initialize);
+		function drawCircle(markerInput) {
+			//if the marker doesn't exist, set it to the global marker variable
+			if (!markerInput) {
+				markerInput = marker;
+			}
+			var radius = $("#radius").val();
+			//SARAH TODO: sanitize the radius input
 
-	//http://www.w3schools.com/html/tryit.asp?filename=tryhtml5_geolocation
+			//translate that into meters, because that's what the API takes
+			var radiusMeters = radius * MILES_TO_METERS_CONVERSION_RATIO;
 
-	function getGeolocation() {
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(saveNewCenter);
-		} else{
-			console.log("Browser does not support geolocation or user opted out");
-			//do nothing and keep the defaults
+			if (circle) {
+				// map.removeOverlay(circle);
+				circle.setMap(null); //remove any previous circle
+			}
+			circle = new google.maps.Circle({
+				map: map,
+				radius: radiusMeters,
+				fillColor: '#013ca6',
+				fillOpacity: .2,
+				strokeColor: '#013ca6',
+				strokeWeight: 2
+			});
+			// Add circle overlay and bind to marker
+			circle.bindTo('center', markerInput, 'position'); //add the new circle to the map
 		}
-	}
-	
-	function saveNewCenter(position) {
-		//update the lat and long points of the map to show your location.
-		browserLat = position.coords.latitude;
-		browserLong = position.coords.longitude;
-		zoomLevel = 7; //Also update the zoom level to something more appropriate...
-	}
-	</script>
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+		//http://www.w3schools.com/html/tryit.asp?filename=tryhtml5_geolocation
+
+		function getGeolocation() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(saveNewCenter);
+			} else{
+				console.log("Browser does not support geolocation or user opted out");
+				//do nothing and keep the defaults
+			}
+		}
+
+		function saveNewCenter(position) {
+			//update the lat and long points of the map to show your location.
+			browserLat = position.coords.latitude;
+			browserLong = position.coords.longitude;
+			zoomLevel = 7; //Also update the zoom level to something more appropriate...
+		}
+		</script>
 
 </head>
 <body>
@@ -325,14 +126,12 @@ a:hover {
 </div>
 
 <div id="leftNav">
-	<!-- <div class="content"> -->
-		<h1>Search Filters</h1>
-		More Navigation stuff will go here. I imagine it will be based on what page you're on. This content will change for each page.
-	<!-- </div> -->
+	<h2>About This Page</h2>
+	This message will be sent to all the public users with the message location pin in their radius. On this first page create your short message in either just English, or in English and Spanish. The correct language will be sent to the public based on each individual user's language preference.
 </div>
 
 <div id="main">
-	<div class="content">
+	<div class="content" ng-app="MessageApp">
 <!-- 		<div style="float:right;" id="campaignDetails">
 			<h2>Campaign variables</h2>
 			<p>These might be included in the message, based on the template you use.</p>
@@ -343,25 +142,27 @@ a:hover {
 		</div> -->
 
 		<h1>Send a new message</h1>
+		This message will be sent via text message to the public users in the area. To send a message just follow the numbered steps below.
 
-		<h2>Choose or Type Message</h2>
-		<p><span class="button" id="msgTemplatePicker">Pick a Message Template</span></p>
-		<textarea id="enMessage" rows="6" cols="40">Enter Your Message Here</textarea>
-		<span id="enCharCount">0 / 160 characters</span><br />
+		<h2>1. Type the Message</h2>
+		<textarea id="enMessage" placeholder="Type your message here" rows="6" cols="40" maxlength="160" ng-model="enMessage"></textarea>
+		<span id="enCharCount">{{enMessage.length}} / 160 characters</span><br />
+		
 		<input type="radio" name="language" value="english" id="enLang" checked>Send this message only in English<br />
 		<input type="radio" name="language" value="alsoSpanish" id="esLang">Also send this message in Spanish to those who prefer Spanish messages<br />
 		<span id="esMessageOptions">
-			<textarea id="esMessage" rows="6" cols="40">Escriba su mensaje Español</textarea>
+			<textarea id="esMessage" rows="6" cols="40" placeholder="Escriba su mensaje Español"></textarea>
 			<span id="esCharCount">0 / 160 characters</span>
 		</span>
 		<br />
 		
-		<h2>Message Epicenter</h2>
-		<p>Place a pin at the center of this campaign. Each user that has included this location in their notification radius will receive your message.</p>
+		<h2>2. Select the message's location</h2>
+		<p>Place a pin where you want people to receive the message.</p>
+
 		<div id="googleMap" style="width:650px;height:500px;z-index:1000"></div>
 
 		<br>
-		<p style="float:right;"><span class="button" id="submit">Review before sending</span></p>
+		<p><span class="button" id="submit">3. Review the recipients</span></p>
 	</div>
 </div>
 
