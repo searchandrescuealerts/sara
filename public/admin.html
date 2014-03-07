@@ -228,19 +228,19 @@ a:hover {
 
 		<h2>Open Campaigns</h2>
 
-		<div id="currentCampaigns" ng-app='myApp' ng-controller="myCtrl">
+		<div id="currentCampaigns" ng-app='campaignApp' ng-controller="campaignListCtrl">
 			<a href="#">
-			<div class="currentCampaign" ng-repeat="n in [] | range:4">
-				<img src="/images/admin/examplePic.png" class="campaignPic"/><br />
+			<div class="currentCampaign" ng-repeat="campaign in campaigns">
+				<img src="{{campaign.image}}" class="campaignPic"/><br />
 				<div class="overlay">
-					<a href="chat.html" title="send message"><img src="/images/admin/chat.png" class="icon" /></a>
-					<a href="remove.html" title="close this campaign"><img src="/images/admin/remove_2.png" class="icon" /></a>
-					<a href="edit.html" title="edit this campaign"><img src="/images/admin/edit.png" class="icon" /></a>
-					<a href="more.html" title="more"><img src="/images/admin/more.png" class="icon" /></a>
+					<a href="chat/{{campaign.id}}" title="send message"><img src="/images/admin/chat.png" class="icon" /></a>
+					<a href="remove/{{campaign.id}}" title="close this campaign"><img src="/images/admin/remove_2.png" class="icon" /></a>
+					<a href="edit/{{campaign.id}}" title="edit this campaign"><img src="/images/admin/edit.png" class="icon" /></a>
+					<a href="more/{{campaign.id}}" title="more"><img src="/images/admin/more.png" class="icon" /></a>
 				</div>
 				<center>
-					<b>Sally Jones</b><br />
-					<small>Missing Since: 7 Jan 2014<br></small>
+					<b>{{campaign.name}}</b><br />
+					<small>Missing Since: {{campaign.missingSince}}<br></small>
 				</center>
 			</div>
 			</a>
@@ -263,22 +263,33 @@ a:hover {
 </div>
 
 <script src="/javascripts/angular.js"></script>
+<script src="/javascripts/angular-controller.js"></script>
 <script>
 
-var app = angular.module('myApp', []);
+// var campaignApp = angular.module('campaignApp', []);
 
-function myCtrl($scope){
-}    
-
-app.filter('range', function() {
-  return function(val, range) {
-    range = parseInt(range);
-    for (var i=0; i<range; i++)
-      val.push(i);
-    return val;
-  };
-});
-
+// campaignApp.controller('campaignListCtrl', function ($scope) {
+// 	$scope.campaigns = [
+// 		{
+// 			"campaignID": "1234567890",
+// 			"name": "Wendy Darling",
+// 			"missingSince": "14 Jan 2014",
+// 			"image": "/images/admin/examplePic.png"
+// 		},
+// 		{
+// 			"campaignID": "1234567890",
+// 			"name": "Wendy Darling",
+// 			"missingSince": "14 Jan 2014",
+// 			"image": "/images/admin/examplePic.png"
+// 		},
+// 		{
+// 			"campaignID": "1234567890",
+// 			"name": "Wendy Darling",
+// 			"missingSince": "14 Jan 2014",
+// 			"image": "/images/admin/examplePic.png"
+// 		}
+// 	];
+// })
 
 </script>
 
