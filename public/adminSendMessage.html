@@ -131,28 +131,19 @@
 </div>
 
 <div id="main">
-	<div class="content" ng-app="MessageApp">
-<!-- 		<div style="float:right;" id="campaignDetails">
-			<h2>Campaign variables</h2>
-			<p>These might be included in the message, based on the template you use.</p>
-			<img src="/images/admin/examplePic.png" height="200px"><br>
-			<b>Missing Person's Name: </b>Sally Smith<br>
-			<b>Missing Since: </b>17 Jan 2014<br>
-			<b>Hotline Number: </b> 1-800-555-1234<br>
-		</div> -->
-
+	<div class="content" ng-app="messageApp" ng-ctrl="messageCtrl">
 		<h1>Send a new message</h1>
 		This message will be sent via text message to the public users in the area. To send a message just follow the numbered steps below.
 
 		<h2>1. Type the Message</h2>
-		<textarea id="enMessage" placeholder="Type your message here" rows="6" cols="40" maxlength="160" ng-model="enMessage"></textarea>
-		<span id="enCharCount">{{enMessage.length}} / 160 characters</span><br />
+		<textarea id="enMessage" placeholder="Type the message here" rows="6" cols="40" maxlength="160" ng-trim="false" ng-model="message.enMessage"></textarea>
+		<span id="enCharCount">{{message.enMessage.length}} / 160 characters</span><br />
 		
 		<input type="radio" name="language" value="english" id="enLang" checked>Send this message only in English<br />
 		<input type="radio" name="language" value="alsoSpanish" id="esLang">Also send this message in Spanish to those who prefer Spanish messages<br />
 		<span id="esMessageOptions">
-			<textarea id="esMessage" rows="6" cols="40" placeholder="Escriba su mensaje Español"></textarea>
-			<span id="esCharCount">0 / 160 characters</span>
+			<textarea id="esMessage" rows="6" cols="40" placeholder="Escriba su mensaje Español" ng-trim="false" ng-model="message.esMessage"></textarea>
+			<span id="esCharCount">{{message.esMessage.length}} / 160 characters</span>
 		</span>
 		<br />
 		
@@ -166,6 +157,8 @@
 	</div>
 </div>
 
+<script src="/javascripts/angular.js"></script>
+<script src="/javascripts/angular-controller.js"></script>
 <script>
 $('#esMessageOptions').hide();
 

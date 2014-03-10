@@ -17,7 +17,7 @@ module.exports = function(app, passport, auth){
 
 	// Officer routes
 	app.get('/sendMessage', officer.sendMessage);
-	
+	app.get('/sendMessage/:id', officer.sendMessage);
 	app.get('/admin', admin.admin);
 
 	// Home Route
