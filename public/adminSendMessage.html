@@ -142,7 +142,7 @@
 		<input type="radio" name="language" value="english" id="enLang" checked>Send this message only in English<br />
 		<input type="radio" name="language" value="alsoSpanish" id="esLang">Also send this message in Spanish to those who prefer Spanish messages<br />
 		<span id="esMessageOptions">
-			<textarea id="esMessage" rows="6" cols="40" placeholder="Escriba su mensaje Español" ng-trim="false" ng-model="message.esMessage"></textarea>
+			<textarea id="esMessage" rows="6" cols="40" placeholder="Escriba su mensaje Español" maxlength="160" ng-trim="false" ng-model="message.esMessage"></textarea>
 			<span id="esCharCount">{{message.esMessage.length}} / 160 characters</span>
 		</span>
 		<br />
