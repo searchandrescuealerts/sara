@@ -4,5 +4,5 @@ var rootPath = path.normalize(__dirname + '../../..');
 module.exports = {
 	root      : rootPath,
 	modelsDir : rootPath + '/app/models/',
-	port      : 3000
+	port      : 8081
 }
