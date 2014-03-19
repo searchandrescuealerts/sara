@@ -11,9 +11,12 @@ module.exports = function(app, passport, auth){
 	console.log('Initializing Routes');
 
 	
-	app.get ('/signup',                page.signup);
-	app.get ('/api/v1/user/myaccount', page.myaccount);
-	app.get('/',                       page.index); // Home Route
+	app.get ('/signup',                	page.signup);
+	app.get ('/api/v1/user/myaccount', 	page.myaccount);
+	app.get('/',                       	page.index); // Home Route
+	app.get('/signupLoc',              	page.signupLoc);
+	app.get('/sendMessage', 		   	page.sendMessage);
+	app.get('/sendMessage/:id', 		page.sendMessage);
 
 	// User routes
 	app.get ('/api/v1/user/login', user.login);
@@ -38,8 +41,6 @@ module.exports = function(app, passport, auth){
 	app.get ('/api/v1/message/:id', message.getMessage);
 	app.put ('/api/v1/message/:id', message.updateMessage);
 
-	app.get ('/admin', admin.admin);
-
-	
+	app.get('/admin', admin.admin);
 }
 console.log('EXIT ./config/routes.js');

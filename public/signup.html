@@ -116,7 +116,7 @@
 <script type="text/javascript" src="/javascripts/cookies.js"></script>
 
 <div id="rotatingBanner">	
-	<img src="/images/bigBanner/6.jpg" class="rotateImg"/>
+	<img src="/images/bigBanner/4.jpg" class="rotateImg"/>
 </div>
 
 <center>
@@ -194,18 +194,19 @@ $(document).ready(function() {
 <script>
 
 function signUp() {
-	var location = {
-		"id":1,
-		"latitude":0,
-		"longitude":0,
+	var "count",
+	var "location1" = {
+		"lat":0,
+		"lng":0,
 		"radius":0
 	};
 
-	location.latitude = marker.getPosition().lat();
-	location.longitude = marker.getPosition().lng();
+	location.lat = marker.getPosition().lat();
+	location.lng = marker.getPosition().lng();
 	location.radius = circle.getRadius();
 
 	//add the location to the userJSON object
+	userJSON.count = 1;
 	userJSON.locations = location;
 
 	//delete the old cookie
@@ -217,7 +218,7 @@ function signUp() {
 	createCookie("SARAuser",JSON.stringify(userJSON),7);
 
 	//post the JSON object to /user/
-	$.post("../users", function(data) {
+	$.post("../user", function(data) {
 		userJSON;
 	})
 

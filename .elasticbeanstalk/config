@@ -1,0 +1,26 @@
+[global]
+ApplicationName=sara
+AwsCredentialFile=C:\Users\Sarah\.elasticbeanstalk\aws_credential_file
+DevToolsEndpoint=git.elasticbeanstalk.us-west-2.amazonaws.com
+EnvironmentName=sara-env
+EnvironmentTier=WebServer::Standard::1.0
+EnvironmentType=SingleInstance
+InstanceProfileName=aws-elasticbeanstalk-ec2-role
+OptionSettingFile=C:\Users\Sarah\sara\.elasticbeanstalk\optionsettings.sara-env
+RdsEnabled=No
+Region=us-west-2
+ServiceEndpoint=https://elasticbeanstalk.us-west-2.amazonaws.com
+SolutionStack=64bit Amazon Linux 2014.02 running Node.js
+
+[branches]
+v0.1=sara-v01-env
+
+[branch:v0.1]
+ApplicationVersionName=Sample Application
+EnvironmentName=sara-v01-env
+EnvironmentTier=WebServer::Standard::1.0
+EnvironmentType=SingleInstance
+InstanceProfileName=aws-elasticbeanstalk-ec2-role
+OptionSettingFile=C:\Users\Sarah\sara\.elasticbeanstalk\optionsettings.sara-v01-env
+RdsEnabled=No
+

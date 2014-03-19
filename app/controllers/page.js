@@ -13,3 +13,12 @@ exports.signup = function(req, res){
 exports.myaccount = function(req, res){
 	return res.sendfile('public/myaccount.html');
 };
+ 
+// GET signup page 
+exports.signupLoc = function(req, res){
+ 	return res.sendfile('public/signupLocation.html');
+};
+// 
+exports.sendMessage = function(req, res){
+	return res.sendfile('public/adminSendMessage.html');
+};
