@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes){
 
 			},
 			associate: function(models){
-
+				Search_Radius_Preference.belongsTo(models.User);
 			}
 		}
 	);

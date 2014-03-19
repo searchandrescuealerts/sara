@@ -12,6 +12,7 @@ module.exports = function(sequelize, DataTypes){
 			},
 			associate: function(models){
 				Officer.hasMany(models.Campaign);
+				Officer.belongsTo(models.Lea);
 			}
 		}
 	);

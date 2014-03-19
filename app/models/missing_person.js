@@ -15,7 +15,8 @@ module.exports = function(sequelize, DataTypes){
 
 			},
 			associate: function(models){
-
+				Missing_Person.belongsTo(models.Campaign);
+				Missing_Person.hasMany(models.Picture);
 			}
 		}
 	);

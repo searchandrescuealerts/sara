@@ -30,8 +30,11 @@ fs.readdirSync(config.modelsDir)
  	});
  // invoke associations on each of the models
  Object.keys(db).forEach(function(modelName){
+ 	console.log('Entered database table  association function');
  	if (db[modelName].options.hasOwnProperty('associate')) {
+ 		console.log('Attempting association for ' + modelName);
  		db[modelName].options.associate(db)
+ 		console.log('Association created for ' + modelName);
  	}
  });
 

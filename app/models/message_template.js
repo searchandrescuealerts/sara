@@ -9,7 +9,7 @@ module.exports = function(serialize, DataTypes){
 
 			},
 			associate: function(models){
-
+				Message_Template.hasMany(models.Message);
 			}
 		}
 	);

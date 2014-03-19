@@ -17,6 +17,7 @@ module.exports = function(serialize, DataTypes){
 			associate: function(models){
 				Message.belongsTo(models.Campaign);
 				Message.hasOne(models.Message_Template);
+				Message.hasMany(models.User);
 			}
 		}
 	);

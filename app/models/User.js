@@ -23,7 +23,10 @@ module.exports = function(sequelize, DataTypes){
 
 			},
 			associate: function(models){
-				
+				User.hasMany(models.Picture);
+				User.hasMany(models.Language);
+				User.hasMany(models.Search_Radius_Preference);
+				User.hasMany(models.Message);
 			}
 		}
 	);	
