@@ -1,4 +1,4 @@
-<html>
+<html ng-app="ngApp">
 	<head>
 		<meta charset="utf-8">
 		<title>SARA: Law Enforcement Admin Site</title>
@@ -8,17 +8,19 @@
 		<link rel="stylesheet" href="/stylesheets/admin.css" type="text/css">
 
 		<script>
+		/*
+		 * Google Maps API
+		 */
 
 		var MILES_TO_METERS_CONVERSION_RATIO = 1609.34;
 		var map;
 		var marker;
 		var circle;
-		var browserLat = 39.8282; //default at center of US
-		var browserLong = -98.5795; //default at center of US
-		var zoomLevel = 4; //default zoom to fill screen with US
+		var browserLat = $scope.campaign.lat; //campaign 01 lat
+		var browserLong = $scope.campaign.lng; //campaign 01 Long
+		var zoomLevel = 12; 
 
 		function initialize() {
-			getGeolocation();
 
 			var mapProp = {
 				center: new google.maps.LatLng(browserLat, browserLong), //centers the map here
@@ -28,7 +30,7 @@
 			
 			map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
-			// placeMarker();
+			placeMarker();
 
 		}
 
@@ -131,35 +133,62 @@
 </div>
 
 <div id="main">
-	<div class="content" ng-app="messageApp" ng-ctrl="messageCtrl">
+	<div class="content" ng-ctrl="ngController">
 		<h1>Send a new message</h1>
 		This message will be sent via text message to the public users in the area. To send a message just follow the numbered steps below.
 
 		<h2>1. Type the Message</h2>
 		<textarea id="enMessage" placeholder="Type the message here" rows="6" cols="40" maxlength="160" ng-trim="false" ng-model="message.enMessage"></textarea>
-		<span id="enCharCount">{{message.enMessage.length}} / 160 characters</span><br />
+		<span id="enCharCount">{{message.enMessage.length || 0}} / 160 characters</span><br />
 		
 		<input type="radio" name="language" value="english" id="enLang" checked>Send this message only in English<br />
 		<input type="radio" name="language" value="alsoSpanish" id="esLang">Also send this message in Spanish to those who prefer Spanish messages<br />
 		<span id="esMessageOptions">
 			<textarea id="esMessage" rows="6" cols="40" placeholder="Escriba su mensaje Español" maxlength="160" ng-trim="false" ng-model="message.esMessage"></textarea>
-			<span id="esCharCount">{{message.esMessage.length}} / 160 characters</span>
+			<span id="esCharCount">{{message.esMessage.length || 0}} / 160 characters</span>
 		</span>
 		<br />
 		
 		<h2>2. Select the message's location</h2>
-		<p>Place a pin where you want people to receive the message.</p>
+		<p>By default, the pin is placed pin is placed at the center of the campaign. But you may move the pin according to the current situation.</p>
 
 		<div id="googleMap" style="width:650px;height:500px;z-index:1000"></div>
 
 		<br>
 		<p><span class="button" id="submit">3. Review the recipients</span></p>
+
+		<h3>List of message recipients</h3>
+		The following people will all receive this message. You can filter this list as appropriate.
+
 	</div>
 </div>
 
 <script src="/javascripts/angular.js"></script>
 <script src="/javascripts/angular-controller.js"></script>
 <script>
+/* 
+ * This gets the campaign ID from the URL, then uses
+ * that to get the whole campaign object
+ */
+
+//NOTE: window.location.href is better than document.URL because it updates after a browser redirect
+var parsedURL = window.location.href.split("/");
+var campaignID = parsedURL[parsedURL.length-1];
+if (!campaignID) { //this condition is for if an ending / is in the URL
+	campaignID = parsedURL[parsedURL.length-2];
+}
+// var getURL = './api/v1/campaign/' + campaignID; 
+// console.log(getURL);
+// $http.get(getURL).success(function(data) {
+// 	var campaign = data;
+// });
+
+</script>
+<script>
+/*
+ * This script shows or hides the spanish message box based 
+ * on the value of the radio button group language
+ */
 $('#esMessageOptions').hide();
 
 $('#esLang').click(function() {
