@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes){
 
-	var officer_account = sequelize.define('OFFICER_ACCOUNT', 
+	var Officer = sequelize.define('OFFICER', 
 		{
 			username: DataTypes.STRING,
 			password: DataTypes.STRING
@@ -11,10 +11,10 @@ module.exports = function(sequelize, DataTypes){
 
 			},
 			associate: function(models){
-
+				Officer.hasMany(models.Campaign);
 			}
 		}
 	);
 
-	return officer_account;
+	return Officer;
 };

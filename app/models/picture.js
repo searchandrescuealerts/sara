@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes){
 
-	var picture = sequelize.define('PICTURE', 
+	var Picture = sequelize.define('PICTURE', 
 		{
 			picture: DataTypes.STRING,
 			upload_date: DataTypes.DATE,
@@ -16,5 +16,5 @@ module.exports = function(sequelize, DataTypes){
 		}
 	);
 
-	return picture;
+	return Picture;
 };

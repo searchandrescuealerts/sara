@@ -1,23 +1,23 @@
+// POST new user
+//
+exports.login = function(req, res){
 
-/*
- * POST new user
- */
-
+};
+//
 exports.create = function(req, res){
 	console.log(req.body);
 	var userJSON = req.body;
 	userJSON.username
 };
-
+// GET user by email and password hash
 exports.getUser = function(req, res){
 
 };
+// PUT user approved to be first responder
+exports.approve = function(req, res){
 
-exports.postUser = function(req, res) {
-	console.log(req.body);
-	res.send(req.body);
 };
+// PUT user apply to be first responder
+exports.apply = function(req, res){
 
-exports.myaccount = function(req, res){
-	return res.sendfile('public/myaccount.html');
-}
+};

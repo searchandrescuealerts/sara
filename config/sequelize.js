@@ -37,10 +37,12 @@ fs.readdirSync(config.modelsDir)
 
 // Synchronizing any model changes with the database
 // WARNING: this will DROP your database every time you re-run your application
-sequelize.sync({force: true}).success(function(){
-	console.log('successfully syncronized!');
-}).error(function(err){
-	console.log(err);
+console.log('RIGHT BEFORE SEQUELIZE.SYNC');
+sequelize
+  .sync({force: true})
+  .complete(function(err){
+    if(err) console.log("An error occured %j",err);
+    else console.log("Database dropped and synchronized");
 });
 
 // assign the sequelize variables to the db object and returning the db

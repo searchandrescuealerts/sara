@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes){
 	
-	var language = sequelize.define('LANGUAGE', 
+	var Language = sequelize.define('LANGUAGE', 
 		{
 			lang_en: DataTypes.STRING,
 			lang_native: DataTypes.STRING
@@ -10,10 +10,10 @@ module.exports = function(sequelize, DataTypes){
 
 			},
 			associate: function(models){
-
+				Language.hasMany(User);
 			}
 		}
 	);	
 
-	return language;
+	return Language;
 };

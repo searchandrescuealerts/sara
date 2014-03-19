@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes){
 
-	var campaign = sequelize.define('CAMPAIGN', 
+	var Campaign = sequelize.define('CAMPAIGN', 
 		{
 			lat: DataTypes.FLOAT, 
 			lon: DataTypes.FLOAT, 
@@ -13,10 +13,12 @@ module.exports = function(sequelize, DataTypes){
 
 			},
 			associate: function(models){
-				
+				Campaign.belongsTo(models.Officer);
+				Campaign.hasMany(models.Missing_Person);
+				Campaign.hasMany(models.Message);
 			}
 		}
 	);
 
-	return campaign;
+	return Campaign;
 };

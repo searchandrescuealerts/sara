@@ -1,9 +1,9 @@
 module.exports = {
 	db: {
-			username: "searchandrescue",
-			password: "IRock5!",
-			database: "searchandrescue",
-			host    : "searchandrescue.db.6706839.hostedresource.com",
+			username: "sara",
+			password: "sarasaveslives",
+			database: "saraDB",
+			host    : "saradb.cztrm3fxms9b.us-west-2.rds.amazonaws.com:3306",
 			dialect : "mysql"
 		}
 }

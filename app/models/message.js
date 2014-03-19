@@ -1,6 +1,6 @@
 module.exports = function(serialize, DataTypes){
 
-	var message = serialize.define('MESSAGE', 
+	var Message = serialize.define('MESSAGE', 
 		{
 			message_content: DataTypes.TEXT, 
 			sent_date: DataTypes.DATE,
@@ -15,10 +15,11 @@ module.exports = function(serialize, DataTypes){
 
 			},
 			associate: function(models){
-
+				Message.belongsTo(models.Campaign);
+				Message.hasOne(models.Message_Template);
 			}
 		}
 	);
 
-	return message;
+	return Message;
 };

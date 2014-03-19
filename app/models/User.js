@@ -1,12 +1,14 @@
 module.exports = function(sequelize, DataTypes){
 	
-	var user_account = sequelize.define('USER_ACCOUNT', 
+	var User = sequelize.define('USER', 
 		{
+			// user_id
 			email: DataTypes.STRING,  
 			password: DataTypes.STRING, // ANDY TODO: gonna have to figure out how to not store this in plain text
-			first_responder: DataTypes.BOOLEAN,
-			f_name: DataTypes.STRING,
-			l_name: DataTypes.STRING,
+			applied: DataTypes.BOOLEAN,
+			approved: DataTypes.BOOLEAN,
+			given_name: DataTypes.STRING,
+			family_name: DataTypes.STRING,
 			phone: DataTypes.STRING,
 			age: DataTypes.INTEGER,
 			ssn: DataTypes.STRING,
@@ -26,5 +28,5 @@ module.exports = function(sequelize, DataTypes){
 		}
 	);	
 
-	return user_account;
+	return User;
 };

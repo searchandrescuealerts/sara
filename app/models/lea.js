@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes){
 
-	var lea = sequelize.define('LEA', 
+	var Lea = sequelize.define('LEA', 
 		{
 			agency_name: DataTypes.STRING,
 			phone: DataTypes.STRING,
@@ -15,10 +15,10 @@ module.exports = function(sequelize, DataTypes){
 
 			},
 			associate: function(models){
-
+				Lea.hasMany(models.User);
 			}
 		}
 	);	
 
-	return lea;
+	return Lea;
 };
