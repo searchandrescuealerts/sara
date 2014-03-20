@@ -13,9 +13,12 @@ module.exports = function(sequelize, DataTypes){
 
 			},
 			associate: function(models){
-				Campaign.belongsTo(models.Officer);
+				console.log('starting Missing_Person associations for Campaign');
 				Campaign.hasMany(models.Missing_Person);
+				console.log('starting Message associations for Campaign');
 				Campaign.hasMany(models.Message);
+				console.log('starting Officer associations for Campaign');
+				Campaign.belongsTo(models.Officer);
 			}
 		}
 	);

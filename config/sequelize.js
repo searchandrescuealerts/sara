@@ -29,24 +29,25 @@ fs.readdirSync(config.modelsDir)
  		db[model.name] = model;
  	});
  // invoke associations on each of the models
- Object.keys(db).forEach(function(modelName){
- 	console.log('Entered database table  association function');
- 	if (db[modelName].options.hasOwnProperty('associate')) {
- 		console.log('Attempting association for ' + modelName);
- 		db[modelName].options.associate(db)
- 		console.log('Association created for ' + modelName);
- 	}
- });
+ // TODO: why are our associations bad?
+ // Object.keys(db).forEach(function(modelName){
+ // 	if (db[modelName].options.hasOwnProperty('associate')) {
+ // 		db[modelName].options.associate(db)
+ // 	}
+ // });
 
 // Synchronizing any model changes with the database
 // WARNING: this will DROP your database every time you re-run your application
 console.log('RIGHT BEFORE SEQUELIZE.SYNC');
-sequelize
-  .sync({force: true})
-  .complete(function(err){
-    if(err) console.log("An error occured %j",err);
-    else console.log("Database dropped and synchronized");
-});
+// NOTE: Two lines of test code, currently failing during the drop
+// sequelize.drop();
+// sequelize.sync();
+// sequelize
+//   .sync({force: true})
+//   .complete(function(err){
+//     if(err) console.log("An error occured %j",err);
+//     else console.log("Database dropped and synchronized");
+// });
 
 // assign the sequelize variables to the db object and returning the db
 module.exports = _.extend({
