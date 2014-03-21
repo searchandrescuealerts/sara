@@ -27,13 +27,13 @@ fs.readdirSync(config.modelsDir)
  		var model = sequelize.import(path.join(config.modelsDir, file));
  		db[model.name] = model;
  	});
- // invoke associations on each of the models
- // TODO: figure out why are our associations bad?
- // Object.keys(db).forEach(function(modelName){
- // 	if (db[modelName].options.hasOwnProperty('associate')) {
- // 		db[modelName].options.associate(db)
- // 	}
- // });
+
+ //CREATE THE ASSOCIATIONS
+ Object.keys(db).forEach(function(modelName){
+ 	if (db[modelName].options.hasOwnProperty('associate')) {
+ 		db[modelName].options.associate(db)
+ 	}
+ });
 
 // Synchronizing any model changes with the database
 // WARNING: this will DROP your database every time you re-run your application

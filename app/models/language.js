@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes){
 
 			},
 			associate: function(models){
-				Language.hasMany(User);
+				Language.hasMany(models.User);
 			}
 		}
 	);	
