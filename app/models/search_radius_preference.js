@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes){
 
-	var Search_Radius_Preference = sequelize.define('SEARCH_RADIUS_PREFERENCE',
+	var Search_Radius_Preference = sequelize.define('Search_Radius_Preference',
 		{
 			radius: DataTypes.INTEGER,
 			lat: DataTypes.FLOAT,

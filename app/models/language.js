@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes){
 	
-	var Language = sequelize.define('LANGUAGE', 
+	var Language = sequelize.define('Language', 
 		{
 			lang_en: DataTypes.STRING,
 			lang_native: DataTypes.STRING

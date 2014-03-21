@@ -1,6 +1,6 @@
 module.exports = function(serialize, DataTypes){
 
-	var Message = serialize.define('MESSAGE', 
+	var Message = serialize.define('Message', 
 		{
 			message_content: DataTypes.TEXT, 
 			sent_date: DataTypes.DATE,

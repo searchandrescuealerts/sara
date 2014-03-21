@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes){
 
-	var Lea = sequelize.define('LEA', 
+	var Lea = sequelize.define('Lea', 
 		{
 			agency_name: DataTypes.STRING,
 			phone: DataTypes.STRING,

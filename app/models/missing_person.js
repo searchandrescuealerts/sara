@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes){
 
-	var Missing_Person = sequelize.define('MISSING_PERSON',
+	var Missing_Person = sequelize.define('Missing_Person',
 		{
 			fname: DataTypes.STRING,
 			mname: DataTypes.STRING,

@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes){
 
-	var Campaign = sequelize.define('CAMPAIGN', 
+	var Campaign = sequelize.define('Campaign', 
 		{
 			lat: {
 				type: DataTypes.FLOAT,

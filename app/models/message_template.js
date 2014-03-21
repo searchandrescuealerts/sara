@@ -1,6 +1,6 @@
 module.exports = function(serialize, DataTypes){
 
-	var Message_Template = serialize.define('MESSAGE_TEMPLATE', 
+	var Message_Template = serialize.define('Message_Template', 
 		{
 			content: DataTypes.TEXT 
 		},
