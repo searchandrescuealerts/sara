@@ -12,7 +12,7 @@ module.exports = function(app, passport, auth){
 
 	
 	app.get ('/signup',                			page.signup);
-	app.get ('/api/v1/user/myaccount', 			page.myaccount);
+	app.get ('/myaccount', 						page.myaccount);
 	app.get('/',                       			page.index); // Home Route
 	app.get('/signupLoc',              			page.signupLoc);
 	app.get('/sendMessage', 		   			page.sendMessage);
