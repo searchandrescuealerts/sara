@@ -11,9 +11,11 @@ module.exports = function(sequelize, DataTypes){
 			notes: DataTypes.TEXT // ANDY TODO: maybe missing_person and notes has a 1 to many relationship?
 		},
 		{
+			freezeTableName: true,
+			tableName: 'MISSING_PERSON',
 			instanceMethods: {
 
-			},
+		},
 			associate: function(models){
 				Missing_Person.belongsTo(models.Campaign);
 				Missing_Person.hasMany(models.Picture);

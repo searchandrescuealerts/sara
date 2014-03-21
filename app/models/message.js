@@ -11,9 +11,11 @@ module.exports = function(serialize, DataTypes){
 			// sender_id
 		},
 		{
+			freezeTableName: true,
+			tableName: 'MESSAGE',
 			instanceMethods: {
 
-			},
+		},
 			associate: function(models){
 				Message.belongsTo(models.Campaign);
 				Message.hasOne(models.Message_Template);

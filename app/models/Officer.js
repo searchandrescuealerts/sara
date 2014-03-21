@@ -7,9 +7,11 @@ module.exports = function(sequelize, DataTypes){
 			// agency_id
 		},
 		{
+			freezeTableName: true,
+			tableName: 'OFFICER',
 			instanceMethods: {
 
-			},
+		},
 			associate: function(models){
 				Officer.hasMany(models.Campaign);
 				Officer.belongsTo(models.Lea);
