@@ -2,10 +2,32 @@ module.exports = function(sequelize, DataTypes){
 
 	var Campaign = sequelize.define('CAMPAIGN', 
 		{
-			lat: DataTypes.FLOAT, 
-			lon: DataTypes.FLOAT, 
-			start_date: DataTypes.DATE,
-			end_date: DataTypes.DATE,
+			lat: {
+				type: DataTypes.FLOAT,
+				validate: {
+					not: ["[a-z]", 'i'], 	// will not allow letters
+					isFloat: true   		// checks for valid floating point numbers
+				} 
+			},
+			lon: {
+				type: DataTypes.FLOAT,
+				validate: {
+					not: ["[a-z]", 'i'], 	// will not allow letters
+					isFloat: true   		// checks for valid floating point numbers
+				} 
+			},
+			start_date: {
+				type: DataTypes.DATE,
+				validate: {
+					isDate: true,
+				}
+			},
+			end_date: {
+				type: DataTypes.DATE,
+				validate: {
+					isDate: true,
+				}
+			},
 			hotline_number: DataTypes.STRING
 		},
 		{

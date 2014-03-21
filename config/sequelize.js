@@ -15,7 +15,6 @@ var sequelize = new Sequelize(config.db.database, config.db.username, config.db.
 	// storage: config.db.storage ANDY TODO: Where is this in sequelize-starter?
 });
 
-console.log('Sequelize variable created');
 console.log(config.modelsDir);
 // loop through all files in models directory ignoring hidden files and this file
 fs.readdirSync(config.modelsDir)
@@ -29,7 +28,7 @@ fs.readdirSync(config.modelsDir)
  		db[model.name] = model;
  	});
  // invoke associations on each of the models
- // TODO: why are our associations bad?
+ // TODO: figure out why are our associations bad?
  // Object.keys(db).forEach(function(modelName){
  // 	if (db[modelName].options.hasOwnProperty('associate')) {
  // 		db[modelName].options.associate(db)
@@ -39,15 +38,13 @@ fs.readdirSync(config.modelsDir)
 // Synchronizing any model changes with the database
 // WARNING: this will DROP your database every time you re-run your application
 console.log('RIGHT BEFORE SEQUELIZE.SYNC');
-// NOTE: Two lines of test code, currently failing during the drop
-// sequelize.drop();
-// sequelize.sync();
-// sequelize
-//   .sync({force: true})
-//   .complete(function(err){
-//     if(err) console.log("An error occured %j",err);
-//     else console.log("Database dropped and synchronized");
-// });
+
+sequelize.sync().success(function() {
+    console.log("Models Synced");
+}).error(function(err) {
+	console.log(err);
+    console.log("Error: OOOH NOOOES");
+});
 
 // assign the sequelize variables to the db object and returning the db
 module.exports = _.extend({
