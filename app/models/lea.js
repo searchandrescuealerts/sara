@@ -11,9 +11,11 @@ module.exports = function(sequelize, DataTypes){
 			member_since: DataTypes.DATE
 		},
 		{
+			freezeTableName: true,
+			tableName: 'LEA',
 			instanceMethods: {
 
-			},
+		},
 			associate: function(models){
 				Lea.hasMany(models.User);
 			}

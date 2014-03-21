@@ -31,9 +31,11 @@ module.exports = function(sequelize, DataTypes){
 			hotline_number: DataTypes.STRING
 		},
 		{
+			freezeTableName: true,
+			tableName: 'CAMPAIGN',
 			instanceMethods: {
 
-			},
+		},
 			associate: function(models){
 				console.log('starting Missing_Person associations for Campaign');
 				Campaign.hasMany(models.Missing_Person);

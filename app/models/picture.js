@@ -7,9 +7,11 @@ module.exports = function(sequelize, DataTypes){
 			notes: DataTypes.TEXT
 		},
 		{
+			freezeTableName: true,
+			tableName: 'PICTURE',
 			instanceMethods: {
 
-			},
+		},
 			associate: function(models){
 				Picture.belongsTo(models.Missing_Person);
 				Picture.belongsTo(models.User);

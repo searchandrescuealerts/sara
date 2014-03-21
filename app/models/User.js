@@ -19,9 +19,11 @@ module.exports = function(sequelize, DataTypes){
 			// lang_id: DataTypes.STRING
 		},
 		{
+			freezeTableName: true,
+			tableName: 'USER',
 			instanceMethods: {
 
-			},
+		},
 			associate: function(models){
 				User.hasMany(models.Picture);
 				User.hasMany(models.Language);
