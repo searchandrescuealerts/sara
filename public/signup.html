@@ -7,113 +7,9 @@
 	<link href='http://fonts.googleapis.com/css?family=Exo+2:400,300,200,500' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
 	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA3mC_xSILKVBUECReJLJbyoX9L3PQ_ApY&sensor=false"></script>
-
-	<script>
-	
-	var MILES_TO_METERS_CONVERSION_RATIO = 1609.34;
-	var map;
-	var marker;
-	var circle;
-	var browserLat = 39.8282; //default at center of US
-	var browserLong = -98.5795; //default at center of US
-	var zoomLevel = 4; //default zoom to fill screen with US
-
-	function initialize() {
-		getGeolocation();
-
-		var mapProp = {
-			center: new google.maps.LatLng(browserLat, browserLong), //centers the map here
-			zoom: zoomLevel,
-			mapTypeId:google.maps.MapTypeId.ROADMAP
-		};
-		
-		map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-
-		// placeMarker();
-
-	}
-
-	function refreshMap() {
-		var refreshLocation = new google.maps.LatLng(browserLat, browserLong);
-		map.setCenter(refreshLocation);
-		map.placeMarker(refreshLocation)
-		map.setZoom(7);
-	}
-
-	function placeMarker(location) {
-		//SARAH TODO: if there is already a marker, ignore this?
-		if (!location) {
-			location = map.getCenter();
-		}
-
-		marker = new google.maps.Marker({
-			position: location,
-			draggable: true,
-			title: "Drag me!",
-			map: map
-		});
-
-		drawCircle(marker);
-
-		marker.setMap(map);
-
-		//remove the Drop a pin button. We only want one pin at a time
-		$("#dropPin").hide();
-	}
-
-	function drawCircle(markerInput) {
-		//if the marker doesn't exist, set it to the global marker variable
-		if (!markerInput) {
-			markerInput = marker;
-		}
-		var radius = $("#radius").val();
-		//SARAH TODO: sanitize the radius input
-
-		//translate that into meters, because that's what the API takes
-		var radiusMeters = radius * MILES_TO_METERS_CONVERSION_RATIO;
-
-		if (circle) {
-			// map.removeOverlay(circle);
-			circle.setMap(null); //remove any previous circle
-		}
-		circle = new google.maps.Circle({
-			map: map,
-			radius: radiusMeters,
-			fillColor: '#013ca6',
-			fillOpacity: .2,
-			strokeColor: '#013ca6',
-			strokeWeight: 2
-		});
-		// Add circle overlay and bind to marker
-		circle.bindTo('center', markerInput, 'position'); //add the new circle to the map
-	}
-
-	google.maps.event.addDomListener(window, 'load', initialize);
-
-	//http://www.w3schools.com/html/tryit.asp?filename=tryhtml5_geolocation
-
-	function getGeolocation() {
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(saveNewCenter);
-		} else{
-			console.log("Browser does not support geolocation or user opted out");
-			//do nothing and keep the defaults
-		}
-	}
-	
-	function saveNewCenter(position) {
-		//update the lat and long points of the map to show your location.
-		browserLat = position.coords.latitude;
-		browserLong = position.coords.longitude;
-		zoomLevel = 7; //Also update the zoom level to something more appropriate...
-	}
-	</script>
+	<script src="/javascripts/googlemaps.js" rel="javascript" type="text/javascript"></script>
 </head>
 <body>
-
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
-<script type="text/javascript" src="/javascripts/jquery.cycle.all.2.74.js"></script>
-<script type="text/javascript" src="/javascripts/cookies.js"></script>
 
 <div id="rotatingBanner">	
 	<img src="/images/bigBanner/4.jpg" class="rotateImg"/>
@@ -137,32 +33,43 @@
 		<div class="content">
 
 			<h1>Basic Information</h1>
+			Please provide this basic information. We will not sell your information. Your email address will become your username when you log back in. 
 
-			Phone Number<br />
-			<input type="text" name="phoneNumber" id="phoneNumber"/><br />
+			<div class="signupForm">
+				<p>
+					<small>Email</small><br />
+					<input placeholder="e.g. you@gmail.com" type="text" name="email" id="email"/>
+				</p>
 
-			Password<br />
-			<input type="password" name="password" id="password"/><br />
+				<p>
+					<small>Phone Number</small><br />
+					<input placeholder="e.g. 8015555555" type="text" name="phoneNumber" id="phoneNumber"/>
+				</p>
+
+				<p>
+					<small>Password</small><br />
+					<input placeholder="" type="password" name="password" id="password"/>
+				</p>
+
+			</div>
+
 			<h1>Alert Locations</h1>
 			<p>
-				Please drop a pin at the central point where you normally are, then provide what radius you are willing to receive alerts for.
+				Drag the dropped pin to your central location. You will receive messages for any alert that is within your blue radius. 
 			</p>
 
-			<br />
-
 			<p>
-				<span id="dropPin" class="button orangeBG blackBorder" onclick="placeMarker()">Drop a pin</span>
-				<!-- <span id="refresh" class="button orangeBG blackborder" onclick="refreshMap()">Detect my location</span> -->
-				<span style="float:right;">
-					Search Radius: <input type="text" size="3" value="10" id="radius" />miles &nbsp; 
-					<span id="updateRadius" class="button orangeBG blackBorder" onclick="drawCircle()">Update</span>
-				</span>
+				<span id="dropPin" class="button orangeBG blackBorder" onclick="placeMarker()">Drop a pin at the center of this map</span>
 			</p>
 
 			<center>
 			<div id="googleMap" style="width:100%;height:500px;z-index:1000"></div>
 			</center>
 
+			<p style="float:left;">
+				Search Radius: <input type="text" size="3" value="10" id="radius" />miles &nbsp; 
+				<span id="updateRadius" class="button orangeBG blackBorder" onclick="drawCircle()">Update Radius</span>
+			</p>
 			<p style="float:right;">
 				<!-- <span class="button blackBorder grayBG">Save and add another location</span> -->
 				<span class="button blackBorder blueBG" onclick="signUp()">Save and Finish</span>
@@ -179,23 +86,21 @@
 
 </center>
 
-<script>
-$(document).ready(function() {
-				$('#rotatingBanner').cycle({
-				fx: 'fade',
-				pause: 1,
-				speed: 1800,
-				timeout: 10000 
-			});			
-		});
-
-</script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.cycle.all.2.74.js"></script>
+<script type="text/javascript" src="/javascripts/cookies.js"></script>
+<script src="/javascripts/angular.js"></script>
 
 <script>
 
 function signUp() {
-	var "count",
-	var "location1" = {
+	var userJSON = {}
+	userJSON.email = document.getElementById('email').value;
+	userJSON.password = document.getElementById('password').value;
+	userJSON.phone = document.getElementById('phoneNumber').value;
+	userJSON.locations = [];
+
+	var location = {
 		"lat":0,
 		"lng":0,
 		"radius":0
@@ -206,25 +111,16 @@ function signUp() {
 	location.radius = circle.getRadius();
 
 	//add the location to the userJSON object
-	userJSON.count = 1;
-	userJSON.locations = location;
+	userJSON.locations.push(location);
 
-	//delete the old cookie
-	// console.log("Deleting Cookie");
-	createCookie("SARAuser","",-1);
+	//post the JSON object
+	$.post("../api/v1/user", userJSON);
 
-	//save the new cookie
-	// console.log("Creating New Cookie");
-	createCookie("SARAuser",JSON.stringify(userJSON),7);
+	console.log(userJSON);
 
-	//post the JSON object to /user/
-	$.post("../api/v1/user", function(data) {
-		userJSON;
-	})
-
-	//SARAH TODO: if successful...
-	//redirect user to a thank you page
-	// window.location = "/thank-you/";
+	// SARAH TODO: if successful...
+	// redirect user to a thank you page
+	// window.location = "/";
 
 }
 </script>
