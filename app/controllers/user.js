@@ -1,4 +1,5 @@
 var passport = require('passport');
+var db       = require('../../config/sequelize');
 
 // login. 
 // If successful, go to the myaccount page. 
@@ -13,9 +14,21 @@ exports.login = function(req, res){
 
 //
 exports.create = function(req, res){
-	console.log(req.body);
-	var userJSON = req.body;
-	userJSON.username
+	console.log('user reqest body: \n ' + req.body);
+
+	var user = db.User.build(req.body);
+	user.salt = user.makeSalt();
+	user.hashedPassword = user.encryptPassword(req.body.password, user.salt);
+	console.log('New User (logal) : { id: ' + user.id + 
+		'\n   email: ' + user.email + 
+		'\n   phone: ' + user.phone +
+		'\n   hashed password: ' + user.hashedPassword + ' }');
+	
+	user.save().success(function(){
+		res.sendfile('public/myaccount.html');
+	}).error(function(err){
+		res.sendfile('public/signup.html');
+	});
 };
 
 // GET user by email and password hash
