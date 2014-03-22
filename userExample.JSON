@@ -1,0 +1,139 @@
+{
+	"email": "s.l3mm0n@gmail.com",
+	"password": "somethinghashed",
+	"phone": "3034787951",
+	"locations": {
+		"location1": {
+			"lat": "3432890432",
+			"lon": "389403289",
+			"radius": "16000" //store this in meters
+		},
+		"location2": {
+			"lat": "3432890432",
+			"lon": "389403289",
+			"radius": "16000" //store this in meters
+		}
+	}
+}
+
+
+//OPEN CAMPAIGNS
+[
+	{
+		"id":01,
+		"start_date":"14 Feb 2014",
+		"end_date":"14 Feb 2014",
+		"hotline_number":"8014222222",
+		"lat":40.461776,
+		"lng":-111.786565,
+		"missing_people": [
+			{
+				"first_name":"Wendy",
+				"middle_name":"",
+				"last_name":"Darling",
+				"nickname":"Wendy",
+				"missing_date":"14 Feb 2014",
+				"found_date":"14 Feb 2014",
+				"notes":"abducted in the middle of the night through a window."
+			}
+		],
+		"images": [
+			{
+				"image": "/images/campaignImages/wendy.jpg",
+				"width": 200,
+				"height": 200,
+				"200thumbnail": "/images/campaignImages/wendy.jpg"
+			}
+		]
+	},
+	{
+		"id":02,
+		"start_date":"8 Feb 2014",
+		"end_date":"",
+		"hotline_number":"8014222222",
+		"lat":40.350706, 
+		"lng":-111.743806,
+		"missing_people": [
+			{
+				"first_name":"Hansel",
+				"middle_name":"",
+				"last_name":"",
+				"nickname":"",
+				"missing_date":"8 Feb 2014",
+				"found_date":"",
+				"notes":"lost in the woods with her sister"
+			},
+			{
+				"first_name":"Gretel",
+				"middle_name":"",
+				"last_name":"",
+				"nickname":"",
+				"missing_date":"8 Feb 2014",
+				"found_date":"",
+				"notes":"lost in the woods with her brother"
+			}
+		],
+		"images": [
+			{
+				"image": "/images/campaignImages/hanselandgretel.jpg",
+				"width": 200,
+				"height": 200,
+				"200thumbnail": "/images/campaignImages/hanselandgretel.jpg"
+			}
+		]
+	},
+	{
+		"id":03,
+		"start_date":"1 March 2014",
+		"end_date":"",
+		"hotline_number":"8014222222",
+		"lat":40.223344, 
+		"lng":-111.668832,
+		"missing_people": [
+			{
+				"first_name":"Belle",
+				"middle_name":"",
+				"last_name":"",
+				"nickname":"",
+				"missing_date":"8 Feb 2014",
+				"found_date":"",
+				"notes":"potentially being held captive by a beast"
+			}
+		],
+		"images": [
+			{
+				"image": "/images/campaignImages/belle.jpg",
+				"width": 200,
+				"height": 200,
+				"200thumbnail": "/images/campaignImages/belle.jpg"
+			}
+		]
+	},
+	{
+		"id":04,
+		"start_date":"13 March 2014",
+		"end_date":"14 March 2014",
+		"hotline_number":"8014222222",
+		"lat":40.294268, 
+		"lng":-111.643286,
+		"missing_people": [
+			{
+				"first_name":"Jasmine",
+				"middle_name":"",
+				"last_name":"of the Sultan of Agraba",
+				"nickname":"",
+				"missing_date":"13 March 2014",
+				"found_date":"14 March 2014",
+				"notes":"escaped out of her window at night"
+			}
+		],
+		"images": [
+			{
+				"image": "/images/campaignImages/jasmine.jpg",
+				"width": 200,
+				"height": 200,
+				"200thumbnail": "/images/campaignImages/jasmine.jpg"				
+			}
+		]
+	}
+]

@@ -28,18 +28,51 @@ passport.use(new LocalStrategy({
     passwordField: 'password'
   },
   function(email, password, done) {
-    db.User.find({ where: { email: email }}).success(function(user) {
-      if (!user) {
-        done(null, false, { message: 'Unknown user' });
-      } else if (!user.authenticate(password)) {
-        done(null, false, { message: 'Invalid password'});
-      } else {
-        console.log('Login (local) : { id: ' + user.id + ', username: ' + user.username + ' }');
-        done(null, user);
+    // From: PassportJS-Authentication on GitHub
+    console.log("Starting the validation function");
+    this.findOne({email : email}, function(err, user){
+      
+      if(err) {
+        // console.log("There was an error finding the person.");
+        return done(err);
       }
-    }).error(function(err){
-      done(err);
+      
+      if(!user) {
+        // console.log("There was no user");
+        return done(null, false, { message : 'Incorrect email.' });
+      }
+      
+      hash(password, user.salt, function(err, hash){
+        if(err) {
+          // console.log("There was an error hashing the password");
+          return done(err);
+        }
+        if(hash == user.hash) {
+          // console.log("There was no password match");
+          return done(null, user);
+        }
+        done(null, false, {
+          // console.log("Incorrect password");
+          message : 'Incorrect password'
+        });
+      });
     });
+    //END FROM PASSPORTJS-AUTHENTICATION
+    
+    // From: Jeff's Sequelize starter START
+    // db.User.find({ where: { email: email }}).success(function(user) {
+    //   if (!user) {
+    //     done(null, false, { message: 'Unknown user' });
+    //   } else if (!user.authenticate(password)) {
+    //     done(null, false, { message: 'Invalid password'});
+    //   } else {
+    //     console.log('Login (local) : { id: ' + user.id + ', username: ' + user.username + ' }');
+    //     done(null, user);
+    //   }
+    // }).error(function(err){
+    //   done(err);
+    // });
+    //END FROM SEQUELIZE STARTER
   }
 ));
 

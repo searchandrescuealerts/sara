@@ -56,7 +56,11 @@
 	<div id="header" class="white wide section">
 		<!-- <div class="content"> -->
 			<div id="account">
-				<a href="/signup/" class="button orangeBG blackBorder"><span id="signupButton">Sign Up!</span></a> or <a href="/login/">Log In</a>
+				<form action="login/" method="post">
+					<input placeholder="email" type="text" name="username"> 
+					<input placeholder="password" type="password" name="password">
+					<input type="submit" value="Log In">
+				</form>
 			</div>
 			<img src="/images/logo/1-logo-long-horizontal.png" class="logo"/>
 		<!-- </div> -->

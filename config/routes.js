@@ -1,4 +1,4 @@
-console.log('ENTER ./config/routes.js');
+// console.log('ENTER ./config/routes.js');
 var user     = require('../app/controllers/user');
 var index    = require('../app/controllers/index');
 var officer  = require('../app/controllers/officer');
@@ -13,13 +13,14 @@ module.exports = function(app, passport, auth){
 	
 	app.get ('/signup',                			page.signup);
 	app.get ('/myaccount', 						page.myaccount);
-	app.get('/',                       			page.index); // Home Route
-	app.get('/signupLoc',              			page.signupLoc);
-	app.get('/sendMessage', 		   			page.sendMessage);
-	app.get('/sendMessage/:id', 				page.sendMessage);
+	app.get ('/',                      			page.index); // Home Route
+	app.get ('/signupLoc',             			page.signupLoc);
+	app.get ('/sendMessage', 		   			page.sendMessage);
+	app.get ('/sendMessage/:id', 				page.sendMessage);
 
 	// User routes
-	app.get ('/api/v1/user/login', 				user.login);
+	// app.get ('/login', 							page.login);
+	app.post('/login',							user.login);
 	
 	// this comes from the signup form
 	app.post('/api/v1/user', 					user.create);
@@ -42,6 +43,6 @@ module.exports = function(app, passport, auth){
 	app.get ('/api/v1/message/:id', 			message.getMessage);
 	app.put ('/api/v1/message/:id', 			message.updateMessage);
 
-	app.get('/admin', 							admin.admin);
+	app.get ('/admin', 							admin.admin);
 }
-console.log('EXIT ./config/routes.js');
+// console.log('EXIT ./config/routes.js');

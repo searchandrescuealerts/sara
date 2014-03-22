@@ -1,3 +1,5 @@
+var crypto = require('crypto');
+
 module.exports = function(sequelize, DataTypes){
 	
 	var User = sequelize.define('User', 
@@ -22,8 +24,32 @@ module.exports = function(sequelize, DataTypes){
 			freezeTableName: true,
 			tableName: 'USER',
 			instanceMethods: {
-
-		},
+				makeSalt: function() {
+					return crypto.randomBytes(16).toString('base64'); 
+				},
+				authenticate: function(plainText){
+					return this.encryptPassword(plainText, this.salt) === this.hashedPassword;
+				},
+				encryptPassword: function(password, salt) {
+					if (!password || !salt) return '';
+					salt = new Buffer(salt, 'base64');
+					return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
+				},
+				signup: function() {
+					var User = this;
+					hash(password, function(err, salt, hash) {
+						if (err) throw err;
+						User.create({
+							email: email,
+							salt: salt,
+							hash: hash
+						}, function(err, user){
+							if (err) throw err;
+							done(null, user);
+						});
+					});
+				}
+			},
 			associate: function(models){
 				User.hasMany(models.Picture);
 				User.hasMany(models.Language);
