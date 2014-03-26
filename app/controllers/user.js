@@ -32,6 +32,7 @@ exports.create = function(req, res){
 		// res.writeHead(302, {
 		// 	'Location': 'public/myaccount.html'
 		// });
+		// return res.redirect("/myaccount");
 	}).error(function(err){
 		res.sendfile('public/signup.html');
 	});
