@@ -6,7 +6,8 @@ module.exports = function(sequelize, DataTypes){
 		{
 			// user_id
 			email: DataTypes.STRING,  
-			hashedPassword: DataTypes.STRING, // ANDY TODO: gonna have to figure out how to not store this in plain text
+			hashedPassword: DataTypes.STRING, 
+			userSalt: DataTypes.STRING,
 			applied: DataTypes.BOOLEAN,
 			approved: DataTypes.BOOLEAN,
 			given_name: DataTypes.STRING,
@@ -25,7 +26,7 @@ module.exports = function(sequelize, DataTypes){
 			tableName: 'USER',
 			instanceMethods: {
 				makeSalt: function() {
-					return crypto.randomBytes(16).toString('base64'); 
+					return this.userSalt = crypto.randomBytes(16).toString('base64');  
 				},
 				authenticate: function(plainText){
 					return this.encryptPassword(plainText, this.salt) === this.hashedPassword;
