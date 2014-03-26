@@ -46,14 +46,10 @@ a:hover {
 	margin:0;
 	text-align:left;
 	z-index:5;
-	/*background-color:#FFFFFF;*/
 }
 
 .narrow {
 	width:780px;
-	/*background-color:rgba(239,245,255,1);*/
-	/*background-color:#eff5ff;*/ /*this blue is too dark*/
-	/*background-color:#fbfdff;*/ /*this blue looks funny*/
 	background-color:#FFFFFF;
 }
 
@@ -282,7 +278,7 @@ p.block {
 /*==========================================================================*/
 #signup {
 	min-height:450px;
-	height:75%;
+	height:100%;
 	font-size:8pt;
 	position:relative; /*this is the magic that makes the inclusive divs layer appropriately*/
 }
@@ -299,7 +295,7 @@ p.block {
 
 #signup .content {
 	position:absolute;
-	left:0;
+	left:200px;
 	z-index:20;
 	color:#FFFFFF;
 	text-shadow:2px 2px 2px #000000;
@@ -307,7 +303,7 @@ p.block {
 }
 
 #signup .top {
-	top:0;
+	top:100px;
 	width:50%;
 }
 

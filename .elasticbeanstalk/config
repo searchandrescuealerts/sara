@@ -13,7 +13,17 @@ ServiceEndpoint=https://elasticbeanstalk.us-west-2.amazonaws.com
 SolutionStack=64bit Amazon Linux 2014.02 running Node.js
 
 [branches]
+master=25March2014
 v0.1=sara-v01-env
+
+[branch:master]
+ApplicationVersionName=Sample Application
+EnvironmentName=25March2014
+EnvironmentTier=WebServer::Standard::1.0
+EnvironmentType=SingleInstance
+InstanceProfileName=aws-elasticbeanstalk-ec2-role
+OptionSettingFile=c:\Users\Sarah\sara\.elasticbeanstalk\optionsettings.25March2014
+RdsEnabled=No
 
 [branch:v0.1]
 ApplicationVersionName=Sample Application

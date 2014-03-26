@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes){
 		{
 			// user_id
 			email: DataTypes.STRING,  
-			password: DataTypes.STRING, // ANDY TODO: gonna have to figure out how to not store this in plain text
+			hashedPassword: DataTypes.STRING, // ANDY TODO: gonna have to figure out how to not store this in plain text
 			applied: DataTypes.BOOLEAN,
 			approved: DataTypes.BOOLEAN,
 			given_name: DataTypes.STRING,

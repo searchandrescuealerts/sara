@@ -32,22 +32,14 @@
 
 <!-- the order of the thumbnails in div NAV and ROTATINGBANNER must be in the same order-->
 <ul id="nav">
-	<!-- <li><a href="#"><img src="/images/bigBanner/6.jpg" width="50" height="50"/></a></li> -->
-	<!-- <li><a href="#"><img src="/images/bigBanner/7.jpg" width="50" height="50"/></a></li> -->
-	<!-- <li><a href="#"><img src="/images/bigBanner/8.jpg" width="50" height="50"/></a></li> -->
 	<!-- <li><a href="#"><img src="/images/bigBanner/1.jpg" width="50" height="50"/></a></li> -->
-	<!-- <li><a href="#"><img src="/images/bigBanner/2.jpg" width="50" height="50"/></a></li> -->
 	<!-- <li><a href="#"><img src="/images/bigBanner/4.jpg" width="50" height="50"/></a></li> -->
 	<!-- <li><a href="#"><img src="/images/bigBanner/5.jpg" width="50" height="50"/></a></li> -->
 </ul>
 
 <div id="rotatingBanner">
-	<!-- <img src="/images/bigBanner/6.jpg" class="rotateImg"/> -->
-	<!-- <img src="/images/bigBanner/7.jpg" class="rotateImg"/> -->
-	<!-- <img src="/images/bigBanner/8.jpg" class="rotateImg"/> -->
 	<img src="/images/bigBanner/1.jpg" class="rotateImg"/>
-	<img src="/images/bigBanner/2.jpg" class="rotateImg"/>
-	<!-- <img src="/images/bigBanner/4.jpg" class="rotateImg"/> -->
+	<img src="/images/bigBanner/4.jpg" class="rotateImg"/>
 	<img src="/images/bigBanner/5.jpg" class="rotateImg"/>
 </div>
 
@@ -59,7 +51,7 @@
 				<form action="login/" method="post">
 					<input placeholder="email" type="text" name="username"> 
 					<input placeholder="password" type="password" name="password">
-					<input type="submit" value="Log In">
+					<input type="submit" value="Log In"> or <a href="/signup">Sign Up</a>
 				</form>
 			</div>
 			<img src="/images/logo/1-logo-long-horizontal.png" class="logo"/>
@@ -70,20 +62,24 @@
 	<div id="signup" class="wide section">
 
 		<div class="top content signupForm">
-			<h1><b>Sign Up</b></h1>
-			<h2>to help bring friends and families back together</h2>
+			<h1><b>Log In</b></h1>
+			<h2>to help find the missing</h2>
 			
+			<form action="login/" method="post">
+				<input placeholder="email" type="text" name="username" /> <br />
+				<input placeholder="password" type="password" name="password" /> <br />
+				<input type="submit" value="Log In" /> or <a href="/signup">Sign Up</a>
+			</form>
+<!-- 
+
 			Email Address<br />
 			<input type="text" name="email" id="email"/><br />
 			
-			Phone Number<br />
-			<input type="text" name="phoneNumber" id="phoneNumber"/><br />
-
 			Password<br />
 			<input type="password" name="password" id="password"/><br />
 			
 			<br />
-			<a href="#" class="button orangeBG whiteBorder" onclick="signUp();"><span id="signupButton">Select Location</span></a> or <a href="javascript:void(0)">Log In</a>
+			<a href="#" class="button orangeBG whiteBorder" onclick="login();"><span id="signupButton">Log In</span></a> or <a href="/signup">Sign Up</a> -->
 		</div>
 	
 		<div class="bottom content signupForm">
@@ -202,6 +198,10 @@ $(document).ready(function() {
 <script href="./config/passport.js"></script>
 
 <script>
+
+function logIn() {
+
+}
 
 function signUp() {
 	var user = {
