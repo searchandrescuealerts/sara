@@ -20,15 +20,18 @@ exports.create = function(req, res){
 	var user = db.User.build(req.body);
 	user.salt = user.makeSalt();
 	user.hashedPassword = user.encryptPassword(req.body.password, user.salt);
-	console.log('New User (logal) : { id: ' + user.id + 
+	console.log('New User (local) : { id: ' + user.id + 
 		'\n   email: ' + user.email + 
 		'\n   phone: ' + user.phone +
 		'\n   hashed password: ' + user.hashedPassword + ' }');
 	
 	user.save().success(function(){
-		res.writeHead(302, {
-			'Location': 'public/myaccount.html'
-		});
+		res.redirect("/myaccount");
+		// return res.redirect("/myaccount");
+
+		// res.writeHead(302, {
+		// 	'Location': 'public/myaccount.html'
+		// });
 	}).error(function(err){
 		res.sendfile('public/signup.html');
 	});
