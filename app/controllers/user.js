@@ -6,7 +6,7 @@ var db       = require('../../config/sequelize');
 // If successful, go to the myaccount page. 
 // Otherwise go back to the index.
 exports.login = function(req, res){
-	//console.log("entered login function");
+	console.log(req.body + " was sent to user.js >> login");
 	passport.authenticate('local', {
 		successRedirect : "/myaccount",
 		failureRedirect : "/"

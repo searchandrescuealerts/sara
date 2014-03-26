@@ -51,7 +51,7 @@
 				<form action="login/" method="post">
 					<input placeholder="email" type="text" name="username"> 
 					<input placeholder="password" type="password" name="password">
-					<input type="submit" value="Log In"> or <a href="/signup">Sign Up</a>
+					<span class="button orangeBG whiteBorder" onclick="login()">Log In</span> or <a href="/signup">Sign Up</a>
 				</form>
 			</div>
 			<img src="/images/logo/1-logo-long-horizontal.png" class="logo"/>
@@ -68,7 +68,7 @@
 			<form action="login/" method="post">
 				<input placeholder="email" type="text" name="username" /> <br />
 				<input placeholder="password" type="password" name="password" /> <br />
-				<input type="submit" value="Log In" /> or <a href="/signup">Sign Up</a>
+				<span class="button orangeBG whiteBorder" onclick="login()">Log In</span> or <a href="/signup">Sign Up</a>
 			</form>
 <!-- 
 
@@ -199,34 +199,43 @@ $(document).ready(function() {
 
 <script>
 
-function logIn() {
-
-}
-
-function signUp() {
+function login() {
 	var user = {
 		"email": "",
 		"password": "",
-		"phoneNumber": "",
-		"locations": {}
 	}
 
-	// var passwordHash = require('./node_modules/password-hash');
-    // var hashedPassword = passwordHash.generate('password123');
-    // console.log(hashedPassword); // sha1$3I7HRwy7$cbfdac6008f9cab4083784cbd1874f76618d2a97
-
-	//SARAH TODO: hash the password
 	user.email = $("#email").val();
 	user.password = $("#password").val();
-	user.phoneNumber = $("#phoneNumber").val();
 
-	// console.log(JSON.stringify(user));
-
-	createCookie("SARAuser",JSON.stringify(user),7);
-
-	//direct user to /signup/
-	window.location = "/signupLoc";
+	console.log(user + "was sent to /login");
+	$.post("/login", user);
 }
+
+// function signUp() {
+// 	var user = {
+// 		"email": "",
+// 		"password": "",
+// 		"phoneNumber": "",
+// 		"locations": {}
+// 	}
+
+// 	// var passwordHash = require('./node_modules/password-hash');
+//     // var hashedPassword = passwordHash.generate('password123');
+//     // console.log(hashedPassword); // sha1$3I7HRwy7$cbfdac6008f9cab4083784cbd1874f76618d2a97
+
+// 	//SARAH TODO: hash the password
+// 	user.email = $("#email").val();
+// 	user.password = $("#password").val();
+// 	user.phoneNumber = $("#phoneNumber").val();
+
+// 	// console.log(JSON.stringify(user));
+
+// 	createCookie("SARAuser",JSON.stringify(user),7);
+
+// 	//direct user to /signup/
+// 	window.location = "/signupLoc";
+// }
 
 </script>
 
