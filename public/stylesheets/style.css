@@ -38,6 +38,10 @@ a:hover {
 	left:0;
 }
 
+#white-text {
+	color:white;
+}
+
 .section {
 	margin:0;
 	text-align:left;
@@ -59,6 +63,10 @@ a:hover {
 
 .section .content {
 	padding:1em 4em;
+}
+
+#myaccountcontent{
+	padding:0em 4em;
 }
 
 .arrow-down {
@@ -438,7 +446,7 @@ p.block {
 }
 
 #location {
-	float:right;
+	float:left;
 	width:50%;
 }
 
