@@ -26,9 +26,7 @@ exports.create = function(req, res){
 		'\n   hashed password: ' + user.hashedPassword + ' }');
 	
 	user.save().success(function(){
-		res.writeHead(302, {
-			'Location': 'public/myaccount.html'
-		});
+		return res.redirect("/myaccount");
 	}).error(function(err){
 		res.sendfile('public/signup.html');
 	});
