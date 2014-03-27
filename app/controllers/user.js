@@ -1,7 +1,6 @@
 var passport = require('passport');
 var db       = require('../../config/sequelize');
 
-
 // login. 
 // If successful, go to the myaccount page. 
 // Otherwise go back to the index.
@@ -26,13 +25,7 @@ exports.create = function(req, res){
 		'\n   hashed password: ' + user.hashedPassword + ' }');
 	
 	user.save().success(function(){
-		res.redirect("/myaccount");
-		// return res.redirect("/myaccount");
-
-		// res.writeHead(302, {
-		// 	'Location': 'public/myaccount.html'
-		// });
-		// return res.redirect("/myaccount");
+		res.sendFile("public/myaccount.html");
 	}).error(function(err){
 		res.sendfile('public/signup.html');
 	});

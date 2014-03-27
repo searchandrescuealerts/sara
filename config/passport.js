@@ -30,7 +30,7 @@ passport.use(new LocalStrategy({
   function(email, password, done) {
     // From: PassportJS-Authentication on GitHub
     console.log("Starting the validation function");
-    // this.findOne({email : email}, function(err, user){
+    // db.User.find({email : email}, function(err, user){
       
     //   if(err) {
     //     // console.log("There was an error finding the person.");
@@ -60,21 +60,23 @@ passport.use(new LocalStrategy({
     //END FROM PASSPORTJS-AUTHENTICATION
     
     // From: Jeff's Sequelize starter START
-    db.User.find({ where: { email: email }}).success(function(user) {
-      if (!user) {
-        done(null, false, { message: 'Unknown user' });
-      } else if (!user.authenticate(password)) {
-        done(null, false, { message: 'Invalid password'});
-      } else {
-        console.log('Login (local) : { id: ' + user.id + ', username: ' + user.username + ' }');
-        done(null, user);
-      }
-    }).error(function(err){
-      done(err);
-    });
+    // db.User.find({ where: { email: email }}).success(function(user) {
+    //   if (!user) {
+    //     console.log("Unknown User");
+    //     done(null, false, { message: 'Unknown user' });
+    //   } else if (!user.authenticate(password)) {
+    //     console.log("Invalid Password");
+    //     done(null, false, { message: 'Invalid password'});
+    //   } else {
+    //     console.log('Login (local) : { id: ' + user.id + ', username: ' + user.username + ' }');
+    //     done(null, user);
+    //   }
+    // }).error(function(err){
+    //   console.log("An error was thrown");
+    //   done(err);
+    // });
     //END FROM SEQUELIZE STARTER
   }
 ));
-
 
 module.exports = passport;

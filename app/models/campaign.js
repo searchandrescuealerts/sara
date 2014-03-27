@@ -37,11 +37,11 @@ module.exports = function(sequelize, DataTypes){
 
 		},
 			associate: function(models){
-				console.log('starting Missing_Person associations for Campaign');
+				// console.log('starting Missing_Person associations for Campaign');
 				Campaign.hasMany(models.Missing_Person);
-				console.log('starting Message associations for Campaign');
+				// console.log('starting Message associations for Campaign');
 				Campaign.hasMany(models.Message);
-				console.log('starting Officer associations for Campaign');
+				// console.log('starting Officer associations for Campaign');
 				Campaign.belongsTo(models.Officer);
 			}
 		}
