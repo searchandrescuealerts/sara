@@ -6,16 +6,16 @@ var db       = require('../../config/sequelize');
 // If successful, go to the myaccount page. 
 // Otherwise go back to the index.
 exports.login = function(req, res){
-	console.log(req.body + " was sent to user.js >> login");
+	console.log(req.body.email + " & " + req.body.password + " was sent to user.js >> login");
 	passport.authenticate('local', {
 		successRedirect : "/myaccount",
 		failureRedirect : "/"
 	})
 };
 
-//
+//Create a new user
 exports.create = function(req, res){
-	console.log('user reqest body: \n ' + req.body);
+	console.log('user reqest body: \n ' + req.body.email + " " + req.body.password + " " + req.body.phone);
 
 	var user = db.User.build(req.body);
 	user.salt = user.makeSalt();

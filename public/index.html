@@ -49,8 +49,8 @@
 		<!-- <div class="content"> -->
 			<div id="account">
 				<form action="login/" method="post">
-					<input placeholder="email" type="text" name="username"> 
-					<input placeholder="password" type="password" name="password">
+					<input placeholder="email" type="text" id="emailHeader" name="email" />
+					<input placeholder="password" type="password" id="passwordHeader" name="password" />
 					<span class="button orangeBG whiteBorder" onclick="login()">Log In</span> or <a href="/signup">Sign Up</a>
 				</form>
 			</div>
@@ -66,8 +66,8 @@
 			<h2>to help find the missing</h2>
 			
 			<form action="login/" method="post">
-				<input placeholder="email" type="text" name="username" /> <br />
-				<input placeholder="password" type="password" name="password" /> <br />
+				<input placeholder="email" type="text" id="email" name="email" /> <br />
+				<input placeholder="password" type="password" id="password" name="password" /> <br />
 				<span class="button orangeBG whiteBorder" onclick="login()">Log In</span> or <a href="/signup">Sign Up</a>
 			</form>
 <!-- 
@@ -202,13 +202,19 @@ $(document).ready(function() {
 function login() {
 	var user = {
 		"email": "",
-		"password": "",
+		"password": ""
 	}
 
 	user.email = $("#email").val();
 	user.password = $("#password").val();
 
-	console.log(user + "was sent to /login");
+	//or get the values from the header if these values of blank
+	if (!user.email && !user.password) {
+		user.email = $("#emailHeader").val();
+		user.password = $("#passwordHeader").val();
+	}
+
+	console.log(user.email + " & " + user.password + " was sent to /login");
 	$.post("/login", user);
 }
 
