@@ -23,11 +23,15 @@ passport.deserializeUser(function(id, done) {
 });
 
 //Use local strategy
-passport.use(new LocalStrategy(
+console.log('passportjs local strategy');
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'hashedPassword'
+  },
   function(email, password, done) {
     // From: PassportJS-Authentication on GitHub
     console.log("Starting the validation function");
-    db.User.findOne({email : email}, function(err, user){
+    db.User.find({email : email}, function(err, user){
       
       if(err) {
         console.log("There was an error finding the person: " + err);
@@ -37,7 +41,7 @@ passport.use(new LocalStrategy(
         console.log("There was no user");
         return done(null, false, { message : 'Incorrect email.' });
       }
-      User.encryptPassword(password, user.userSalt, function(err, hash){
+      user.authenticate(password, user.userSalt, function(err, hash){
         if(err) {
           console.log("There was an error hashing the password");
           return done(err);

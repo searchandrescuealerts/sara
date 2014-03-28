@@ -40,12 +40,12 @@ fs.readdirSync(config.modelsDir)
 console.log('RIGHT BEFORE SEQUELIZE.SYNC');
 
 // To drop and recreate every time
-// sequelize.sync({force: true}).success(function() {
-//     console.log("Models Synced");
-// }).error(function(err) {
-// 	console.log(err);
-//     console.log("Error: OOOH NOOOES");
-// });
+sequelize.sync({force: false}).success(function() {
+    console.log("Models Synced");
+}).error(function(err) {
+	console.log(err);
+    console.log("Error: OOOH NOOOES");
+});
 
 // assign the sequelize variables to the db object and returning the db
 module.exports = _.extend({
