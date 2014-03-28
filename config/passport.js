@@ -40,7 +40,6 @@ passport.use(new LocalStrategy({
         console.log("There was no user");
         return done(null, false, { message : 'Incorrect email.' });
       }
-      console.log(user.authenticate(password));
       if(user.authenticate(password)){
           console.log("User authenticated");
           return done(null, user);
