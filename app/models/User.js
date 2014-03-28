@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes){
 					return this.salt = crypto.randomBytes(16).toString('base64');  
 				},
 				//for login
-				authenticate: function(plainText){
+				authenticate: function(plainText) {
 					return this.encryptPassword(plainText, this.salt) === this.password;
 				},
 				//for signing up
