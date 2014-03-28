@@ -39,7 +39,8 @@ fs.readdirSync(config.modelsDir)
 // WARNING: this will DROP your database every time you re-run your application
 // console.log('RIGHT BEFORE SEQUELIZE.SYNC');
 
-// To drop and recreate every time
+//force false -- don't drop tables
+//force true -- do drop tables
 sequelize.sync({force: false}).success(function() {
     console.log("Models Synced");
 }).error(function(err) {
