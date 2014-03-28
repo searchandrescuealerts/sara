@@ -1,4 +1,4 @@
-var passport = require('passport');
+var passport = require('../../config/passport');
 var db       = require('../../config/sequelize');
 
 // login. 

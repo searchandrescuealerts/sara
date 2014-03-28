@@ -6,8 +6,8 @@ module.exports = function(sequelize, DataTypes){
 		{
 			// user_id
 			email: DataTypes.STRING,  
-			hashedPassword: DataTypes.STRING, 
-			userSalt: DataTypes.STRING,
+			password: DataTypes.STRING, 
+			salt: DataTypes.STRING,
 			applied: DataTypes.BOOLEAN,
 			approved: DataTypes.BOOLEAN,
 			given_name: DataTypes.STRING,
@@ -26,10 +26,10 @@ module.exports = function(sequelize, DataTypes){
 			tableName: 'USER',
 			instanceMethods: {
 				makeSalt: function() {
-					return this.userSalt = crypto.randomBytes(16).toString('base64');  
+					return this.salt = crypto.randomBytes(16).toString('base64');  
 				},
 				authenticate: function(plainText){
-					return this.encryptPassword(plainText, this.salt) === this.hashedPassword;
+					return this.encryptPassword(plainText, this.salt) === this.password;
 				},
 				encryptPassword: function(password, salt) {
 					if (!password || !salt) return '';
