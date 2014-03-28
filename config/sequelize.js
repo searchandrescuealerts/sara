@@ -6,7 +6,7 @@ var config    = require('./config');
 var db        = {};
 var _         = require('lodash');
 
-console.log('Initializing Sequelize');
+// console.log('Initializing Sequelize');
 
 // create instance of sequelize
 var sequelize = new Sequelize(config.db.database, config.db.username, config.db.password, {
@@ -15,7 +15,7 @@ var sequelize = new Sequelize(config.db.database, config.db.username, config.db.
 	// storage: config.db.storage ANDY TODO: Where is this in sequelize-starter?
 });
 
-console.log(config.modelsDir);
+// console.log(config.modelsDir);
 // loop through all files in models directory ignoring hidden files and this file
 fs.readdirSync(config.modelsDir)
  	.filter(function(file){
@@ -23,7 +23,7 @@ fs.readdirSync(config.modelsDir)
  	})
  	// import model files and save model names
  	.forEach(function(file){
- 		console.log('Loading model file: ' + file);
+ 		// console.log('Loading model file: ' + file);
  		var model = sequelize.import(path.join(config.modelsDir, file));
  		db[model.name] = model;
  	});
@@ -37,7 +37,7 @@ fs.readdirSync(config.modelsDir)
 
 // Synchronizing any model changes with the database
 // WARNING: this will DROP your database every time you re-run your application
-console.log('RIGHT BEFORE SEQUELIZE.SYNC');
+// console.log('RIGHT BEFORE SEQUELIZE.SYNC');
 
 // To drop and recreate every time
 sequelize.sync({force: false}).success(function() {
@@ -53,4 +53,4 @@ module.exports = _.extend({
 	Sequelize: Sequelize
 }, db);
 
-console.log('Connection variable created...');
+// console.log('Connection variable created...');

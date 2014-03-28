@@ -2,7 +2,7 @@ var express = require('express');
 var config  = require('./config');
 
 module.exports = function(app, passport) {
-	console.log('Initializing Express');
+	// console.log('Initializing Express');
 
 	app.set('showStackError', true);
 
@@ -27,6 +27,6 @@ module.exports = function(app, passport) {
 
 	    app.use(app.router);
 
-	   console.log(app.get('views'));
+	   // console.log(app.get('views'));
 	});
 }
