@@ -30,6 +30,7 @@ passport.use(new LocalStrategy({
   function(email, password, done) {
     // From: PassportJS-Authentication on GitHub
     console.log("Starting the validation function");
+
     db.User.find({ where: { email : email }}).success(function(err, user){
       if(user){ 
         console.log(user); 
@@ -46,18 +47,18 @@ passport.use(new LocalStrategy({
       }
       user.authenticate(password, user.salt, function(err, hash){
         if(err) {
-          console.log("There was an error hashing the password");
+          console.log("There was an error finding the person: " + err);
           return done(err);
         }
         if(hash === user.password) {
           console.log("User authenticated");
           return done(null, user);
-        }
-        done(null, false, {
-          // console.log("Incorrect password");
-          message : 'Incorrect password'
+          }
+          done(null, false, {
+            // console.log("Incorrect password");
+            message : 'Incorrect password'
+          });
         });
-      });
     });
   }
 ));

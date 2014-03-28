@@ -28,9 +28,11 @@ module.exports = function(sequelize, DataTypes){
 				makeSalt: function() {
 					return this.salt = crypto.randomBytes(16).toString('base64');  
 				},
+				//for login
 				authenticate: function(plainText){
 					return this.encryptPassword(plainText, this.salt) === this.password;
 				},
+				//for signing up
 				encryptPassword: function(password, salt) {
 					if (!password || !salt) return '';
 					salt = new Buffer(salt, 'base64');
