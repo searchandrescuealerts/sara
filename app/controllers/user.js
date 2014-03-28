@@ -18,14 +18,14 @@ exports.create = function(req, res){
 
 	var user = db.User.build(req.body);
 	user.salt = user.makeSalt();
-	user.hashedPassword = user.encryptPassword(req.body.password, user.salt);
+	user.password = user.encryptPassword(req.body.password, user.salt);
 	console.log('New User (local) : { id: ' + user.id + 
 		'\n   email: ' + user.email + 
 		'\n   phone: ' + user.phone +
-		'\n   hashed password: ' + user.hashedPassword + ' }');
+		'\n   hashed password: ' + user.password + ' }');
 	
 	user.save().success(function(){
-		res.sendFile("public/myaccount.html");
+		res.sendfile("public/myaccount.html");
 	}).error(function(err){
 		res.sendfile('public/signup.html');
 	});
