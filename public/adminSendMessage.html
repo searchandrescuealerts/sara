@@ -6,18 +6,37 @@
 		<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA3mC_xSILKVBUECReJLJbyoX9L3PQ_ApY&sensor=false"></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
 		<link rel="stylesheet" href="/stylesheets/admin.css" type="text/css">
-
 		<script>
+		/* 
+		 * This gets the campaign ID from the URL, then uses
+		 * that to get the whole campaign object
+		 */
+
+		//NOTE: window.location.href is better than document.URL because it updates after a browser redirect
+		var parsedURL = window.location.href.split("/");
+		var campaignID = parsedURL[parsedURL.length-1];
+		if (!campaignID) { //this condition is for if an ending "/" is in the URL
+			campaignID = parsedURL[parsedURL.length-2];
+		}
+		
+		var getURL = '../api/v1/campaign/' + campaignID;
+		// console.log(getURL);
+		var campaign;
+		$.get(getURL).done(function(data) { //get the campaign information
+			console.log("adminSendMessage.html: response: " + data);
+			campaign = data;
+		
+
 		/*
-		 * Google Maps API
+		 * Google Maps Stuff, still in the Get call
 		 */
 
 		var MILES_TO_METERS_CONVERSION_RATIO = 1609.34;
 		var map;
 		var marker;
 		var circle;
-		// var browserLat = $scope.campaign.lat; //campaign 01 lat
-		// var browserLong = $scope.campaign.lng; //campaign 01 Long
+		var browserLat = campaign.lat; 
+		var browserLong = campaign.lon;
 		var zoomLevel = 12; 
 
 		function initialize() {
@@ -31,7 +50,6 @@
 			map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
 			placeMarker();
-
 		}
 
 		function refreshMap() {
@@ -108,6 +126,8 @@
 			browserLong = position.coords.longitude;
 			zoomLevel = 7; //Also update the zoom level to something more appropriate...
 		}
+
+	});//end of get request.done
 		</script>
 
 </head>
@@ -149,13 +169,13 @@
 		</span> -->
 		<br />
 		
-		<!-- <h2>2. Select the message's location</h2>
+		<h2>2. Select the message's location</h2>
 		<p>By default, the pin is placed pin is placed at the center of the campaign. But you may move the pin according to the current situation.</p>
 
-		<div id="googleMap" style="width:300px;height:300px;z-index:1000"></div> -->
+		<div id="googleMap" style="width:300px;height:300px;z-index:1000"></div>
 
 		<br>
-		<p><span class="button" id="review">2. Review the recipients</span></p>
+		<p><span class="button" id="review">3. Review the recipients</span></p>
 
 		<h3>2. List of message recipients</h3>
 		<!-- <label><input type="checkbox" checked> <span id="name">Andy Heaton</span> <span id="phone">385-204-5557</span></label> -->
@@ -170,25 +190,7 @@
 
 <script src="/javascripts/angular.js"></script>
 <script src="/javascripts/angular-controller.js"></script>
-<script>
-/* 
- * This gets the campaign ID from the URL, then uses
- * that to get the whole campaign object
- */
 
-//NOTE: window.location.href is better than document.URL because it updates after a browser redirect
-var parsedURL = window.location.href.split("/");
-var campaignID = parsedURL[parsedURL.length-1];
-if (!campaignID) { //this condition is for if an ending / is in the URL
-	campaignID = parsedURL[parsedURL.length-2];
-}
-// var getURL = './api/v1/campaign/' + campaignID; 
-// console.log(getURL);
-// $http.get(getURL).success(function(data) {
-// 	var campaign = data;
-// });
-
-</script>
 <script>
 /*
  * This script shows or hides the spanish message box based 

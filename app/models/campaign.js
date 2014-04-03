@@ -2,6 +2,7 @@ module.exports = function(sequelize, DataTypes){
 
 	var Campaign = sequelize.define('Campaign', 
 		{
+			id : DataTypes.STRING,
 			lat: {
 				type: DataTypes.FLOAT,
 				validate: {
