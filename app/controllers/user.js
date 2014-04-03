@@ -14,7 +14,8 @@ exports.login = function(req, res, next){
 
 //Create a new user
 exports.create = function(req, res){
-	console.log('user reqest body: \n ' + req.body.email + " " + req.body.password + " " + req.body.phone);
+	console.log('user reqest body: \n ' + req.body.email + " " + req.body.password + " " + req.body.phone + 
+		'\n ' + req.body.locations);
 
 	var user = db.User.build(req.body);
 	user.salt = user.makeSalt();
@@ -31,14 +32,9 @@ exports.create = function(req, res){
 	});
 };
 
-// GET user by email and password hash
-exports.getUser = function(req, res){
-
-};
-
 // PUT user approved to be first responder
 exports.approve = function(req, res){
-
+	
 };
 
 // PUT user apply to be first responder

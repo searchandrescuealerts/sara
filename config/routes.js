@@ -24,7 +24,6 @@ module.exports = function(app, passport, auth){
 	
 	// this comes from the signup form
 	app.post('/api/v1/user', 					user.create);
-	app.get ('/api/v1/user/:id', 				user.getUser);
 	app.put ('/api/v1/user/:id/approve',		user.approve);
 	app.put ('/api/v1/user/:id/apply', 			user.apply);
 
@@ -36,8 +35,8 @@ module.exports = function(app, passport, auth){
 	app.post('/api/v1/campaign', 				campaign.create);
 	app.get ('/api/v1/:leaid/campaign', 		campaign.getAll);
 	app.get ('/api/v1/:leaid/campaign/open', 	campaign.getAllOpen);
-	app.post('/api/v1/campaign/:id/message', 	campaign.sendMessage);
-	app.get ('/api/v1/campaign/:id/message', 	campaign.getAllMessages);
+	app.post('/api/v1/campaign/message/:id', 	campaign.sendMessage);
+	app.get ('/api/v1/campaign/message/:id', 	campaign.getAllMessages);
 
 	// Message routes
 	app.get ('/api/v1/message/:id', 			message.getMessage);

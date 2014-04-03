@@ -20,6 +20,7 @@
     "passport-twitter": "~1.0.2",
     "passport": "~0.2.0",
     "crypto": "0.0.3",
-    "async": "~0.2.10"
+    "async": "~0.2.10",
+    "twilio": "^1.6.0"
   }
 }
