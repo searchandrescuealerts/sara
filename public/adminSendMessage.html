@@ -16,8 +16,8 @@
 		var map;
 		var marker;
 		var circle;
-		var browserLat = $scope.campaign.lat; //campaign 01 lat
-		var browserLong = $scope.campaign.lng; //campaign 01 Long
+		// var browserLat = $scope.campaign.lat; //campaign 01 lat
+		// var browserLong = $scope.campaign.lng; //campaign 01 Long
 		var zoomLevel = 12; 
 
 		function initialize() {
@@ -141,24 +141,29 @@
 		<textarea id="enMessage" placeholder="Type the message here" rows="6" cols="40" maxlength="160" ng-trim="false" ng-model="message.enMessage"></textarea>
 		<span id="enCharCount">{{message.enMessage.length || 0}} / 160 characters</span><br />
 		
-		<input type="radio" name="language" value="english" id="enLang" checked>Send this message only in English<br />
+		<!-- <input type="radio" name="language" value="english" id="enLang" checked>Send this message only in English<br />
 		<input type="radio" name="language" value="alsoSpanish" id="esLang">Also send this message in Spanish to those who prefer Spanish messages<br />
 		<span id="esMessageOptions">
 			<textarea id="esMessage" rows="6" cols="40" placeholder="Escriba su mensaje Español" maxlength="160" ng-trim="false" ng-model="message.esMessage"></textarea>
 			<span id="esCharCount">{{message.esMessage.length || 0}} / 160 characters</span>
-		</span>
+		</span> -->
 		<br />
 		
-		<h2>2. Select the message's location</h2>
+		<!-- <h2>2. Select the message's location</h2>
 		<p>By default, the pin is placed pin is placed at the center of the campaign. But you may move the pin according to the current situation.</p>
 
-		<div id="googleMap" style="width:650px;height:500px;z-index:1000"></div>
+		<div id="googleMap" style="width:300px;height:300px;z-index:1000"></div> -->
 
 		<br>
-		<p><span class="button" id="submit">3. Review the recipients</span></p>
+		<p><span class="button" id="review">2. Review the recipients</span></p>
 
-		<h3>List of message recipients</h3>
-		The following people will all receive this message. You can filter this list as appropriate.
+		<h3>2. List of message recipients</h3>
+		<!-- <label><input type="checkbox" checked> <span id="name">Andy Heaton</span> <span id="phone">385-204-5557</span></label> -->
+		<label><input type="checkbox" checked> <span id="name">Sarah Lemmon</span> <span id="phone">303-478-7951</span></label>
+
+		<p>
+			3. <span class="button" id="submit" onclick="submit()">Send Message</span>
+		</p>
 
 	</div>
 </div>
@@ -199,6 +204,24 @@ $('#enLang').click(function() {
     $("#esMessageOptions").hide();
 });
 
+</script>
+
+<script>
+function submit() {
+	var messageJSON = {};
+	var message = $('#enMessage').val();
+	var to = $('#phone').html();
+	// console.log("to: " + to + " message: " + message);
+
+	//add objects to the JSON
+	messageJSON.message = message;
+	messageJSON.to = to;
+	// console.log(messageJSON);
+
+	//post it the API url
+	var APIURL = "/api/v1/campaign/message/" + campaignID;
+	$.post(APIURL, messageJSON) ;
+}
 </script>
 
 </body>

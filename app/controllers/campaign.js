@@ -20,12 +20,11 @@ exports.getAllOpen = function(req, res){
 };
 exports.sendMessage = function(req, res){
 	client.sendMessage({
-		// to: req.body.to,
-		// from: req.body.from,
-		// body: req.body.message
-		to: '+13852045557',
-		from: config.twilio.phone,
-		body: 'what is up home dawg g nation?'
+		to: req.body.to,
+		body: req.body.message,
+		// to: '+13852045557',
+		from: config.twilio.phone
+		// body: 'what is up home dawg g nation?'
 	}, function(err, responseData) {
 		if (!err) {  // "err" is an error received during the request, if any
 
