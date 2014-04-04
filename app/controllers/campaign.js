@@ -1,4 +1,5 @@
 var config 	  = require('../../config/config');
+var db       = require('../../config/sequelize');
 
 var client = require('twilio')(config.twilio.sid, config.twilio.auth);
 
@@ -7,7 +8,25 @@ exports.create = function(req, res){
 	console.log('create campaign request body: \n ');
 };
 exports.getCampaign = function(req, res){
+	// console.log("campaign.js: Inside the getCampaign function");
+	// console.log("campaign.js: req url: " + req.url);
+	
+	//get the ID from the URL
+	var parsedURL = req.url.split("/");
+	var campaignID = parsedURL[parsedURL.length-1];
+	if (!campaignID) { //this condition is for if an ending "/" is in the URL
+			campaignID = parsedURL[parsedURL.length-2];
+	}
+	console.log("campaign.js: campaignID: " + campaignID);
+	
+	//search
+	db.Campaign.find({ where: {id: campaignID} }).success(function(campaign) {
+		console.log("campaign.js: Found Campaign: " + campaign.id + " " + campaign.lat + " " + campaign.lon);
+		res.send(campaign);
+	});
 
+	//SARAH TODO: also find the associated missing people
+	//SARAH TODO: and the associated pictures
 };
 exports.archiveCampaign = function(req, res){
 
@@ -21,7 +40,7 @@ exports.getAllOpen = function(req, res){
 exports.sendMessage = function(req, res){
 	client.sendMessage({
 		to: req.body.to,
-		from: req.body.from,
+		from: config.twilio.phone,
 		body: req.body.message
 		// to: '303-478-7951',
 		// from: config.twilio.phone,
