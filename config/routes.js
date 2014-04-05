@@ -12,7 +12,7 @@ module.exports = function(app, passport, auth){
 
 	
 	app.get ('/signup',                			page.signup);
-	app.get ('/myaccount', 						page.myaccount);
+	app.get ('/myaccount/:id', 					page.myaccount);
 	app.get ('/',                      			page.index); // Home Route
 	app.get ('/signupLoc',             			page.signupLoc);
 	app.get ('/sendMessage', 		   			page.sendMessage);
@@ -24,11 +24,12 @@ module.exports = function(app, passport, auth){
 	
 	// this comes from the signup form
 	app.post('/api/v1/user', 					user.create);
+	app.get ('/api/v1/user',					user.getUser);
 	app.put ('/api/v1/user/:id/approve',		user.approve);
 	app.put ('/api/v1/user/:id/apply', 			user.apply);
 
 	// Officer routes
-	
+	app.get('/api/v1/officer/allActive',		officer.getAllActive);
 	// Campaign routes 
 	app.get ('/api/v1/campaign/:id', 			campaign.getCampaign);
 	app.put ('/api/v1/campaign/:id', 			campaign.archiveCampaign);

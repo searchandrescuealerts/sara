@@ -26,7 +26,11 @@ exports.create = function(req, res){
 		'\n   hashed password: ' + user.password + ' }');
 	
 	user.save().success(function(){
-		res.sendfile("public/myaccount.html");
+		res.userID = user.id;
+		console.log('in user.js: res.userID: ' + res.userID);
+		console.log('in user.js: user.id: ' + user.id);
+		console.log('in user.js, right before res.send(user), this is the user: ' + user);
+		res.send(user); 
 	}).error(function(err){
 		res.sendfile('public/signup.html');
 	});
@@ -40,4 +44,20 @@ exports.approve = function(req, res){
 // PUT user apply to be first responder
 exports.apply = function(req, res){
 
+};  
+
+exports.getUser = function(req, res){
+	//get the ID from the URL
+	var parsedURL = req.url.split("/");
+	var userID = parsedURL[parsedURL.length-1];
+	if (!userID) { //this condition is for if an ending "/" is in the URL
+			userID = parsedURL[parsedURL.length-2];
+	}
+	console.log("user.js: userID: " + userID);
+	
+	//search
+	db.User.find({ where: {id: userID} }).success(function(user) {
+		console.log("user.js: Found User: " + user.id + " " + user.given_name + " " + user.family_name);
+		res.send(user);
+	});
 };

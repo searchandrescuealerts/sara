@@ -38,16 +38,16 @@
 			<div id="basicInfo">
 				<h1 class="white-text">Basic Information</h1>
 				First Name<br />
-				<input type="text" /><br />
+				<input type="text" name="firstname"/><br />
 
 				Last Name<br />
-				<input type="text" /><br />
+				<input type="text" name="lastname"/><br />
 
 				Email<br />
-				<input type="text" /><br />
+				<input type="text" name="email"/><br />
 
 				Phone Number<br />
-				<input type="text" /><br />
+				<input type="text" name="phone"/><br />
 
 				<input type="checkbox">Change Password?</input>
 			</div>
@@ -95,7 +95,21 @@
 </div>
 
 </center>
-
+<script>
+	var parsedURL = window.location.href.split("/");
+	var userID = parsedURL[parsedURL.length-1];
+	if (!userID) { //this condition is for if an ending "/" is in the URL
+		userID = parsedURL[parsedURL.length-2];
+	}
+	
+	var getURL = '../api/v1/user/' + userID;
+	// console.log(getURL);
+	var user;
+	$.get(getURL).done(function(data) { //get the campaign information
+		console.log("adminSendMessage.html: response: " + data);
+		user = data;
+	}
+</script>
 </body>
 </html>
 

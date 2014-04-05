@@ -11,6 +11,7 @@ exports.signup = function(req, res){
 
 // GET myaccount page
 exports.myaccount = function(req, res){
+	console.log('in page.js --> exports.myaccount right before redirect');
 	return res.sendfile('public/myaccount.html');
 };
  

@@ -23,7 +23,7 @@ exports.getCampaign = function(req, res){
 	db.Campaign.find({ where: {id: campaignID} }).success(function(campaign) {
 		console.log("campaign.js: Found Campaign: " + campaign.id + " " + campaign.lat + " " + campaign.lon);
 		res.send(campaign);
-	});
+	}); 
 
 	//SARAH TODO: also find the associated missing people
 	//SARAH TODO: and the associated pictures

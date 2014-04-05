@@ -93,6 +93,8 @@
 
 <script>
 
+var user;
+
 function signUp() {
 	var userJSON = {}
 	userJSON.email = document.getElementById('email').value;
@@ -114,9 +116,15 @@ function signUp() {
 	userJSON.locations.push(location);
 
 	//post the JSON object
-	$.post("../api/v1/user", userJSON);
+	$.post("../api/v1/user", userJSON).done(function(data){
+		console.log('in signup.html: done data: ' + data);
+		user = data;
+		console.log('in signup.html, in $.post("../api/v1/user"): /myaccount/' + user.id);
+		// $.get("/myaccount/" + user.id);
+		window.location.href = '/myaccount/' + user.id;
+	});
 	
-	console.log(userJSON);
+	console.log('in signup.html: this is the userJSON: ' + userJSON);
 
 	// SARAH TODO: if successful...
 	// redirect user to a thank you page
