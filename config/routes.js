@@ -20,11 +20,16 @@ module.exports = function(app, passport, auth){
 
 	// User routes
 	// app.get ('/login', 							page.login);
-	app.post('/login',							user.login);
-	
+	//app.post('/login',							user.login);
+	app.post('/login',							passport.authenticate('local'),
+		function(req, res) {
+			console.log('in POST("/login") sending back authenticated user: ' + req.user);
+			res.send(req.user);
+		});
+
 	// this comes from the signup form
 	app.post('/api/v1/user', 					user.create);
-	app.get ('/api/v1/user',					user.getUser);
+	app.get ('/api/v1/user/:id',				user.getUser);
 	app.put ('/api/v1/user/:id/approve',		user.approve);
 	app.put ('/api/v1/user/:id/apply', 			user.apply);
 

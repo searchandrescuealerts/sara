@@ -198,7 +198,7 @@ $(document).ready(function() {
 <script href="./config/passport.js"></script>
 
 <script>
-
+var user;
 function login() {
 	var user = {
 		"email": "",
@@ -215,7 +215,11 @@ function login() {
 	}
 
 	// console.log(user.email + " & " + user.password + " was sent to /login");
-	$.post("/login", user);
+	$.post("/login", user).done(function(data){
+		console.log('inside post login done function');
+		user = data;
+		window.location.href = '/myaccount/' + user.id;
+	});
 }
 
 // function signUp() {
