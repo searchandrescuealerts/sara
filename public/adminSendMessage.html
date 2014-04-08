@@ -124,8 +124,8 @@ $.get('/api/v1/officer/allActive').done(function(data) {
 
 	allActive.forEach(function(volunteer) {
 		var row = '<tr><td><input type="checkbox" checked></td><td>';
-		row = row.concat(volunteer.email, '</td><td>', volunteer.phone, '</td><td>Yes</td></tr>');
-		console.log(row);
+		row = row.concat(volunteer.email, '</td><td><span class="phone">', volunteer.phone, '</span></td><td>Yes</td></tr>');
+		// console.log(row);
 
 		//add the row to the table
 		$('#volunteersTable').append(row);
@@ -135,18 +135,20 @@ $.get('/api/v1/officer/allActive').done(function(data) {
 //the submit function
 function submit() {
 	var messageJSON = {};
+
+	// get the message
 	var message = $('#enMessage').val();
-	var to = $('#phone').html();
-	// console.log("to: " + to + " message: " + message);
-
-	//add objects to the JSON
 	messageJSON.message = message;
-	messageJSON.to = to;
-	// console.log(messageJSON);
 
-	//post it the API url
+	// prepare the post URL
 	var APIURL = "/api/v1/campaign/message/" + campaignID;
-	$.post(APIURL, messageJSON) ;
+		
+	// get all the recipients
+	$('.phone').each(function() {
+		messageJSON.to = $(this).text();
+		// console.log(messageJSON);
+		$.post(APIURL, messageJSON);
+	});
 }
 </script>
 
