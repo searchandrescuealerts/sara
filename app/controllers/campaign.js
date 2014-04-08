@@ -42,9 +42,6 @@ exports.sendMessage = function(req, res){
 		to: req.body.to,
 		from: config.twilio.phone,
 		body: req.body.message
-		// to: '303-478-7951',
-		// from: config.twilio.phone,
-		// body: 'Consider the full power of Twilio to be unleashed!!'
 	}, function(err, responseData) {
 		if (!err) {  // "err" is an error received during the request, if any
 
@@ -59,6 +56,11 @@ exports.sendMessage = function(req, res){
 		}
 	});
 	res.send('Hello!');
+};
+// app.post('/api/v1/campaign/sendMessages'
+exports.sendMessages = function(req, res){
+	var users = req.body;
+	// for (var i = 0; i <)
 };
 exports.getAllMessages = function(req, res){
 

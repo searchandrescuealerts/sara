@@ -42,6 +42,7 @@ module.exports = function(app, passport, auth){
 	app.get ('/api/v1/:leaid/campaign', 		campaign.getAll);
 	app.get ('/api/v1/:leaid/campaign/open', 	campaign.getAllOpen);
 	app.post('/api/v1/campaign/message/:id', 	campaign.sendMessage);
+	app.post('/api/v1/campaign/sendMessages', 	campaign.sendMessages);
 	app.get ('/api/v1/campaign/message/:id', 	campaign.getAllMessages);
 
 	// Message routes
