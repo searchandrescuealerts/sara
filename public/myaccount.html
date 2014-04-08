@@ -95,10 +95,10 @@
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
 		<script type="text/javascript" src="/javascripts/jquery.cycle.all.2.74.js"></script>
 		<script>
-			console.log('hello!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
 			var parsedURL = window.location.href.split("/");
 			console.log("this is the parsedURL: " + parsedURL);
 			var userID = parsedURL[parsedURL.length-1];
+			console.log('user id freshly snipped: ' + userID);
 			if (!userID) { //this condition is for if an ending "/" is in the URL
 				userID = parsedURL[parsedURL.length-2];
 			}
