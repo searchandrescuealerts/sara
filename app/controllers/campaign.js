@@ -38,6 +38,7 @@ exports.getAllOpen = function(req, res){
 
 };
 exports.sendMessage = function(req, res){
+	console.log("campaign.js: Sending Message...");
 	client.sendMessage({
 		to: req.body.to,
 		from: config.twilio.phone,

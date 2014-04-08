@@ -79,7 +79,8 @@ function drawCircle(markerInput) {
 		fillColor: '#013ca6',
 		fillOpacity: .2,
 		strokeColor: '#013ca6',
-		strokeWeight: 2
+		strokeWeight: 2,
+		editable:true
 	});
 	// Add circle overlay and bind to marker
 	circle.bindTo('center', markerInput, 'position'); //add the new circle to the map
