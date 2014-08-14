@@ -1,0 +1,383 @@
+
+body {
+	font-family:'Nunito', sans-serif;
+	font-weight:300;
+	font-size:14pt;
+	color: #A39770;
+	margin:0;
+	/*background-color:#1d82d1;*/
+	background-color:#FFFFFF;
+}
+
+h1, h2, h3, h4 {
+	font-family:'Nunito', sans-serif;
+	font-weight:300;
+}
+
+a {
+	color:inherit;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
+small {
+	font-size:.75em;
+}
+
+::selection {
+	background-color:rgba(246,102,44,1);
+	color:#FFFFFF;
+}
+
+/*==========================================================================*/
+/*								SECTION CONTENT 							*/
+/*==========================================================================*/
+#main {
+	color:#2E2E2D;
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+	position:relative;
+	top:0;
+	left:0;
+}
+
+.white-text {
+	color:white;
+}
+
+.section {
+	margin:0;
+	text-align:left;
+	z-index:5;
+	padding: 2em 0;
+}
+
+.narrow {
+	width:780px;
+	background-color:#FFFFFF;
+}
+
+.wide {
+	width:100%;
+}
+
+.section .content {
+	padding:0 7vw;
+}
+
+/*==========================================================================*/
+/*								WHITE SECTION 								*/
+/*==========================================================================*/
+
+.white h1 {
+	color:#000000;
+}
+
+/*==========================================================================*/
+/*						Inverted Blue SECTION 								*/
+/*==========================================================================*/
+
+.inverted {
+	background-color:#1d82d1;
+	color:#FFFFFF;
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		right bottom,
+		color-stop(0.5, #3E93D4),
+		color-stop(1, #1D83D1)
+	);
+	background-image: -o-linear-gradient(right bottom, #3E93D4 50%, #1D83D1 100%);
+	background-image: -moz-linear-gradient(right bottom, #3E93D4 50%, #1D83D1 100%);
+	background-image: -webkit-linear-gradient(right bottom, #3E93D4 50%, #1D83D1 100%);
+	background-image: -ms-linear-gradient(right bottom, #3E93D4 50%, #1D83D1 100%);
+	background-image: linear-gradient(to right bottom, #3E93D4 50%, #1D83D1 100%);
+
+}
+
+.inverted h1 {
+	color:#FFFFFF;
+}
+
+/*==========================================================================*/
+/*								BLUE SECTION 								*/
+/*==========================================================================*/
+
+.blue h1 {
+	color:#1d82d1;
+}
+
+#about {
+	padding-top:0 !important;
+}
+
+/*==========================================================================*/
+/*								CIRCLE STYLE 								*/
+/*==========================================================================*/
+
+.circle {
+	border-radius: 50%;
+	width: 1.5em;
+	height: 1.5em;
+	float:left;
+	font-size:18pt;
+	border-size:.1em;
+	border-style:solid;
+	text-align:center;
+	vertical-align:middle;
+	margin-right:1em;
+	margin-bottom:1em;
+	box-shadow: .25em .25em .5em #000000;
+	opacity:1;
+	background-color:#FFFFFF;
+	color:#000000;
+}
+
+.circleOrangeOpaque{ 
+	border-color:#FFFFFF;
+	background-color:#f6662c;
+	color:#FFFFFF;
+}
+
+.circleBlue{ 
+	border-color:#1d82d1;
+}
+
+p.block {
+	clear:both;
+}
+
+/*==========================================================================*/
+/*								HEADER CONTENT 								*/
+/*==========================================================================*/
+.logo {
+	width:300px;
+	padding-left:4em;
+}
+
+#header {
+	background-color:#FFFFFF;
+	height:25px;
+	padding-top:.5em;
+	padding-bottom:.5em;
+}
+
+#header #account {
+	padding-right:4em;
+	float:right;
+}
+
+/*==========================================================================*/
+/*								ROTATING BANNER								*/
+/*==========================================================================*/
+
+#rotatingBanner {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	z-index:-9999;
+}
+
+#rotatingBanner img.rotateImg {
+    width: 100%;
+    height: 45vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index:-9999;
+}
+
+/*==========================================================================*/
+/*								SIGNUP CONTENT 								*/
+/*==========================================================================*/
+#banner {
+	height:40vw;
+	font-size:8pt;
+	position:relative; /*this is the magic that makes the inclusive divs layer appropriately*/
+	padding-bottom:0;
+}
+
+#banner .content, .bannerWords {
+	position:absolute;
+	left:0;
+	z-index:20;
+	color:#FFFFFF;
+	text-shadow:2px 2px 2px #000000;
+	font-size:12pt;
+}
+
+.bannerWords {
+	width:95%;
+	bottom:0;
+	right:3em;
+	text-align:right;
+	padding-bottom:0;
+	padding-right:3vw;
+}
+
+input[type=text], input[type=password], textarea {
+	border:1px solid #333333;
+	background-color:rgba(255,255,255,.75);
+	border-radius:.5em;
+	margin-bottom:1em;
+	width:90%;
+	max-width:400px;
+	box-shadow:2px 2px 2px rgba(0,0,0,.50);
+	color:#000000;
+	font-size:14pt;
+	padding:.5em .75em;
+	font-weight:700;
+}
+
+.to_edit {
+	background-image: url('/images/admin/edit.png');
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+
+.to_save {
+	background-image: url('/images/admin/ok_2.png');
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+
+.signupForm input[type=submit] {
+	/*background-color:#FF8500;*/
+	background-color:#f6662c;
+	color:#FFFFFF;
+	font-size:18pt;
+	/*border:1px solid #333333;*/
+	border:1px solid #FFFFFF;
+	/*border:0;*/
+	border-radius:.5em;
+	padding:0em .25em;
+	font-family:'Nunito', sans-serif;
+	font-weight:300;
+	/*box-shadow:2px 2px 2px #333333;*/
+}
+
+.required {
+	color:red;
+	font-weight:bold;
+}
+
+.button {
+	color:#FFFFFF;
+	font-size:16pt;
+	border-width:1px;
+	border-style:solid;
+	border-radius:.5em;
+	padding:0em .25em;
+	font-family:'Nunito', sans-serif;
+	font-weight:300;
+	text-shadow:0px 0px 0px #000000;
+}
+
+.orangeBG {
+	background-color:#f6662c;
+}
+
+.blueBG {
+	background-color:#1d82d1;
+}
+
+.grayBG {
+	background-color:#333333;
+}
+
+.blackBorder {
+	border-color:#000000;
+}
+
+.whiteBorder {
+	border-color:#FFFFFF;
+}
+
+.blackText {
+	color:#000000;
+}
+
+.button:hover{
+	text-decoration: none;
+	cursor:hand;
+}
+
+/*==========================================================================*/
+/*								SPLIT CONTENT 								*/
+/*==========================================================================*/
+
+.left {
+	width:48%;
+	margin:0;
+	padding-right:.5em;
+	float:left;
+}
+
+.right {
+	width:48%;
+	margin:0;
+	padding-left:.5em;
+	float:right;
+}
+
+
+/*==========================================================================*/
+/*								HOW TO SECTION 								*/
+/*==========================================================================*/
+
+.step {
+	width:31%;
+	padding-right:1em;
+	float:left;
+}
+
+.step h2 {
+	font-family:'Baumans', sans-serif;
+	font-size:20pt;
+	color:#9ac0dc;
+	text-transform:uppercase;
+	margin:0;
+}
+
+.step h3 {
+	font-family:'Baumans', sans-serif;
+	font-size:18pt;
+	color:#FFFFFF;
+	margin:0;
+}
+
+.step p {
+	text-align:left;
+}
+
+.step img {
+	width:100px;
+	height:100px;
+	margin-bottom:1em;
+}
+
+/*==========================================================================*/
+/*								FOOTER CONTENT 								*/
+/*==========================================================================*/
+#footer {
+	width:100%;
+	margin:0;
+	background-color:#FFFFFF;
+	color:#3F3F3F;
+	vertical-align:top;
+	text-align: center;
+	float:left;
+	font-size:.75em;
+}
+
+#footer ul li{
+	display:inline;
+	padding-right:2em;
+}

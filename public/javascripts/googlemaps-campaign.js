@@ -30,11 +30,6 @@ function initialize() {
 		map.setCenter(united_states);
 		map.setZoom(united_states_zoom);
 	}
-
-	//on click listener - when the map is clicked, add another marker
-	// google.maps.event.addListener(map, 'click', function(event) {
-	// 	placeMarker(event.latLng);
-	// });
 }
 
 //https://developers.google.com/maps/articles/geolocation
@@ -56,35 +51,21 @@ function placeMarker(location) {
 		map: map
 	});
 
-	drawCircle(marker);
-
 	marker.setMap(map);
-}
-
-function drawCircle(markerInput) {
-	//if the marker doesn't exist, set it to the global marker variable
-	if (!markerInput) {
-		markerInput = marker;
-	}
-
-	//remove any previous circle from this same area
-	if (circle) {
-		circle.setMap(null); 
-	}
-
-	circle = new google.maps.Circle({
-		map: map,
-		radius: initialRadius,
-		fillColor: '#013ca6',
-		fillOpacity: .2,
-		strokeColor: '#013ca6',
-		strokeWeight: 2,
-		editable:true
-	});
-	
-	// Add circle overlay and bind to marker
-	circle.bindTo('center', markerInput, 'position'); //add the new circle to the map
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
+function dropPinAtAddress() {
+	//get the address from the text field
+	var address = $('#address').value();
+
+	//sent to the URL
+	var URL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyA3mC_xSILKVBUECReJLJbyoX9L3PQ_ApY"
+
+	//drill down to the Lat / Long
+	var location = results.geometry.location;
+
+	//drop Pin at that address
+	placeMarker(location);
+}

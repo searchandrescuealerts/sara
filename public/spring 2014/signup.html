@@ -1,0 +1,137 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Search and Rescue Alerts</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Exo+2:400,300,200,500' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA3mC_xSILKVBUECReJLJbyoX9L3PQ_ApY&sensor=false"></script>
+	<script src="/javascripts/googlemaps.js" rel="javascript" type="text/javascript"></script>
+</head>
+<body>
+
+<div id="rotatingBanner">	
+	<img src="/images/bigBanner/4.jpg" class="rotateImg"/>
+</div>
+
+<center>
+<div id="main">
+	<div id="header" class="white wide section">
+		<!-- <div class="content"> -->
+			<div id="account">
+				<a href="javascript:void(0)" class="button orangeBG blackBorder"><span id="signupButton">Sign Up!</span></a> or <a href="javascript:void(0)">Log In</a>
+			</div>
+			<img src="/images/logo/1-logo-long-horizontal.png" class="logo"/>
+		<!-- </div> -->
+	</div>
+	<center>
+
+	<div id="subpage_spacing" class="wide section"></div>
+
+	<div class="blue narrow section">
+		<div class="content">
+
+			<h1>Basic Information</h1>
+			Please provide this basic information. We will not sell your information. Your email address will become your username when you log back in. 
+
+			<div class="signupForm">
+				<p>
+					<small>Email</small><br />
+					<input placeholder="e.g. you@gmail.com" type="text" name="email" id="email"/>
+				</p>
+
+				<p>
+					<small>Phone Number</small><br />
+					<input placeholder="e.g. 8015555555" type="text" name="phoneNumber" id="phoneNumber"/>
+				</p>
+
+				<p>
+					<small>Password</small><br />
+					<input placeholder="" type="password" name="password" id="password"/>
+				</p>
+
+			</div>
+
+			<h1>Alert Locations</h1>
+			<p>
+				Drag the dropped pin to your central location. You will receive messages for any alert that is within your blue radius. 
+			</p>
+
+			<p>
+				<span id="dropPin" class="button orangeBG blackBorder" onclick="placeMarker()">Drop a pin at the center of this map</span>
+			</p>
+
+			<center>
+			<div id="googleMap" style="width:100%;height:500px;z-index:1000"></div>
+			</center>
+
+			<p style="float:left;">
+				Search Radius: <input type="text" size="3" value="10" id="radius" />miles &nbsp; 
+				<span id="updateRadius" class="button orangeBG blackBorder" onclick="drawCircle()">Update Radius</span>
+			</p>
+			<p style="float:right;">
+				<!-- <span class="button blackBorder grayBG">Save and add another location</span> -->
+				<span class="button blackBorder blueBG" onclick="signUp()">Save and Finish</span>
+			</p>
+
+		</div>
+	</div>
+
+	<div id="footer" class="wide gray section">
+	<p>&copy; Search and Rescue Alert, LLC 2014</p>
+	</div>
+
+</div>
+
+</center>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.cycle.all.2.74.js"></script>
+<script type="text/javascript" src="/javascripts/cookies.js"></script>
+<script src="/javascripts/angular.js"></script>
+
+<script>
+
+var user;
+
+function signUp() {
+	var userJSON = {}
+	userJSON.email = document.getElementById('email').value;
+	userJSON.password = document.getElementById('password').value;
+	userJSON.phone = document.getElementById('phoneNumber').value;
+	userJSON.locations = [];
+
+	var location = {
+		"lat":0,
+		"lng":0,
+		"radius":0
+	};
+
+	location.lat = marker.getPosition().lat();
+	location.lng = marker.getPosition().lng();
+	location.radius = circle.getRadius();
+
+	//add the location to the userJSON object
+	userJSON.locations.push(location);
+
+	//post the JSON object
+	$.post("../api/v1/user", userJSON).done(function(data){
+		console.log('in signup.html: done data: ' + data);
+		user = data;
+		console.log('in signup.html, in $.post("../api/v1/user"): /myaccount/' + user.id);
+		// $.get("/myaccount/" + user.id);
+		window.location.href = '/myaccount/' + user.id;
+	});
+	
+	console.log('in signup.html: this is the userJSON: ' + userJSON);
+
+	// SARAH TODO: if successful...
+	// redirect user to a thank you page
+	// window.location = "/";
+
+}
+</script>
+
+</body>
+</html>

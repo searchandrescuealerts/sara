@@ -1,0 +1,109 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Search and Rescue Alerts - New Campaign</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style2.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Exo+2:400,300,200,500' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA3mC_xSILKVBUECReJLJbyoX9L3PQ_ApY&sensor=false"></script>
+	<script src="/javascripts/googlemaps-campaign.js" rel="javascript" type="text/javascript"></script>
+</head>
+<body>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
+<script type="text/javascript" src="javascripts/jquery.cycle.all.2.74.js"></script>
+<script type="text/javascript" src="javascripts/cookies.js"></script>
+
+<center>
+<div id="main">
+	<div id="header" class="white wide section">
+		<div id="account">
+			<span class="button orangeBG blackBorder" onclick="login()">Log In</span> or <a href="/signup">Sign Up</a>
+		</div>
+		<img src="/images/logo/1-logo-long-horizontal.png" class="logo"/>
+	</div>
+	<center>
+
+	<div class="inverted wide section">
+		<div class="content">
+
+			<h1>Missing Person</h1>
+			
+			<div class="left">
+				<p>
+					First Name <span class="required">*</span><br />
+					<input placeholder="First Name" type="text" name="firstname" id="firstname"/>
+				</p>
+
+				<p>
+					Last Name <span class="required">*</span><br />
+					<input placeholder="Last Name" type="text" name="lastname" id="lastname"/>
+				</p>
+
+				<p>
+					Age<br />
+					<input placeholder="10" type="password" name="password" id="password"/>
+				</p>
+
+				<p>
+					Gender<br />
+					<input placeholder="Male" type="password" name="password2" id="password2"/>
+				</p>
+
+				<p>
+					Height<br />
+					<input placeholder="4' 2&quot;" type="password" name="password2" id="password2"/>
+				</p>
+
+			</div>
+
+			<div class="right">
+				Upload one or more images of the missing person. Star the image SARA citizens will see by default.
+			</div>
+			
+			<div style="clear:both"></div>
+
+		</div>
+	</div>
+
+	<div class="blue wide section">
+		<div class="content">
+			<h1>Send the First Message</h1>
+			<p>Drag the dropped pin to the missing person's location. All SARA citizens with this placeholder in their searching area will receive updates.</p>
+
+			<div class="left">
+				<h2>Find the Location</h2>
+				<div id="googleMap" style="width:100%;height:250px;z-index:1000"></div>
+				<p><input placeholder="Address" type="text" name="address" id="address"> &nbsp; <span class="button blueBG blackBorder" onClick="dropPinAtAddress()">Find on Map</span></p>
+			</div>
+
+			<div class="right">
+				<h2>Write the Message</h2>
+				<p>
+					<textarea id="enMessage" placeholder="Type the message here" rows="6" cols="40" maxlength="160"></textarea>
+					<br />
+					<small><span id="enCharCount">159 / 160 characters</span></small>
+				</p>
+
+				<p>This message will be sent to <b>814</b> recipients.</p>
+				<p><span class="button orangeBG blackBorder">Send Message</span></p>
+			</div>
+
+			<div style="clear:both"></div>
+		</div>
+	</div>
+	</center>
+
+	<div id="footer" class="wide gray section">
+	<p>&copy; Search and Rescue Alert, LLC 2014</p>
+	</div>
+
+</div>
+
+</center>
+
+<script href="./config/passport.js"></script>
+
+</body>
+</html>

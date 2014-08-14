@@ -1,0 +1,123 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Search and Rescue Alerts</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Exo+2:400,300,200,500' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+
+	<div id="rotatingBanner">	
+		<img src="/images/bigBanner/5.jpg" class="rotateImg" />
+	</div>
+
+</head>
+<body>
+
+	<center>
+		<div id="main">
+			
+
+		<div id="header" class="white wide section">
+				<!-- <div class="content"> -->
+					<div id="account">
+						<a href="javascript:void(0)" class="button orangeBG blackBorder"><span id="signupButton">Sign Up!</span></a> or <a href="javascript:void(0)">Log In</a>
+					</div>
+					<a href="/"><img src="/images/logo/1-logo-long-horizontal.png" class="logo"/></a>
+				<!-- </div> -->
+			</div>
+
+
+			
+
+			<div class="white-text section">
+				<div class="content">
+					<div id="basicInfo">
+						<h1 class="white-text">Basic Information</h1>
+						First Name<br />
+						<input type="text" name="firstname"/><br />
+
+						Last Name<br />
+						<input type="text" name="lastname"/><br />
+
+						Email<br />
+						<input type="text" name="email"/><br />
+
+						Phone Number<br />
+						<input type="text" name="phone"/><br />
+
+						<!-- <input type="checkbox">Change Password?</input> -->
+
+						<input type="submit" value="Update" />
+					</div>
+
+					<!-- <div id="location">
+						<h1 class="">Locations</h1>
+						<input type="text" /><br />
+					</div>
+
+				</div>
+				<div class="content">
+					<h1>First Responder Information</h1>
+					<b>Status</b>: Unapproved<br />
+
+					<p>First responders are approved persons that receive alerts earlier. If you would like to become a first responder, please provide this additional information:</p>
+
+					Home Address:<br />
+					<input type="text" /><br />
+
+					City: <br />
+					<input type="text" /><br />
+
+					State/Provience:<br />
+					<input type="text" /><br />
+
+					Zip/Postal Code:<br />
+					<input type="text" /><br />
+
+					Country:<br />
+					<select>
+						<option>United States</option>
+						<option>Canada</option>
+					</select><br />
+
+					<input type="checkbox">I understand that by applying to be a first responder, my local law enforcement agency will perform a background check.</input><br /> -->
+
+					
+				</div>
+			</div>
+
+			<div class="teal section" id="responder">
+				
+			</div>
+
+		</div>
+
+		</center>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
+		<script type="text/javascript" src="/javascripts/jquery.cycle.all.2.74.js"></script>
+		<script>
+			var parsedURL = window.location.href.split("/");
+			console.log("this is the parsedURL: " + parsedURL);
+			var userID = parsedURL[parsedURL.length-1];
+			console.log('user id freshly snipped: ' + userID);
+			if (!userID) { //this condition is for if an ending "/" is in the URL
+				userID = parsedURL[parsedURL.length-2];
+			}
+			
+			var getURL = '../api/v1/user/' + userID;
+			console.log(getURL);
+			var user;
+			$.get(getURL).done(function(data) { //get the user information
+				console.log("myaccount.html: response: " + data);
+				user = data;
+
+				$('input[name=email]').val(user.email);
+				$('input[name=firstname]').val(user.firstname);
+				$('input[name=lastname]').val(user.lastname);
+				$('input[name=phone]').val(user.phone);
+			});
+		</script>
+</body>
+</html>
+

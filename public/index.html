@@ -2,27 +2,14 @@
 <head>
 	<meta charset="utf-8">
 	<title>Search and Rescue Alerts</title>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style2.css">
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Exo+2:400,300,200,500' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
-
-	<style>
-		#nav { 
-			width: 700px; 
-			margin: 15px;
-			position:absolute;
-			top:75px;
-			right:25px;
-			z-index:9999;
-		}
-		/*#nav { width: 150px; margin: 100px; z-index:100;}*/
-		#nav li { width: 50px; float: left; margin: 8px; list-style: none }
-		#nav a { width: 50px; padding: 3px; display: block; border: 1px solid #ccc; }
-		#nav li.activeSlide a { background: #013ca6 }
-		#nav a:focus { outline: none; }
-		#nav img { border: none; display: block }
-	</style>
+	<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:900' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Baumans' rel='stylesheet' type='text/css'>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA3mC_xSILKVBUECReJLJbyoX9L3PQ_ApY&sensor=false"></script>
+	<script src="/javascripts/googlemaps.js" rel="javascript" type="text/javascript"></script>
 </head>
 <body>
 
@@ -30,130 +17,171 @@
 <script type="text/javascript" src="javascripts/jquery.cycle.all.2.74.js"></script>
 <script type="text/javascript" src="javascripts/cookies.js"></script>
 
-<!-- the order of the thumbnails in div NAV and ROTATINGBANNER must be in the same order-->
-<ul id="nav">
-	<!-- <li><a href="#"><img src="/images/bigBanner/1.jpg" width="50" height="50"/></a></li> -->
-	<!-- <li><a href="#"><img src="/images/bigBanner/4.jpg" width="50" height="50"/></a></li> -->
-	<!-- <li><a href="#"><img src="/images/bigBanner/5.jpg" width="50" height="50"/></a></li> -->
-</ul>
-
 <div id="rotatingBanner">
-	<img src="/images/bigBanner/1.jpg" class="rotateImg"/>
-	<img src="/images/bigBanner/4.jpg" class="rotateImg"/>
-	<img src="/images/bigBanner/5.jpg" class="rotateImg"/>
+	<img src="/images/banner7.jpg" class="rotateImg"/>
 </div>
 
 <center>
 <div id="main">
 	<div id="header" class="white wide section">
-		<!-- <div class="content"> -->
-			<div id="account">
-				<form action="login/" method="post">
-					<input placeholder="email" type="text" id="emailHeader" name="email" />
-					<input placeholder="password" type="password" id="passwordHeader" name="password" />
-					<span class="button orangeBG whiteBorder" onclick="login()">Log In</span> or <a href="/signup">Sign Up</a>
-				</form>
-			</div>
-			<img src="/images/logo/1-logo-long-horizontal.png" class="logo"/>
-		<!-- </div> -->
-	</div>
-	<center>
-
-	<div id="signup" class="wide section">
-
-		<div class="top content signupForm">
-			<h1><b>Log In</b></h1>
-			<h2>to help find the missing</h2>
-			
-			<form action="login/" method="post">
-				<input placeholder="email" type="text" id="email" name="email" /> <br />
-				<input placeholder="password" type="password" id="password" name="password" /> <br />
-				<span class="button orangeBG whiteBorder" onclick="login()">Log In</span> or <a href="/signup">Sign Up</a>
-			</form>
-<!-- 
-
-			Email Address<br />
-			<input type="text" name="email" id="email"/><br />
-			
-			Password<br />
-			<input type="password" name="password" id="password"/><br />
-			
-			<br />
-			<a href="#" class="button orangeBG whiteBorder" onclick="login();"><span id="signupButton">Log In</span></a> or <a href="/signup">Sign Up</a> -->
+		<div id="account">
+			<span class="button orangeBG blackBorder" onclick="login()">Log In</span>
 		</div>
-	
-		<div class="bottom content signupForm">
-		</div>
-
+		<img src="/images/logo/1-logo-long-horizontal.png" class="logo"/>
 	</div>
 
-	<div id="about" class="blue narrow section">
+	<div id="banner" class="wide section">
+		<div class="bannerWords">
+			<p><a href="#signup" class="button orangeBG whiteBorder">Sign Up Now</a></p>
+			<h1><b>A &quot;missing&quot; poster in the palm of your hand</b></h1>
+		</div>
+	</div>
+
+	<div id="about" class="blue wide section">
 		<a name="aboutSection"></a>
 		<div class="content">
+			<div class="left">
 
-			<h1>About</h1>
-			<iframe width="230" src="//www.youtube.com/embed/_X5kNTl1nNM" frameborder="0" style="float:right; padding-left:1em;" allowfullscreen></iframe>
+				<h1>About SARA</h1>
+				
+				<p>SARA (Search and Rescue Alerts) engages the power of the public to help bring kids home. When someone goes missing, the first moments are the most critical. SARA immediately sends a text to your mobile device so you can keep an eye out as you go about your daily activities. Messages include a photo and description of the individuals, current information, and details about organized searches. You become part of a vast community of concerned searchers with eyes on the ground and everywhere. You can help us bring them swiftly and safely home.</p>
 
-			<p>SARA (Search and Rescue Alerts) harnesses the power of caring citizens to help find missing people and return them safely home.  SARA uses cell phone texts to alert the public about missing persons so they can help search as they go about their daily activities.  Text messages are sent to your phone from approved Law Enforcement agencies which may include a photo and description of the individual, information about the circumstances, and details about organized searches or places where tips can be directed.  A Missing Person Poster in the palm of your hand!</p>
+				<h2>“I would want everyone looking for my child if something went wrong.”</h2>
 
-			<p>People who want to receive notifications of missing persons in your area are invited to register for SARA on this website. Supported Law Enforcement agencies will send time-sensitive notifications directly to your phone or computer.</p>
+				<p>To receive notifications of missing persons in your area, register to be a SARA Citizen today.There is no charge to register.</p>
 
-			<center>
-			<h2>Don't think you have time to help search?</h2>
-			<h2>Think Again</h2>
-			</center>
+			</div>
+			<div class="right">
+				<h1>How You Can Help</h1>
 
+				<p>You never know when you will see something that makes the difference. Just being alert on the roads, at the store, and in your own neighborhood will help.</p>
+
+				<p>Text messages, with a link to a photo and contact information, are sent to your mobile device from approved Law Enforcement Agencies.</p>
+
+				<h2>Start helping with a search from right where you are.</h2>
+
+				<iframe width="100%" height="50%" src="//www.youtube-nocookie.com/embed/_X5kNTl1nNM?rel=0" frameborder="0" allowfullscreen></iframe>
+			</div>
+
+			<div style="clear: both;"></div>
 		</div>
-		<!-- <div class="arrow-down"></div> -->
 	</div>
 
-	<div id="how" class="orange narrow section">
+	<div id="how" class="inverted wide section">
 		<a name="howSection"></a>
 		<div class="content">
 			<h1>How It Works</h1>
 
-			<p class="block">
-			<span class="circle circleBlue">1</span>
-			Sign up here or Sign up with Facebook.
-			</p>
+			<center>
+			<div class="steps">
+				<div class="step">
+					<img src="/images/signup.png" />
+					<h2>Step 1</h2>
+					<h3>Sign Up</h3>
+					<p><a href="#signup" class="button orangeBG whiteBorder">Sign Up</a> by providing your texting number and location.</p>
+				</div>
+				
+				<div class="step">
+					<img src="/images/sms.png" />
+					<h2>Step 2</h2>
+					<h3>Receive Alerts</h3>
+					<p>You will receive alerts and up-to-the-minute updates directly to your mobile device for people in your area.</p>
+				</div>
 
-			<p class="block">
-			<span class="circle circleOrange">2</span>
-			<b>Receive a single opt-in welcome message.</b> Reply YES to continue to receive SMS text messages. You may opt out at any point by sending STOP to 123456. Send HELP to 123456 for information.  No charge but Message and Data rates may apply. Message frequency varies. 
-			</p>
+				<div class="step">
+					<img src="/images/binoculars.png" />
+					<h2>Step 3</h2>
+					<h3>Begin Searching</h3>
+					<p>Start your search from exactly where you are. Just be alert on the roads, at the store, and in your neighborhood. You could make the difference.</p>
+				</div>
+			</div>
+			</center>
+
+			<p>There is no charge for registering. Standard text messaging rates associated with your mobile phone service will apply. You can opt out at any time by texting &quot;STOP&quot; to 123456.
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+
+	<div id="signup" class="blue wide section">
+		<div class="content">
+			<h1>Sign Up</h1>
+			<p>Sign up now to receive notifications on your mobile device and help search for missing persons while going about your daily routine.</p>
+
+			<p><a href="#faq">Read the Frequently Asked Questions</a></p>
+
+			<div class="signupForm left">
+
+				<p>
+					Phone Number<br />
+					<small>Phone number where text alerts are sent</small><br />
+					<input placeholder="e.g. 8015555555" type="text" name="phoneNumber" id="phoneNumber"/>
+				</p>
+
+				<p>
+					Email<br />
+					<small>(optional)</small><br />
+					<input placeholder="e.g. you@gmail.com" type="text" name="email" id="email"/>
+				</p>
+
+				<p>
+					Password<br />
+					<input placeholder="" type="password" name="password" id="password"/>
+				</p>
+
+				<p>
+					Password (again)<br />
+					<input placeholder="" type="password" name="password2" id="password2"/>
+				</p>
+
+			</div>
+
+			<div class="right">
+				<p>Drag the dropped pin to your central location. You will receive messages for any alert that is within your blue radius.</p>
+				<div id="googleMap" style="width:100%;height:350px;z-index:1000"></div>
+				<p style="text-align:center;">
+					<span class="button blackBorder blueBG" onclick="signUp()">Save and Finish</span>
+				</p>
+			</div>
 			
-			<p class="block">
-			<span class="circle circleBlue">3</span>
-			Start helping with the search from right where you are.  Just being alert on the roads, at the store, and in your own neighborhood will help.  You never know when you will see something that makes the difference.
+			<div style="clear: both">&nbsp;</div>
+		</div>
+	</div>
+
+	<div class="inverted wide section">
+		<div class="content">
+			<h2><a name="faq"></a>Frequently Asked Questions</h2>
+
+			<p>
+				<b>Can I place more than one point on the map?</b><br />
+				At this time we do not accept more than one location, but we will include that in a future version.
+			</p>
+
+			<p>
+				<b>How many messages will I receive?</b><br />
+				This is entirely dependent on your local law enforcement agency. If you live in an area where many people go missing, you may receive lots. But you if you feel like you are receiving too many alerts you are welcome to log back in and make your location area smaller.
+			</p>
+
+			<p>
+				<b>Is SARA a government agency?</b><br />
+				No. SARA is a private company founded by concerned citizens who wish to help find missing persons. SARA does work closely with and provide support to local and national government agencies, police departments, cities, and other private organizations.
 			</p>
 		</div>
-		<!-- <div class="arrow-down"></div> -->
 	</div>
-
-	<div id="smartphone" class="blue narrow section">
-		<a name="smartPhoneSection"></a>
-		<div class="content">
-			<h1>Have a smartphone?</h1>
-			Check out our app.
-		</div>
-	</div>
-
-	<div id="firstresponder" class="orange narrow section">
-		<a name="firstResponseSection"></a>
-		<div class="content">
-			<h1>Become a first responder</h1>
-			<p>First responders are approved in advance of an official search and may receive priority alerts.  If you opt in as a first responder, your information will be used for a background check.  If an official search is organized in a specific area, you will be notified of the place and time.  Then you may be pre-approved to search and can skip the lines at the search headquarters.</p>
-
-			<h2>"I would want everyone looking for my child if something went wrong."</h2>
-
-			<p>SIGN UP USING YOUR PHONE.  Simply text any zip code to 123456 and receive real-time alerts and advisories directly from your local police department and other local agencies. There is no charge for registering, but standard text messaging rates associated with your mobile phone service will apply. You can opt out at any time by texting "STOP" to 123456. If you're texting a zip code to 123456 and using SARA for the first time, you can retrieve a temporary password to complete the registration process here. Completing the registration process will allow you to fully customize how messages reach you - whether by mobile phone, email, or over the web at www.SARA.com - you decide!</p>
-		</div>
-	</div>
-	
-	</center>
 
 	<div id="footer" class="wide gray section">
-	<p>&copy; Search and Rescue Alert, LLC 2014</p>
+		<p>
+			<h3>Site Map</h3>
+			<ul>
+				<li><a href="">Home</a></li>
+				<li><a href="">Sign Up</a></li>
+				<li><a href="">Log In</a></li>
+				<li><a href="">My Account</a></li>
+				<li><a href="">Administrator Log In</a></li>
+			</ul>
+		</p>
+
+		<br />
+		<p>&copy; Search and Rescue Alerts, LLC 2014</p>
 	</div>
 
 </div>
