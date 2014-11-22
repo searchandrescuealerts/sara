@@ -33,6 +33,10 @@ small {
 	color:#FFFFFF;
 }
 
+.error {
+	color:red;
+}
+
 /*==========================================================================*/
 /*								SECTION CONTENT 							*/
 /*==========================================================================*/
@@ -242,7 +246,7 @@ input[type=text], input[type=password], textarea {
 	background-position: right center;
 }
 
-.to_save {
+.saved {
 	background-image: url('/images/admin/ok_2.png');
 	background-repeat: no-repeat;
 	background-position: right center;
@@ -308,6 +312,36 @@ input[type=text], input[type=password], textarea {
 	text-decoration: none;
 	cursor:hand;
 }
+
+
+/*==========================================================================*/
+/*								ADMIN CONTENT 								*/
+/*==========================================================================*/
+.message {
+	width:100%;
+	background-color:#9ac0dc;
+	color:#000000;
+	padding:.5em;
+	border-width:1px;
+	border-style:solid;
+	border-radius:.5em;
+	border-color:#000000;
+	font-weight:300;
+	margin:1em 0;
+}
+
+.message .timestamp {
+	font-style:italic;
+	color:#333333;
+	font-size:.7em;
+	text-align:right;
+	width:100%;
+}
+
+.campaignImage {
+	max-height:350px;
+}
+
 
 /*==========================================================================*/
 /*								SPLIT CONTENT 								*/

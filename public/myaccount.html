@@ -12,14 +12,12 @@
 <body>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
-<script type="text/javascript" src="javascripts/jquery.cycle.all.2.74.js"></script>
-<script type="text/javascript" src="javascripts/cookies.js"></script>
 
 <center>
 <div id="main">
 	<div id="header" class="white wide section">
 		<div id="account">
-			Welcome [User]! <span class="button orangeBG blackBorder" onclick="login()">Log Out</span>
+			Welcome! <span class="button orangeBG blackBorder" onclick="login()">Log Out</span>
 		</div>
 		<img src="/images/logo/1-logo-long-horizontal.png" class="logo"/>
 	</div>
@@ -39,16 +37,28 @@
 			<div class="signupForm left">
 				<p>
 					Email<br />
-					<input placeholder="e.g. you@gmail.com" type="text" name="email" class="to_edit" id="email"/>
+					<input placeholder="e.g. you@gmail.com" type="text" name="email" class="to_edit" id="email" onfocus="edit(this.id)" onblur="save(this.id)"/>
 				</p>
 
 				<p>
 					Phone Number<br />
 					<small>Phone number where text alerts are sent</small><br />
-					<input placeholder="e.g. 8015555555" type="text" name="phoneNumber" class="to_save" id="phoneNumber"/>
+					<input placeholder="e.g. 8015555555" type="text" name="phone" class="to_edit" id="phone" onfocus="edit(this.id)" onblur="save(this.id)"/>
 				</p>
 
-				<input type="checkbox"> Change Password?
+				<p><input type="checkbox" checked> Change Password?</p>
+
+				<p>
+					New Password<br />
+					<input type="text" name="phoneNumber" id="password" />
+				</p>
+
+				<p>
+					Again<br />
+					<input type="text" name="phoneNumber" id="password" />
+				</p>
+
+
 			</div>
 
 			<div class="right">
@@ -63,14 +73,69 @@
 	</center>
 
 	<div id="footer" class="wide gray section">
-	<p>&copy; Search and Rescue Alert, LLC 2014</p>
-	</div>
+		<p>
+			<h3>Site Map</h3>
+			<ul>
+				<li><a href="">Home</a></li>
+				<li><a href="">Sign Up</a></li>
+				<li><a href="">Log In</a></li>
+				<li><a href="">My Account</a></li>
+				<li><a href="">Administrator Log In</a></li>
+			</ul>
+		</p>
 
+		<br />
+		<p>&copy; Search and Rescue Alerts, LLC 2014</p>
+	</div>
 </div>
 
 </center>
 
 <script href="./config/passport.js"></script>
+<script>
+
+var userid;
+
+//GET THE USER INFORMATION
+var URL = document.URL;
+var parsedURL = URL.split("/");
+var userID = parsedURL[parsedURL.length-1];
+if (!userID) { //this condition is for if an ending "/" is in the URL
+		userID = parsedURL[parsedURL.length-2];
+}
+var requestURL = "/api/v1/user/" + userID
+$.get(requestURL).done(function(user){
+	userid = user.id;
+	console.log(userid)
+	//display the values in the form
+	$("#email").val(user.email);
+	$("#phone").val(user.phone);
+
+});
+
+function edit(id) {
+	console.log(userid);
+	var input = $("#" + id)
+	//remove edit class from function
+	input.removeClass("to_edit");
+}
+
+function save(id) {
+	var input = $("#" + id);
+	var newUser = {
+		"id": userid,
+	}
+	if (input.id === "email") {
+		newUser.push(["email", input.val()]);
+	} else if(input.id == "phone") {
+		newUser.push(["phone", input.val()]);
+	}
+
+	console.log(newUser);
+	input.addClass("saved");
+}
+
+</script>
 
 </body>
 </html>

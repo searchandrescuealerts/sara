@@ -68,7 +68,7 @@ exports.getUser = function(req, res){
 	
 	//search
 	db.User.find({ where: {id: userID} }).success(function(user) {
-		console.log("user.js: Found User: " + user.id + " " + user.given_name + " " + user.family_name);
+		console.log("user.js: Found User: " + user.id + " " + user.phone + " " + user.email);
 		res.send(user);
 	});
 };
